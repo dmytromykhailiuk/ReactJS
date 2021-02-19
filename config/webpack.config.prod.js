@@ -1,36 +1,17 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const commonConfig = require("./webpack.config.common.js");
 
 module.exports = {
+  ...commonConfig,
   mode: "production",
-  entry: [path.resolve(__dirname, "../src/index.tsx")],
-  output: {
-    filename: "[name].bundle.js",
-    chunkFilename: "[name].bundle.js",
-    path: path.resolve(__dirname, "../build"),
-  },
-  resolve: {
-    modules: [
-      path.resolve(__dirname, "../src"),
-      path.resolve(__dirname, "../node_modules"),
-    ],
-    extensions: [".js", ".jsx", ".json", ".tsx", ".ts"],
-  },
   devServer: {
-    contentBase: path.join(__dirname, "../build"),
-    compress: true,
+    ...commonConfig.devServer,
     port: 4040,
-    open: true,
-  },
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-    },
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    ...commonConfig.plugins,
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "../public/index.html"),
       filename: "index.html",
@@ -49,6 +30,10 @@ module.exports = {
         use: {
           loader: "babel-loader",
         },
+      },
+      {
+        test: /\.css$/,
+        use: [{ loader: MiniCssExtractPlugin.loader }, "css-loader"],
       },
       {
         test: /\.scss$/,

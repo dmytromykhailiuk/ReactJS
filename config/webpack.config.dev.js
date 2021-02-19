@@ -1,36 +1,22 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const commonConfig = require("./webpack.config.common.js");
 
 module.exports = {
+  ...commonConfig,
   mode: "development",
-  entry: [path.resolve(__dirname, "../src/index.tsx")],
   output: {
-    filename: "[name].bundle.js",
-    chunkFilename: "[name].bundle.js",
+    ...commonConfig.output,
     path: path.resolve(__dirname, "../dev-build"),
-  },
-  resolve: {
-    modules: [
-      path.resolve(__dirname, "../src"),
-      path.resolve(__dirname, "../node_modules"),
-    ],
-    extensions: [".js", ".jsx", ".json", ".tsx", ".ts"],
   },
   devtool: "inline-source-map",
   devServer: {
+    ...commonConfig.devServer,
     contentBase: path.join(__dirname, "../dev-build"),
-    compress: true,
     port: 8080,
-    open: true,
-  },
-  optimization: {
-    splitChunks: {
-      chunks: "all",
-    },
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    ...commonConfig.plugins,
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "../public/index.html"),
       filename: "index.html",
