@@ -1,4 +1,9 @@
-module.exports =
-  process.env.NODE_ENV === "development"
-    ? require("./config/webpack.config.dev")
-    : require("./config/webpack.config.prod");
+const { merge } = require("webpack-merge");
+const commonConfig = require("./config/webpack.config.common");
+const devConfig = require("./config/webpack.config.dev");
+const prodConfig = require("./config/webpack.config.prod");
+
+module.exports = merge(
+  commonConfig,
+  process.env.NODE_ENV === "development" ? devConfig : prodConfig
+);

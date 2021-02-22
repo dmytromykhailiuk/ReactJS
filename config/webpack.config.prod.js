@@ -1,17 +1,13 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const commonConfig = require("./webpack.config.common.js");
 
 module.exports = {
-  ...commonConfig,
   mode: "production",
   devServer: {
-    ...commonConfig.devServer,
     port: 4040,
   },
   plugins: [
-    ...commonConfig.plugins,
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "../public/index.html"),
       filename: "index.html",
