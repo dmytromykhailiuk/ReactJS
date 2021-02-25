@@ -1,0 +1,15 @@
+@import '../../../scss/variables'; 
+
+.logo {
+  color: $pink-color;
+  font-weight: 900;
+  font-size: 28px;
+  margin: 0px;
+  text-shadow: 0 0 1px $dark-grey-color;
+
+  &__roulette {
+    font-weight: 100;
+    font-size: 25px;
+    letter-spacing: 1.5px;
+  }
+}

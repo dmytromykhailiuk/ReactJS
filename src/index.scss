@@ -1,7 +1,14 @@
+@import './scss/variables'; 
+
 body {
-  background-color: yellow;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  background-color: $light-grey-color;
 }
 
-h1 {
-  font-size: 50px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
 }
