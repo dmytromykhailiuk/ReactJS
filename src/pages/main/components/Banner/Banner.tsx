@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from "./Banner.module.scss";
-import { Logo, Button } from "../../../../shared/components";
-import { ButtonTypes, ButtonSize } from "../../../../shared/enums";
+import { Logo, Button } from "shared/components";
+import { ButtonTypes, ButtonSize } from "shared/enums";
 import { SearchPanel } from "../"
 
 interface BannerProps {

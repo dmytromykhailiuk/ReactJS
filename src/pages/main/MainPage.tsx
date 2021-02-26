@@ -1,25 +1,21 @@
 import React, { useState } from "react";
 import { Banner, MovieBoard } from "./components";
-import { movies as allMovies } from "../../mocks"
-import { filterMovies, sortMovies } from "../../shared/helpers";
+import { movies } from "mocks";
+import { filterMoviesBySearchingValue } from "shared/helpers"
 
 const MainPage: React.FC = () => {
-  const [categories, onChangeCategories] = useState("ALL");
-  const [searchingValue, onChangeSearchingValue] = useState("");
-  const [isDownDirection, onChangeSortingDirection] = useState(true);
-
-  const movies = sortMovies(filterMovies(allMovies, searchingValue, categories), isDownDirection);
+  const [searchingValue, setSearchingValue] = useState<string>("");
 
   return (
     <>
       <header>
-        <Banner onChangeSearchingValue={onChangeSearchingValue}/>
+        <Banner
+          onChangeSearchingValue={setSearchingValue}
+        />
       </header>
       <main>
         <MovieBoard
-          onChangeCategories={onChangeCategories}
-          onChangeSortingDirection={onChangeSortingDirection}
-          movies={movies}
+          movies={filterMoviesBySearchingValue(movies, searchingValue)}
         />
       </main>
     </>

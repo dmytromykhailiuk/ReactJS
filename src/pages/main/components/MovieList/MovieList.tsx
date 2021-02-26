@@ -1,7 +1,7 @@
 import React from "react";
-import { Movie } from "../../../../models";
+import { Movie } from "models";
 import { MovieItem } from "../MovieItem";
-import classes from "./Movie.module.scss";
+import classes from "./MovieList.module.scss";
 
 interface MovieListProps {
   movies: Movie[];

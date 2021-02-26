@@ -1,4 +1,4 @@
-import { Movie } from "../../models";
+import { Movie } from "models";
 
 export function sortMovies(movies: Movie[], isDownDirection: boolean) {
   return movies.sort((movie1, movie2) =>

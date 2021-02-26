@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CategoryPanel, SortPanel, MovieList } from '..';
-import { Movie } from '../../../../models';
+import { Movie } from 'models';
+import { Categories } from 'shared/enums';
+import { filterMoviesByCategory, sortMovies } from 'shared/helpers';
 import classes from "./MovieBoard.module.scss";
 
 interface MovieBoardProps {
-  onChangeCategories?: (categories: string) => void;
-  onChangeSortingDirection?: (isDownDirection: boolean) => void;
-  movies?: Movie[]
+  movies?: Movie[];
 }
 
 const MovieBoard: React.FC<MovieBoardProps> = ({ 
-  movies = [],
-  onChangeCategories = () => {}, 
-  onChangeSortingDirection = () => {}
+  movies: allMovies = [],
 }) => {
+  const [category, setCategory] = useState<string | Categories>(Categories.ALL);
+  const [isDownDirection, setSortingDirection] = useState<boolean>(true);
+
+  const movies = sortMovies(filterMoviesByCategory(allMovies, category), isDownDirection);
+
   return (
     <div className={classes['movie-board']}>
       <div className={classes['movie-board__header']}>
-        <CategoryPanel onChangeCategories={onChangeCategories}/>
-        <SortPanel onChangeSortingDirection={onChangeSortingDirection}/>
+        <CategoryPanel onChangeCategory={setCategory} selectedCategory={category}/>
+        <SortPanel onChangeSortingDirection={setSortingDirection} isDownDirection={isDownDirection}/>
         <div className={classes['movie-board__header-underline']}></div>
       </div>
       { 

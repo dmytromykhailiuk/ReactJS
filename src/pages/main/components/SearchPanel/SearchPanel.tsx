@@ -1,7 +1,7 @@
 import React from 'react';
-import { Button, Input } from "../../../../shared/components";
-import { ButtonTypes } from "../../../../shared/enums";
-import { useInputValue } from '../../../../shared/hooks';
+import { Button, Input } from "shared/components";
+import { ButtonTypes } from "shared/enums";
+import { useInputValue } from 'shared/hooks';
 import classes from "./Search.module.scss";
 
 interface SearchPanelProps {

@@ -1,6 +1,6 @@
 import React from "react";
-import { Movie } from "../../../../models";
-import { ThreeDotsIcon } from "../../../../shared/components";
+import { Movie } from "models";
+import { ThreeDotsIcon } from "shared/components";
 import classes from "./MovieItem.module.scss";
 
 interface MovieItemProps {
