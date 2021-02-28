@@ -29,13 +29,30 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [{ loader: MiniCssExtractPlugin.loader }, "css-loader"],
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              minimize: true,
+              sourceMap: false,
+            },
+          },
+        ],
       },
       {
         test: /\.scss$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
-          "css-loader",
+          {
+            loader: "css-loader",
+            options: {
+              modules: true,
+              minimize: true,
+              sourceMap: false,
+            },
+          },
           "sass-loader",
         ],
       },

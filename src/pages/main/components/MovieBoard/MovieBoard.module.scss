@@ -1,0 +1,59 @@
+@import "scss/variables";
+@import 'scss/mixins';
+
+.movie-board {
+  margin-top: 30px;
+  padding: 20px 6% 100px 6%;
+  background-color: $dark-grey-color;
+
+  &__header {
+    display: block;
+    position: relative;
+    
+    @include medium-screen {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__header-underline {
+    height: 4px;
+    background-color: $medium-grey-color;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0px;
+  }
+
+  &__count {
+    color: $white-color;
+    font-weight: normal;
+    font-size: 22px;
+    margin: 35px 0;
+  }
+
+  &__count-number {
+    font-size: 26px;
+    font-weight: bold;
+  }
+
+  &__no-movie-found {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 130px;
+    margin-top: 70px;
+    color: $white-color;
+    font-size: 40px;
+    letter-spacing: 3px;
+    text-align: center;
+    line-height: 1.4;
+
+    @include medium-screen {
+      font-size: 60px;
+      height: 650px;
+      margin-top: 50px;
+      letter-spacing: 5px;
+    }
+  }
+}

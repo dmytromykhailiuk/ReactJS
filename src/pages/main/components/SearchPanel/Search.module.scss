@@ -1,0 +1,31 @@
+@import 'scss/mixins';
+
+.search {
+  display: block;
+  width: 88%;
+  margin: auto;
+
+  &__button, &__input {
+    margin: auto;
+  }
+
+  &__button {
+    display: flex;
+    margin-top: 7vh;
+    justify-content: center;
+  }
+
+  @include medium-screen {
+    display: flex;
+    width: 80%;
+
+    &__input {
+      margin-right: 20px;
+      flex-grow: 1;
+    }
+
+    &__button {
+      margin-top: 0;
+    }
+  }
+}

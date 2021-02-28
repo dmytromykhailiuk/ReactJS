@@ -28,11 +28,32 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: [
+          "style-loader",
+          "css-modules-typescript-loader",
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              modules: true,
+            },
+          },
+        ],
       },
       {
         test: /\.(s[ca]ss)$/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [
+          "style-loader",
+          "css-modules-typescript-loader",
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+              modules: true,
+            },
+          },
+          "sass-loader",
+        ],
       },
       { test: /\.txt$/, use: "raw-loader" },
       {

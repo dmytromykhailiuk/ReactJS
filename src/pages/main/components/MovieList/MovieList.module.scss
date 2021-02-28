@@ -1,0 +1,27 @@
+@import "scss/mixins";
+
+.movie-list {
+  list-style: none;
+
+  & > * {
+    display: inline-block;
+    
+    @include small-screen {
+      margin-right: 4vw;
+
+      &:nth-child(2n) {
+        margin-right: 0;
+      }
+    }
+  
+    @include large-screen {
+      &:nth-child(n) {
+        margin-right: 4vw;
+      }
+
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+  }
+}

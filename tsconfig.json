@@ -8,6 +8,13 @@
     "target": "es5",
     "jsx": "react",
     "allowJs": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": "./src",
+    "paths": {
+      "@shared/*": ["./shared/*"],
+      "@mainpage/*": ["./pages/*"],
+      "@models/*": ["./models/*"],
+      "@mocks/*": ["./mocks/*"],
+    }
   }
 }

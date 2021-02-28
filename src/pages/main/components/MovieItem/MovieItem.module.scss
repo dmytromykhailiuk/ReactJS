@@ -1,0 +1,158 @@
+@import "scss/mixins.scss";
+
+.movie {
+  width: 85.7vw;
+  padding-bottom: 20px;
+  border-bottom: 1vw solid $medium-grey-color;
+  margin-bottom: 5vw;
+  cursor: pointer;
+
+  @include small-screen {
+    width: 41vw;
+    border: none;
+    margin-bottom: 0;
+  }
+
+  @include large-screen {
+    width: 26vw;
+  }
+
+  &__image-wrapper {
+    width: 100%;
+    height: 132vw;
+    position: relative;
+
+    @include small-screen {
+      height: 63vw;
+    }
+
+    @include large-screen {
+      height: 40vw;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 132vw;
+    object-fit: cover;
+    background-position: center 0%;
+    
+    @include small-screen {
+      height: 63vw;
+    }
+
+    @include large-screen {
+      height: 40vw;
+    }
+  }
+
+  &__footer {
+    margin-top: 4.5vw;
+    display: flex;
+    justify-content: space-between;
+
+    @include small-screen {
+      margin-top: 1.5vw;
+    }
+
+    @include large-screen {
+      margin-top: 1.1vw;
+    }
+  }
+
+  &__name {
+    color: rgba($white-color, 0.75);
+    font-size: 4vw;
+    width: 75%;
+    line-height: 1.3;
+    letter-spacing: 0.2vw;
+
+    @include small-screen {
+      font-size: 1.8vw;
+      letter-spacing: 0.1vw;
+    }
+
+    @include large-screen {
+      font-size: 1.2vw;
+      letter-spacing: 0.06vw;
+    }
+  }
+
+  &__category {
+    margin-top: 2.2vw;
+    color: $light-grey-color;
+    font-size: 3vw;
+
+    @include small-screen {
+      margin-top: 1vw;
+      font-size: 1.6vw;
+      letter-spacing: 0.03vw;
+    }
+
+    @include large-screen {
+      margin-top: 0.7vw;
+      font-size: 1.1vw;
+      letter-spacing: 0.02vw;
+    }
+  }
+
+  &__release {
+    border: solid 0.4vw $light-grey-color;
+    align-self: baseline;
+    padding: 1vw 4vw;
+    border-radius: 1vw;
+    font-size: 3vw;
+    color: rgba($white-color, 0.75);
+
+    @include small-screen {
+      border: solid 0.2vw $light-grey-color;
+      padding: 0.6vw 2.4vw;
+      border-radius: 0.4vw;
+      font-size: 1.6vw;
+    }
+
+    @include large-screen {
+      border: solid 0.12vw $light-grey-color;
+      padding: 0.4vw 1.6vw;
+      border-radius: 0.27vw;
+      font-size: 1.1vw;
+    }
+  }
+
+  &__three-dots {
+    display: none;
+    transition: 0.4s;
+    position: absolute;
+    background-color: $dark-grey-color;
+    border-radius: 50%;
+    right: 3vw;
+    top: 4vw;
+    width: 8vw;
+    height: 8vw;
+    padding: 1.3vw;
+
+    &:hover {
+      background-color: rgba($medium-grey-color, 0.7);
+    }
+
+    @include small-screen {
+      right: 1.5vw;
+      top: 2vw;
+      width: 4vw;
+      height: 4vw;
+      padding: 0.65vw;
+    }
+
+    @include large-screen {
+      right: 1vw;
+      top: 1.3vw;
+      width: 2.7vw;
+      height: 2.7vw;
+      padding: 0.43vw;
+    }
+  }
+
+  &:hover &__three-dots {
+    display: block;
+  }
+}
