@@ -6,6 +6,7 @@ interface CssExports {
   'movie__footer': string;
   'movie__image': string;
   'movie__image-wrapper': string;
+  'movie__menu': string;
   'movie__name': string;
   'movie__release': string;
   'movie__three-dots': string;

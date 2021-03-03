@@ -1,24 +1,52 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, FocusEvent } from 'react';
 import classes from "./Input.module.scss";
 
 interface InputProps {
   value?: string;
+  name?: string;
+  type?: string;
   placeholder?: string;
+  error?: string | string[];
+  label?: string;
+  disabled?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void
 }
 
 const Input: React.FC<InputProps> = ({
   value = '', 
-  placeholder = '', 
-  onChange = () => {}
+  placeholder = '',
+  name = '',
+  label = '',
+  error = '',
+  type = 'text',
+  disabled = false,
+  onChange = () => {},
+  onBlur = () => {}
 }) => {
   return (
-    <input
-      className={classes.input}
-      value={value}
-      placeholder={placeholder}
-      onChange={onChange}
-    />
+    <>
+      {label && 
+        <label 
+          htmlFor={name} 
+          className={classes.label}
+        >{ label }</label>
+      }
+      <input
+        disabled={disabled}
+        className={`${classes.input} ${disabled ? classes["input--disabled"] : ''} ${error ? classes["input--error"] : ''}`}
+        value={value}
+        name={name}
+        id={name}
+        type={type}
+        placeholder={placeholder}
+        onChange={onChange}
+        onBlur={onBlur}
+      />
+      {error && (<div className={classes.input__error}>
+        { error }
+      </div>) }
+    </>
   )
 };
 

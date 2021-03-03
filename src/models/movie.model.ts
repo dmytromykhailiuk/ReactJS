@@ -1,7 +1,9 @@
 export interface Movie {
-  key: string;
-  src: string;
+  movieId: string;
   title: string;
-  release: number;
-  category: string;
+  releaseDate: string;
+  movieUrl: string;
+  genre: string[];
+  overview: string;
+  runtime: string;
 }

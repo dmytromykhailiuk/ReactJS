@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Button, Input } from "shared/components";
 import { ButtonTypes } from "shared/enums";
 import { useInputValue } from 'shared/hooks';
@@ -10,23 +10,29 @@ interface SearchPanelProps {
 
 const SearchPanel: React.FC<SearchPanelProps> = ({ onChangeSearchingValue = () => {} }) => {
   const {value, onChangeValue} = useInputValue('');
+
+  const onButtonClicked = useCallback(() => {
+    onChangeSearchingValue(value)
+  }, [value])
   
   return (
     <div className={classes.search}>
-      <div className={classes.search__input}>
+      <form onSubmit={onButtonClicked} className={classes.search__input}>
         <Input 
           value={value} 
           placeholder="What do you want to watch?"
           onChange={onChangeValue}
         />
-      </div>
+      </form>
       <div className={classes.search__button}>
-        <Button 
-          type={ButtonTypes.PRIMARY} 
-          onButtonClicked={() => onChangeSearchingValue(value)} 
-        >
-          SEARCH
-        </Button>
+        <a href="#movie-board">
+          <Button 
+            type={ButtonTypes.PRIMARY} 
+            onButtonClicked={onButtonClicked} 
+          >
+            SEARCH
+          </Button>
+        </a>
       </div>
     </div>
   )

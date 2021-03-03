@@ -31,11 +31,11 @@ module.exports = {
         test: /\.css$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
+          "css-modules-typescript-loader",
           {
             loader: "css-loader",
             options: {
               modules: true,
-              minimize: true,
               sourceMap: false,
             },
           },
@@ -45,11 +45,11 @@ module.exports = {
         test: /\.scss$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
+          "css-modules-typescript-loader",
           {
             loader: "css-loader",
             options: {
               modules: true,
-              minimize: true,
               sourceMap: false,
             },
           },

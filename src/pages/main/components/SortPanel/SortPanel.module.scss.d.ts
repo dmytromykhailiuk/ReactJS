@@ -6,6 +6,9 @@ interface CssExports {
   'sort-panel__arrow-up': string;
   'sort-panel__option': string;
   'sort-panel__options': string;
+  'sort-panel__options-wrapper': string;
+  'sort-panel__selected-option': string;
+  'sort-panel__selected-option-wrapper': string;
   'sort-panel__title': string;
 }
 export const cssExports: CssExports;

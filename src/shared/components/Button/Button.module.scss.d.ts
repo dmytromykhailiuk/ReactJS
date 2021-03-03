@@ -3,6 +3,7 @@
 interface CssExports {
   'button': string;
   'button--big': string;
+  'button--disabled': string;
   'button--primary': string;
   'button--secondary': string;
   'button--small': string;

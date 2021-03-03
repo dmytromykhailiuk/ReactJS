@@ -121,7 +121,6 @@
 
   &__three-dots {
     display: none;
-    transition: 0.4s;
     position: absolute;
     background-color: $dark-grey-color;
     border-radius: 50%;
@@ -149,6 +148,22 @@
       width: 2.7vw;
       height: 2.7vw;
       padding: 0.43vw;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    right: 2vw;
+    top: 2vw;
+
+    @include small-screen {
+      right: 1vw;
+      top: 1vw;
+    }
+
+    @include large-screen {
+      right: 0.66vw;
+      top: 0.66vw;
     }
   }
 
