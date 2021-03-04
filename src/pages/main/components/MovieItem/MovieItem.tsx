@@ -38,13 +38,13 @@ const MovieItem: React.FC<MovieItemProps> = ({
   return (
     <div className={classes.movie}>
       <div className={classes["movie__image-wrapper"]}>
-        <img src={movie.movieUrl} alt={movie.title} className={classes["movie__image"]}/>
+        <img src={movie.url} alt={movie.title} className={classes["movie__image"]}/>
         { shoudShowMenu ? 
           <div 
             className={classes["movie__menu"]} 
           >
             <MovieMenu 
-              uniqueClass={movie.movieId}
+              uniqueClass={movie.id}
               onCloseButtonClicked={onCloseMenu}
               onEditButtonClicked={onEditButtonClicked}
               onDeleteButtonClicked={onDeleteButtonClicked}
@@ -62,7 +62,7 @@ const MovieItem: React.FC<MovieItemProps> = ({
       <div className={classes.movie__footer}>
         <div>
           <div className={classes.movie__name}>{movie.title}</div>
-          <div className={classes.movie__category}>{movie.genre.join(", ")}</div>
+          <div className={classes.movie__category}>{movie.category.join(", ")}</div>
         </div>
         <div className={classes.movie__release}>{movie.releaseDate.split('-')[0]}</div>
       </div>

@@ -4,13 +4,13 @@ import { CloseMenuButton } from "../";
 import classes from "./ModalWrapper.module.scss";
 
 interface ModalWrapperProps {
-  onCloseModal: () => void;
   header: string;
+  onCloseModal: () => void;
 }
 
 const portal = document.getElementById('portal');
 
-const ModalWrapper: React.FC<ModalWrapperProps> = ({ children, onCloseModal, header }) => {
+const ModalWrapper: React.FC<ModalWrapperProps> = ({ children, header, onCloseModal }) => {
 
   useEffect(() => {
     document.body.style.overflow = "hidden"

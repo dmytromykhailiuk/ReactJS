@@ -5,11 +5,11 @@ import { ButtonTypes, ButtonSize } from "shared/enums";
 import { SearchPanel } from "../"
 
 interface BannerProps {
-  onChangeSearchingValue?: (searchingValue: string) => void;
-  onCreateMovie?: () => void;
+  onChangeSearchingValue: (searchingValue: string) => void;
+  onCreateMovie: () => void;
 }
 
-const Banner: React.FC<BannerProps> = React.memo(({ onChangeSearchingValue = () => {}, onCreateMovie = () => {} }) => {
+const Banner: React.FC<BannerProps> = React.memo(({ onChangeSearchingValue, onCreateMovie }) => {
   return (
     <div className={classes.banner}>
       <div className={classes.banner__image}></div>

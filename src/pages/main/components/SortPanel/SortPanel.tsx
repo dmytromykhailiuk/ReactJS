@@ -1,18 +1,18 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import classes from './SortPanel.module.scss';
 import { SortingOptions, SortingOptionsProperties } from 'shared/enums';
-import { clickOutside } from 'shared/helpers';
+import { useClickOutside } from 'shared/hooks';
 
 interface SortPanelProps {
-  onChangeSortingDirection?: (isDownDirection: boolean) => void;
-  setSortingOption: (sortingOption: SortingOptionsProperties) => void;
-  isDownDirection?: boolean;
+  isDownDirection: boolean;
   sortingOption: SortingOptionsProperties;
+  onChangeSortingDirection: (isDownDirection: boolean) => void;
+  setSortingOption: (sortingOption: SortingOptionsProperties) => void;
 }
 
 const sortingOptions: SortingOptionsProperties[] = [SortingOptionsProperties.RELEASE_DATE, SortingOptionsProperties.TITLE];
 
-const SortPanel: React.FC<SortPanelProps> = ({ onChangeSortingDirection = () => {}, isDownDirection = true, sortingOption, setSortingOption }) => {
+const SortPanel: React.FC<SortPanelProps> = ({ isDownDirection, sortingOption, setSortingOption, onChangeSortingDirection }) => {
   const [shouldShowOptions, setShouldShowOptionsValue] = useState(false);
 
   const triggerSetShouldShowOptionsValue = useCallback(() => {
@@ -28,16 +28,7 @@ const SortPanel: React.FC<SortPanelProps> = ({ onChangeSortingDirection = () => 
     setSortingOption(sortingOption);
   }, []);
 
-  const clickOutsides = useMemo(() => clickOutside(classes['sort-panel__options-wrapper'], hideOptions), [])
-
-  useEffect(() => {
-    if (shouldShowOptions) {
-      document.addEventListener("click", clickOutsides);
-      return () => {
-        document.removeEventListener("click", clickOutsides);
-      }
-    }
-  }, [shouldShowOptions])
+  useClickOutside(classes['sort-panel__options-wrapper'], hideOptions, shouldShowOptions);
 
   const onChangeDirection = useCallback(() => {
     onChangeSortingDirection(!isDownDirection);

@@ -6,15 +6,15 @@ import { filterMoviesByCategory, sortMovies } from 'shared/helpers';
 import classes from "./MovieBoard.module.scss";
 
 interface MovieBoardProps {
-  movies?: Movie[];
-  onEditMovie?: (movie: Movie) => void;
-  onDeleteMovie?: (movie: Movie) => void;
+  movies: Movie[];
+  onEditMovie: (movie: Movie) => void;
+  onDeleteMovie: (movie: Movie) => void;
 }
 
 const MovieBoard: React.FC<MovieBoardProps> = ({ 
-  movies = [],
-  onEditMovie = () => {},
-  onDeleteMovie = () => {},
+  movies,
+  onEditMovie,
+  onDeleteMovie,
 }) => {
   const [category, setCategory] = useState<string | Categories>(Categories.ALL);
   const [isDownDirection, setSortingDirection] = useState<boolean>(true);
@@ -25,7 +25,7 @@ const MovieBoard: React.FC<MovieBoardProps> = ({
   const sortedMovies =  useMemo(() => sortMovies(filteredMovies, sortingOption, isDownDirection), [filteredMovies, sortingOption, isDownDirection]);
 
   return (
-    <div className={classes['movie-board']} id="movie-board">
+    <div className={classes['movie-board']}>
       <div className={classes['movie-board__header']}>
         <CategoryPanel onChangeCategory={setCategory} selectedCategory={category}/>
         <SortPanel

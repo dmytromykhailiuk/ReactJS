@@ -1,7 +1,7 @@
-import React, { useEffect, useMemo } from 'react';
+import React from 'react';
 import classes from './MovieMenu.module.scss';
 import CloseMenuButton from 'shared/components/CloseMenuButton/CloseMenuButton';
-import { clickOutside } from 'shared/helpers';
+import { useClickOutside } from 'shared/hooks';
 
 interface MovieMenuProps {
   uniqueClass: string;
@@ -16,14 +16,7 @@ const MovieMenu: React.FC<MovieMenuProps> = ({
   onEditButtonClicked = () => {},
   onDeleteButtonClicked = () => {},
 }) => {
-  const clickOutsides = useMemo(() => clickOutside(uniqueClass, onCloseButtonClicked), [])
-
-  useEffect(() => {
-    document.addEventListener("click", clickOutsides);
-    return () => {
-      document.removeEventListener("click", clickOutsides);
-    }
-  }, [])
+  useClickOutside(uniqueClass, onCloseButtonClicked);
 
   return (
     <div className={`${uniqueClass} ${classes["movie-menu"]}`}>

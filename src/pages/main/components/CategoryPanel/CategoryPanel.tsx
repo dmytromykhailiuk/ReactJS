@@ -4,11 +4,11 @@ import { Categories } from "shared/enums";
 import classes from "./CategoryPanel.module.scss";
 
 interface CategoryPanelProps {
-  onChangeCategory?: (category: string) => void;
-  selectedCategory?: string;
+  selectedCategory: string;
+  onChangeCategory: (category: string) => void;
 }
 
-const CategoryPanel: React.FC<CategoryPanelProps> = ({onChangeCategory = () => {}, selectedCategory = ''}) => {
+const CategoryPanel: React.FC<CategoryPanelProps> = ({ selectedCategory, onChangeCategory }) => {
 
   return (
     <ul className={classes['category-panel']}>

@@ -1,5 +1,5 @@
 export function clickOutside(className: string, fn: () => void) {
-  function compere(target: HTMLElement) {
+  function compare(target: HTMLElement) {
     if (!target || target.tagName === "BODY") {
       fn();
       return;
@@ -7,9 +7,9 @@ export function clickOutside(className: string, fn: () => void) {
     if (target.classList.contains(className)) {
       return;
     }
-    compere(target.parentElement);
+    compare(target.parentElement);
   }
   return (event: MouseEvent) => {
-    compere(event.target as HTMLElement);
+    compare(event.target as HTMLElement);
   };
 }

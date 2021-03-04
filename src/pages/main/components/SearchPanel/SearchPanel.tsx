@@ -5,36 +5,36 @@ import { useInputValue } from 'shared/hooks';
 import classes from "./Search.module.scss";
 
 interface SearchPanelProps {
-  onChangeSearchingValue?: (searchingValue: string) => void;
+  onChangeSearchingValue: (searchingValue: string) => void;
 }
 
-const SearchPanel: React.FC<SearchPanelProps> = ({ onChangeSearchingValue = () => {} }) => {
+const SearchPanel: React.FC<SearchPanelProps> = ({ onChangeSearchingValue }) => {
   const {value, onChangeValue} = useInputValue('');
 
-  const onButtonClicked = useCallback(() => {
-    onChangeSearchingValue(value)
+  const onSubmit = useCallback((event: React.SyntheticEvent) => {
+    event.preventDefault();
+    onChangeSearchingValue(value);
   }, [value])
   
   return (
-    <div className={classes.search}>
-      <form onSubmit={onButtonClicked} className={classes.search__input}>
+    <form className={classes.search} onSubmit={onSubmit}>
+      <div className={classes.search__input}>
         <Input 
           value={value} 
+          name="search"
           placeholder="What do you want to watch?"
           onChange={onChangeValue}
         />
-      </form>
-      <div className={classes.search__button}>
-        <a href="#movie-board">
-          <Button 
-            type={ButtonTypes.PRIMARY} 
-            onButtonClicked={onButtonClicked} 
-          >
-            SEARCH
-          </Button>
-        </a>
       </div>
-    </div>
+      <div className={classes.search__button}>
+        <Button 
+          type={ButtonTypes.PRIMARY} 
+          isSubmit={true}
+        >
+          SEARCH
+        </Button>
+      </div>
+    </form>
   )
 };
 

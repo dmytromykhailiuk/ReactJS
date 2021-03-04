@@ -1,12 +1,11 @@
 import React from "react";
 import classes from "./MovieForm.module.scss";
 import { Formik } from 'formik';
-import { Movie } from "models/";
+import { FormData, Movie } from "models/";
 import { Input, Dropdown, Button } from "../";
 import { categories } from "mocks";
-import { ButtonTypes, Categories } from "shared/enums";
-import { generateId } from "shared/helpers";
-import * as Yup from 'yup';
+import { ButtonTypes, MovieFormValues } from "shared/enums";
+import { generateId, ValidationSchema } from "shared/helpers";
 
 interface MovieFormProps {
   onSubmitForm: (movie: Movie) => void;
@@ -14,62 +13,31 @@ interface MovieFormProps {
   submitButtonLabel?: string;
 }
 
-interface  FormData {
-  title: string;
-  releaseDate: string;
-  movieUrl: string;
-  genre: Categories[];
-  overview: string;
-  runtime: string;
-}
-
-enum MovieFormValues {
-  MOVIE_ID = 'movieId',
-  TITLE = 'title',
-  RELEASE_DATE = 'releaseDate',
-  MOVIE_URL = 'movieUrl',
-  GENRE = 'genre',
-  OVERVIEW = 'overview',
-  RUNTIME = 'runtime'
-}
-
-const URL_REGEX = /^((https?|ftp):\/\/)?(www.)?(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i;
-
-const ValidationSchema = Yup.object().shape({
-  [MovieFormValues.TITLE]: Yup.string().required('Title is required'),
-  [MovieFormValues.RELEASE_DATE]: Yup.string().required('Relese date is required'),
-  [MovieFormValues.MOVIE_URL]: Yup.string().matches(URL_REGEX, 'Enter a valid url').required('Movie URL is required'),
-  [MovieFormValues.GENRE]: Yup.array().min(1, "Select at least one genre to proceed").required("Ganre is required"),
-  [MovieFormValues.OVERVIEW]: Yup.string().required('Owerview is required'),
-  [MovieFormValues.RUNTIME]: Yup.string().required('Runtime is required')
-});
-
 const MovieForm: React.FC<MovieFormProps> = ({ onSubmitForm, movie = {}, submitButtonLabel = "SAVE" }) => {
   return (
     <Formik
       initialValues={{
         [MovieFormValues.TITLE]: movie.title || '',
         [MovieFormValues.RELEASE_DATE]: movie.releaseDate || '',
-        [MovieFormValues.MOVIE_URL]: movie.movieUrl || '',
-        [MovieFormValues.GENRE]: movie.genre || [],
+        [MovieFormValues.MOVIE_URL]: movie.id || '',
+        [MovieFormValues.CATEGORY]: movie.category || [],
         [MovieFormValues.OVERVIEW]: movie.overview || '',
         [MovieFormValues.RUNTIME]: movie.runtime || '',
       }}
-      // validateOnMount={true}
       validationSchema={ValidationSchema}
       validateOnBlur={true}
       onSubmit={(values: FormData) => {
-        onSubmitForm({...values, movieId: movie.movieId || generateId()});
+        onSubmitForm({...values, id: movie.id || generateId()}); // using for edit and create
       }}
     >
       {(formik) => (
         <form onSubmit={formik.handleSubmit}>
-          {movie.movieId && <Input 
+          {movie.id && <Input 
             disabled={true}
             name={MovieFormValues.MOVIE_ID}
             type="text"
             label="MOVIE ID"
-            value={movie.movieId}
+            value={movie.id}
           />}
           <Input 
             name={MovieFormValues.TITLE}
@@ -105,9 +73,9 @@ const MovieForm: React.FC<MovieFormProps> = ({ onSubmitForm, movie = {}, submitB
           <Dropdown 
             label="GENRE" 
             placeholder="Select Genre" 
-            name={MovieFormValues.GENRE} 
+            name={MovieFormValues.CATEGORY} 
             options={categories}
-            error={formik.errors[MovieFormValues.GENRE] && formik.touched[MovieFormValues.GENRE] ? formik.errors[MovieFormValues.GENRE] : ''}
+            error={formik.errors[MovieFormValues.CATEGORY] && formik.touched[MovieFormValues.CATEGORY] ? formik.errors[MovieFormValues.CATEGORY] : ''}
           />
 
           <Input 

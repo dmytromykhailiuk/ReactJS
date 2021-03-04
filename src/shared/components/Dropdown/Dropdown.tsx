@@ -1,9 +1,9 @@
 import { Categories } from "shared/enums";
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useState } from "react";
 import classes from "./Dropdown.module.scss";
-import { clickOutside } from "shared/helpers";
 import { useField } from "formik";
 import { DropdownOption } from "../DropdownOption";
+import { useClickOutside } from "shared/hooks";
 
 interface DropdownProps {
   name: string;
@@ -22,23 +22,14 @@ const Dropdown: React.FC<DropdownProps> = ({ name, options, label = '', placehol
     if (isOpened) {
       setTouched(selectedValue, true);
     }
-  }, [isOpened])
+  }, [isOpened, selectedValue])
 
   const onHideDropdownOptions = useCallback(() => {
     setIsOpenedValue(false);
     setTouched(selectedValue, true);
-  }, [])
+  }, [selectedValue])
 
-  const clickOutsides = useMemo(() => clickOutside(classes.dropdown, onHideDropdownOptions), [])
-
-  useEffect(() => {
-    if (isOpened) {
-      document.addEventListener("click", clickOutsides);
-      return () => {
-        document.removeEventListener("click", clickOutsides);
-      }
-    }
-  }, [isOpened])
+  useClickOutside(classes.dropdown, onHideDropdownOptions, isOpened);
 
   const onToggleOption = useCallback((option: Categories) => {
     const index = selectedValue.indexOf(option);

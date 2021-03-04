@@ -26,19 +26,19 @@ const MainPage: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>(allMovies);
   const [{ mode, selectedMovie }, setModeData] = useState<ModeData>({ mode: MainPageModes.OVERVIEW, selectedMovie: null });
 
-  const onSeveNewMovie = useCallback((newMovie: Movie) => {
+  const onSaveNewMovie = useCallback((newMovie: Movie) => {
     setMovies([newMovie, ...movies]);
     setModeData({ mode: MainPageModes.OVERVIEW, selectedMovie: null });
   },[movies]);
 
-  const onSeveEditedMovie = useCallback((editedMovie: Movie) => {
-    const index = movies.findIndex((movie) => movie.movieId === editedMovie.movieId);
+  const onSaveEditedMovie = useCallback((editedMovie: Movie) => {
+    const index = movies.findIndex((movie) => movie.id === editedMovie.id);
     setMovies([...movies.slice(0, index), editedMovie, ...movies.slice(index + 1)]);
     setModeData({ mode: MainPageModes.OVERVIEW, selectedMovie: null });
   },[movies]);
 
   const onCompleteDeleteMovie = useCallback(() => {
-    const index = movies.findIndex((movie) => movie.movieId === selectedMovie.movieId);
+    const index = movies.findIndex((movie) => movie.id === selectedMovie.id);
     setMovies([...movies.slice(0, index), ...movies.slice(index + 1)]);
     setModeData({ mode: MainPageModes.OVERVIEW, selectedMovie: null });
   }, [selectedMovie, movies]);
@@ -61,16 +61,18 @@ const MainPage: React.FC = () => {
   
   const filteredMovies = useMemo(() => filterMoviesBySearchingValue(movies, searchingValue), [searchingValue, movies]);
 
+  const contentStyles = mode !== MainPageModes.OVERVIEW ? bluredStyles: {};
+
   return (
     <>
-      <header style={mode !== MainPageModes.OVERVIEW ? bluredStyles: {}}>
+      <header style={contentStyles}>
         <Banner
           onChangeSearchingValue={setSearchingValue}
           onCreateMovie={onCreateMovie}
         />
       </header>
 
-      <main style={mode !== MainPageModes.OVERVIEW ? bluredStyles: {}}>
+      <main style={contentStyles}>
         <MovieBoard
           movies={filteredMovies}
           onEditMovie={onEditMovie}
@@ -80,9 +82,9 @@ const MainPage: React.FC = () => {
 
       {mode === MainPageModes.DELETE && <DeleteMovieModal onCloseModal={onCloseModal} onConfirmedDeleting={onCompleteDeleteMovie} />}
 
-      {mode === MainPageModes.EDIT && <EditMovieModal onCloseModal={onCloseModal} onSubmitForm={onSeveEditedMovie} movie={selectedMovie} />}
+      {mode === MainPageModes.EDIT && <EditMovieModal onCloseModal={onCloseModal} onSubmitForm={onSaveEditedMovie} movie={selectedMovie} />}
 
-      {mode === MainPageModes.CREATE && <CreateMovieModal onCloseModal={onCloseModal} onSubmitForm={onSeveNewMovie}/>}
+      {mode === MainPageModes.CREATE && <CreateMovieModal onCloseModal={onCloseModal} onSubmitForm={onSaveNewMovie}/>}
     </>
   )
 }

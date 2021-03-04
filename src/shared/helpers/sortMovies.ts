@@ -9,22 +9,22 @@ export function sortMovies(
   return movies.sort((movie1, movie2) => {
     switch (sortingOption) {
       case SortingOptionsProperties.RELEASE_DATE: {
-        return isDownDirection
-          ? new Date(movie1[SortingOptionsProperties.RELEASE_DATE]).getTime() -
-              new Date(movie2[SortingOptionsProperties.RELEASE_DATE]).getTime()
-          : new Date(movie2[SortingOptionsProperties.RELEASE_DATE]).getTime() -
-              new Date(movie1[SortingOptionsProperties.RELEASE_DATE]).getTime();
+        const date1 = new Date(
+          movie1[SortingOptionsProperties.RELEASE_DATE]
+        ).getTime();
+        const date2 = new Date(
+          movie2[SortingOptionsProperties.RELEASE_DATE]
+        ).getTime();
+
+        return isDownDirection ? date1 - date2 : date2 - date1;
       }
       case SortingOptionsProperties.TITLE: {
+        const title1 = movie1[SortingOptionsProperties.TITLE];
+        const title2 = movie2[SortingOptionsProperties.TITLE];
+
         return isDownDirection
-          ? compareStrings(
-              movie1[SortingOptionsProperties.TITLE],
-              movie2[SortingOptionsProperties.TITLE]
-            )
-          : compareStrings(
-              movie2[SortingOptionsProperties.TITLE],
-              movie1[SortingOptionsProperties.TITLE]
-            );
+          ? compareStrings(title1, title2)
+          : compareStrings(title2, title1);
       }
     }
   });
