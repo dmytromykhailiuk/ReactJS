@@ -96,6 +96,17 @@
           right: 0.5vw;
         }
       }
+
+      @include extra-large-screen {
+        width: 0.76vw;
+        height: 0.76vw;
+
+        &:before, &:after {
+          height: 0.76vw;
+          width: 0.1vw;
+          right: 0.38vw;
+        }
+      }
     }
   }
 }

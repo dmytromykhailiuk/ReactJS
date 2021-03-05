@@ -4,6 +4,7 @@ import classes from "./Dropdown.module.scss";
 import { useField } from "formik";
 import { DropdownOption } from "../DropdownOption";
 import { useClickOutside } from "shared/hooks";
+import classnames from "classnames";
 
 interface DropdownProps {
   name: string;
@@ -41,7 +42,11 @@ const Dropdown: React.FC<DropdownProps> = ({ name, options, label = '', placehol
       <div onClick={onTrigerDropdownOptions}>
         { label && <div className={classes.dropdown__label}>{ label }</div> }
         <div
-          className={`${classes.dropdown__field} ${selectedValue.length ? '' : classes["dropdown__field--placeholder"]} ${!error ? '' : classes["dropdown__field--error"]}`}
+          className={classnames(
+            classes.dropdown__field,
+            { [classes["dropdown__field--placeholder"]]: !selectedValue.length,
+              [classes["dropdown__field--error"]]: error }
+          )}
         >
           { selectedValue.length ? selectedValue.join(' ') : placeholder }
           <div className={classes[isOpened ? "dropdown__arrow-up" : "dropdown__arrow-down"]}></div>

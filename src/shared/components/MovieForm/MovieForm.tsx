@@ -19,7 +19,7 @@ const MovieForm: React.FC<MovieFormProps> = ({ onSubmitForm, movie = {}, submitB
       initialValues={{
         [MovieFormValues.TITLE]: movie.title || '',
         [MovieFormValues.RELEASE_DATE]: movie.releaseDate || '',
-        [MovieFormValues.MOVIE_URL]: movie.id || '',
+        [MovieFormValues.MOVIE_URL]: movie.url || '',
         [MovieFormValues.CATEGORY]: movie.category || [],
         [MovieFormValues.OVERVIEW]: movie.overview || '',
         [MovieFormValues.RUNTIME]: movie.runtime || '',

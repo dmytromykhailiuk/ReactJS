@@ -1,5 +1,6 @@
 import React, { ChangeEvent, FocusEvent } from 'react';
 import classes from "./Input.module.scss";
+import classnames from "classnames";
 
 interface InputProps {
   value?: string;
@@ -34,7 +35,11 @@ const Input: React.FC<InputProps> = ({
       }
       <input
         disabled={disabled}
-        className={`${classes.input} ${disabled ? classes["input--disabled"] : ''} ${error ? classes["input--error"] : ''}`}
+        className={classnames(
+          classes.input,
+          { [classes["input--disabled"]]: disabled,
+            [classes["input--error"]]: error}
+        )}
         value={value}
         name={name}
         id={name}

@@ -1,6 +1,7 @@
 import React, { SyntheticEvent } from 'react';
 import { ButtonTypes, ButtonSize } from "../../enums";
 import classes from "./Button.module.scss";
+import classnames from "classnames";
 
 interface ButtonProps {
   type?: ButtonTypes;
@@ -19,7 +20,7 @@ const Button:React.FC<ButtonProps> = ({
       type={isSubmit ? "submit" : "button"}
       className={`
         ${classes.button} 
-        ${disabled ? classes["button--disabled"] : ''} 
+        ${classnames({[classes["button--disabled"]]: disabled})} 
         ${classes[type === ButtonTypes.PRIMARY ? "button--primary": "button--secondary"]} 
         ${classes[size === ButtonSize.BIG ? "button--big": "button--small"]} 
       `}

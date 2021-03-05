@@ -2,9 +2,13 @@
 @import 'scss/variables';
 
 .banner {
-  height: 100vh;
+  height: 800px;
   position: relative;
   overflow: hidden;
+
+  @include medium-screen {
+    height: 600px;
+  }
 
   &__header {
     display: block;
@@ -17,7 +21,7 @@
   }
 
   &__title {
-    margin: 15vh 10%;
+    margin: 80px 10%;
     font-size: 50px;
     color: $white-color;
     font-weight: normal;

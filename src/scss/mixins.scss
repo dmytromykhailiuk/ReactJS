@@ -17,3 +17,9 @@
     @content;
   }
 }
+
+@mixin extra-large-screen {
+  @media (min-width: $extra-large-screen-size) {
+    @content;
+  }
+}

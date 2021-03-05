@@ -54,6 +54,8 @@
     "webpack-merge": "^5.7.3"
   },
   "dependencies": {
+    "@types/classnames": "^2.2.11",
+    "classnames": "^2.2.6",
     "core-js": "^3.8.3",
     "formik": "^2.2.6",
     "react": "^17.0.1",

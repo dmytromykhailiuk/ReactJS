@@ -16,10 +16,20 @@
   
     @include large-screen {
       &:nth-child(n) {
-        margin-right: 4vw;
+        margin-right: 3vw;
       }
 
       &:nth-child(3n) {
+        margin-right: 0;
+      }
+    }
+
+    @include extra-large-screen {
+      &:nth-child(n) {
+        margin-right: 2vw;
+      }
+
+      &:nth-child(4n) {
         margin-right: 0;
       }
     }
