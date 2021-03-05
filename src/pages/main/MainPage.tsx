@@ -39,13 +39,13 @@ const MainPage: React.FC = () => {
   const onCloseWithSaving = useCallback((movie) => {
     switch(mode) {
       case MainPageModes.CREATE : {
-        saveNewMovie(movie);
+        return saveNewMovie(movie);
       }
       case MainPageModes.EDIT : {
-        saveEditedMovie(movie);
+        return saveEditedMovie(movie);
       }
       case MainPageModes.DELETE : {
-        deleteMovie(movie);
+        return deleteMovie(movie);
       }
     }
   }, [mode, movies])
