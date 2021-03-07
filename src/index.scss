@@ -2,13 +2,26 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  min-height: 100vh;
   background-color: $light-grey-color;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+img {
+  pointer-events: none;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -moz-user-select: none; 
+  -webkit-user-select: none; 
+  -ms-user-select: none; 
   user-select: none;
 }

@@ -1,21 +1,27 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Button, Input } from "shared/components";
 import { ButtonTypes } from "shared/enums";
 import { useInputValue } from 'shared/hooks';
 import classes from "./Search.module.scss";
 
 interface SearchPanelProps {
-  onChangeSearchingValue?: (searchingValue: string) => void;
+  onChangeSearchingValue: (searchingValue: string) => void;
 }
 
-const SearchPanel: React.FC<SearchPanelProps> = ({ onChangeSearchingValue = () => {} }) => {
+const SearchPanel: React.FC<SearchPanelProps> = ({ onChangeSearchingValue }) => {
   const {value, onChangeValue} = useInputValue('');
+
+  const onSubmit = useCallback((event: React.SyntheticEvent) => {
+    event.preventDefault();
+    onChangeSearchingValue(value);
+  }, [value])
   
   return (
-    <div className={classes.search}>
+    <form className={classes.search} onSubmit={onSubmit}>
       <div className={classes.search__input}>
         <Input 
           value={value} 
+          name="search"
           placeholder="What do you want to watch?"
           onChange={onChangeValue}
         />
@@ -23,12 +29,12 @@ const SearchPanel: React.FC<SearchPanelProps> = ({ onChangeSearchingValue = () =
       <div className={classes.search__button}>
         <Button 
           type={ButtonTypes.PRIMARY} 
-          onButtonClicked={() => onChangeSearchingValue(value)} 
+          isSubmit={true}
         >
           SEARCH
         </Button>
       </div>
-    </div>
+    </form>
   )
 };
 

@@ -50,4 +50,17 @@
       background-color: rgba($light-grey-color, 0.4);
     }
   }
+
+  &--disabled {
+    color: transparent;
+    background-color: rgba($pink-color, 0.5);
+    border: solid 2px transparent;
+    cursor: default;
+
+    &:hover {
+      color: transparent;
+      background-color: rgba($pink-color, 0.5);
+      border: solid 2px transparent;
+    }
+  }
 }

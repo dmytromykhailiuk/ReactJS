@@ -5,3 +5,5 @@ export * from "./CategoryPanel";
 export * from "./SortPanel";
 export * from "./MovieList";
 export * from "./MovieItem";
+export * from "./MovieMenu";
+export * from "./MovieModal";

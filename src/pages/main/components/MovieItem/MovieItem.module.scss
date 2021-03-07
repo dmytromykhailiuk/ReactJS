@@ -14,7 +14,11 @@
   }
 
   @include large-screen {
-    width: 26vw;
+    width: 27vw;
+  }
+
+  @include extra-large-screen {
+    width: 20.5vw;
   }
 
   &__image-wrapper {
@@ -28,6 +32,10 @@
 
     @include large-screen {
       height: 40vw;
+    }
+    
+    @include extra-large-screen {
+      height: 30.4vw;
     }
   }
 
@@ -44,6 +52,10 @@
     @include large-screen {
       height: 40vw;
     }
+
+    @include extra-large-screen {
+      height: 30.4vw;
+    }
   }
 
   &__footer {
@@ -57,6 +69,10 @@
 
     @include large-screen {
       margin-top: 1.1vw;
+    }
+
+    @include extra-large-screen {
+      margin-top: 0.835vw;
     }
   }
 
@@ -76,6 +92,11 @@
       font-size: 1.2vw;
       letter-spacing: 0.06vw;
     }
+
+    @include extra-large-screen {
+      font-size: 0.91vw;
+      letter-spacing: 0.045vw;
+    }
   }
 
   &__category {
@@ -93,6 +114,12 @@
       margin-top: 0.7vw;
       font-size: 1.1vw;
       letter-spacing: 0.02vw;
+    }
+
+    @include extra-large-screen {
+      margin-top: 0.53vw;
+      font-size: 0.835vw;
+      letter-spacing: 0.015vw;
     }
   }
 
@@ -117,11 +144,17 @@
       border-radius: 0.27vw;
       font-size: 1.1vw;
     }
+
+    @include extra-large-screen {
+      border: solid 0.09vw $light-grey-color;
+      padding: 0.3vw 1.2vw;
+      border-radius: 0.2vw;
+      font-size: 0.836vw;
+    }
   }
 
   &__three-dots {
     display: none;
-    transition: 0.4s;
     position: absolute;
     background-color: $dark-grey-color;
     border-radius: 50%;
@@ -149,6 +182,35 @@
       width: 2.7vw;
       height: 2.7vw;
       padding: 0.43vw;
+    }
+
+    @include extra-large-screen {
+      right: 0.76vw;
+      top: 0.99vw;
+      width: 2.05vw;
+      height: 2.05vw;
+      padding: 0.33vw;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    right: 2vw;
+    top: 2vw;
+
+    @include small-screen {
+      right: 1vw;
+      top: 1vw;
+    }
+
+    @include large-screen {
+      right: 0.66vw;
+      top: 0.66vw;
+    }
+
+    @include extra-large-screen {
+      right: 0.5vw;
+      top: 0.5vw;
     }
   }
 

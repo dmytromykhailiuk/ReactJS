@@ -35,7 +35,9 @@ module.exports = {
             loader: "css-loader",
             options: {
               sourceMap: true,
-              modules: true,
+              modules: {
+                localIdentName: "[local]__[hash]",
+              },
             },
           },
         ],
@@ -49,7 +51,9 @@ module.exports = {
             loader: "css-loader",
             options: {
               sourceMap: true,
-              modules: true,
+              modules: {
+                localIdentName: "[local]__[hash]",
+              },
             },
           },
           "sass-loader",

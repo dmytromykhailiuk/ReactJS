@@ -1,0 +1,38 @@
+@import "scss/variables";
+
+.dropdown-option {
+  display: flex;
+  padding: 20px;
+  cursor: pointer;
+  
+  &__checkbox {
+    width: 20px;
+    height: 20px;
+    background-color: $white-color;
+    border-radius: 2px;
+    position: relative;
+    
+    &--checked {
+      display: block;
+      background-color: $pink-color;
+    }
+  }
+
+  &__checkbox-icon {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+  }
+  
+  &__content {
+    color: $white-color;
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-left: 13px;
+    transition: 0.4s;
+  }
+  
+  &:hover &__content {
+    color: $pink-color;
+  }
+}
