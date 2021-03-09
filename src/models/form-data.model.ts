@@ -7,4 +7,6 @@ export interface FormData {
   category: Categories[];
   overview: string;
   runtime: string;
+  duration: number;
+  rating: number;
 }

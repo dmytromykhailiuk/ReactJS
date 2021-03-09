@@ -1,9 +1,9 @@
-import React, { ChangeEvent, FocusEvent } from 'react';
+import React, { ChangeEvent, FocusEvent, KeyboardEventHandler, useCallback } from 'react';
 import classes from "./Input.module.scss";
 import classnames from "classnames";
 
 interface InputProps {
-  value?: string;
+  value?: string | number;
   name?: string;
   type?: string;
   placeholder?: string;

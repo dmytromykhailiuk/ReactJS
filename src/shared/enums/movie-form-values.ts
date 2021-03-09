@@ -6,4 +6,6 @@ export enum MovieFormValues {
   CATEGORY = "category",
   OVERVIEW = "overview",
   RUNTIME = "runtime",
+  DURATION = "duration",
+  RATING = "rating",
 }

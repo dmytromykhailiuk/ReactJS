@@ -3,6 +3,8 @@ import { Movie } from "models";
 import { ThreeDotsIcon } from "shared/components";
 import classes from "./MovieItem.module.scss";
 import { MovieMenu } from "../";
+import { isClickInside } from "shared/helpers";
+import { useHistory } from "react-router";
 
 interface MovieItemProps {
   movie: Movie;
@@ -10,12 +12,13 @@ interface MovieItemProps {
   onDeleteMovie: (movie: Movie) => void;
 }
 
-const MovieItem: React.FC<MovieItemProps> = ({ 
+const MovieItem: React.FC<MovieItemProps> = React.memo(({ 
   movie, 
   onEditMovie,
   onDeleteMovie,
 }) => {
   const [shoudShowMenu, setShoudShowMenuValue] = useState(false);
+  const history = useHistory();
 
   const onCloseMenu = useCallback(() => {
     setShoudShowMenuValue(false);
@@ -35,8 +38,15 @@ const MovieItem: React.FC<MovieItemProps> = ({
     onDeleteMovie(movie);
   }, [movie]);
 
+  const onMovieItemClick = useCallback((event: React.SyntheticEvent) => {
+    if(isClickInside(event, classes["movie__three-dots"], classes["movie__menu"])) {
+      history.push(`/film/${movie.id}`);
+      window.scrollTo(0, 0);
+    }
+  }, [])
+
   return (
-    <div className={classes.movie}>
+    <div className={classes.movie} onClick={onMovieItemClick}>
       <div className={classes["movie__image-wrapper"]}>
         <img src={movie.url} alt={movie.title} className={classes["movie__image"]}/>
         { shoudShowMenu ? 
@@ -68,6 +78,6 @@ const MovieItem: React.FC<MovieItemProps> = ({
       </div>
     </div>
   );
-};
+});
 
 export default MovieItem;

@@ -2,41 +2,56 @@
 @import 'scss/variables';
 
 .banner {
-  height: 800px;
   position: relative;
   overflow: hidden;
+  padding-bottom: 60px;
 
-  @include medium-screen {
-    height: 600px;
+  &--search-mode {
+    @include small-screen {
+      height: 600px;
+      padding-bottom: 0;
+    }
   }
 
   &__header {
-    display: block;
+    display: flex;
     justify-content: space-between;
     margin: 30px 6%;
+
+    &--search-mode {
+      display: block;
+    }
 
     @include medium-screen {
       display: flex;
     }
   }
 
+  &__search-icon {
+    margin-top: 5px;
+  }
+
+  &__logo {
+    cursor: pointer;
+  }
+
   &__title {
-    margin: 80px 10%;
-    font-size: 50px;
+    margin: 40px 10%;
+    font-size: 40px;
     color: $white-color;
     font-weight: normal;
     text-align: center;
     letter-spacing: 5px;
     text-shadow: 0 0 1px $dark-grey-color;
-
+    
     @include medium-screen {
-      font-size: 67px;
+      margin: 80px 10%;
+      font-size: 55px;
       text-align: left;
     }
   }
 
   &__background {
-    background-color:#00000099;
     position: absolute;
     top: 0;
     bottom: 0;

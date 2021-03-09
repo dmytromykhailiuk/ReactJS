@@ -1,9 +1,11 @@
-import React, { useCallback, useMemo, useState } from "react";
-import { Banner, MovieBoard, MovieModal } from "./components";
+import React, { useCallback, useMemo, useRef, useState } from "react";
+import { Banner, MovieBoard } from "./components";
 import { movies as allMovies } from "mocks";
-import { filterMoviesBySearchingValue } from "shared/helpers"
+import { filterMoviesBySearchingValue, renderModal, scrollToElement } from "shared/helpers"
 import { Movie } from "models/";
-import { MainPageModes } from "shared/enums";
+import { MainPageModes, RouterPaths } from "shared/enums";
+import { Redirect, useHistory, useParams, useRouteMatch } from "react-router";
+import { useSearchQuery } from "shared/hooks";
 
 const bluredStyles = {
   filter: 'blur(7px)',
@@ -14,10 +16,24 @@ interface ModeData {
   selectedMovie: Movie;
 }
 
+interface Params {
+  id: string; 
+}
+
 const MainPage: React.FC = () => {
-  const [searchingValue, setSearchingValue] = useState<string>("");
   const [movies, setMovies] = useState<Movie[]>(allMovies);
+  const searchingValue = useSearchQuery();
   const [{ mode, selectedMovie }, setModeData] = useState<ModeData>({ mode: MainPageModes.OVERVIEW, selectedMovie: null });
+  const { id: movieId } = useParams<Params>();
+  const history = useHistory();
+  const match = useRouteMatch();
+  const movieBoard = useRef(null);
+
+  const movieInOverview = useMemo(() => movies.find(movie => movie.id === movieId), [movieId, movies]);
+
+  if (!movieInOverview && match.path === RouterPaths.FILM) {
+    return <Redirect to={RouterPaths.ERROR}/>
+  }
 
   const saveNewMovie = useCallback((newMovie: Movie) => {
     setMovies([newMovie, ...movies]);
@@ -65,34 +81,53 @@ const MainPage: React.FC = () => {
   const onCloseModal = useCallback(() => {
     setModeData({ mode: MainPageModes.OVERVIEW, selectedMovie: null });
   }, []);
+
+  const navigateToMainPage = useCallback(() => {
+    history.push("/");
+  }, []);
+
+  const navigateToSearchPage = useCallback(() => {
+    history.push("/search?Search%20Query=");
+  }, []);
+
+  const setSearchingValue = useCallback((searchingValue) => {
+    history.push("/search?Search%20Query=" + searchingValue);
+    scrollToElement(movieBoard.current);
+  }, [])
   
   const filteredMovies = useMemo(() => filterMoviesBySearchingValue(movies, searchingValue), [searchingValue, movies]);
 
+  const MovieModal = useMemo(() => renderModal(mode), [mode]);
+  
   const contentStyles = mode !== MainPageModes.OVERVIEW ? bluredStyles: {};
 
   return (
     <>
       <header style={contentStyles}>
         <Banner
+          movieInOverview={movieInOverview}
           onChangeSearchingValue={setSearchingValue}
           onCreateMovie={onCreateMovie}
+          onLogoClicked={navigateToMainPage}
+          onSearchIconClicked={navigateToSearchPage}
         />
       </header>
 
       <main style={contentStyles}>
         <MovieBoard
+          movieBoardRef={movieBoard}
           movies={filteredMovies}
           onEditMovie={onEditMovie}
           onDeleteMovie={onDeleteMovie}
         />
       </main>
 
-      <MovieModal 
-        type={mode}
-        selectedMovie={selectedMovie}
-        onCloseModal={onCloseModal}
-        onCloseWithSaving={onCloseWithSaving}
-      />
+      { mode !== MainPageModes.OVERVIEW && (
+        <MovieModal 
+          movie={selectedMovie}
+          onCloseModal={onCloseModal}
+          onCloseWithSaving={onCloseWithSaving}
+        />) }
     </>
   )
 }

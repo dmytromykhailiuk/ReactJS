@@ -6,4 +6,6 @@ export interface Movie {
   category: string[];
   overview: string;
   runtime: string;
+  duration: number;
+  rating: number;
 }

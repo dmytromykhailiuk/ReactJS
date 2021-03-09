@@ -23,6 +23,8 @@ const MovieForm: React.FC<MovieFormProps> = ({ onSubmitForm, movie = {}, submitB
         [MovieFormValues.CATEGORY]: movie.category || [],
         [MovieFormValues.OVERVIEW]: movie.overview || '',
         [MovieFormValues.RUNTIME]: movie.runtime || '',
+        [MovieFormValues.DURATION]: movie.duration || undefined,
+        [MovieFormValues.RATING]: movie.rating || undefined,
       }}
       validationSchema={ValidationSchema}
       validateOnBlur={true}
@@ -97,6 +99,26 @@ const MovieForm: React.FC<MovieFormProps> = ({ onSubmitForm, movie = {}, submitB
             label="RUNTIME"
             error={ formik.errors[MovieFormValues.RUNTIME] && formik.touched[MovieFormValues.RUNTIME] ? formik.errors[MovieFormValues.RUNTIME] : ''}
             value={formik.values[MovieFormValues.RUNTIME]}
+          />
+          <Input 
+            name={MovieFormValues.RATING}
+            type="number"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            placeholder='Rating here'
+            label="RATING"
+            error={ formik.errors[MovieFormValues.RATING] && formik.touched[MovieFormValues.RATING] ? formik.errors[MovieFormValues.RATING] : ''}
+            value={formik.values[MovieFormValues.RATING]}
+          />
+          <Input 
+            name={MovieFormValues.DURATION}
+            type="number"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            placeholder='Duration here'
+            label="DURATION"
+            error={ formik.errors[MovieFormValues.DURATION] && formik.touched[MovieFormValues.DURATION] ? formik.errors[MovieFormValues.DURATION] : ''}
+            value={formik.values[MovieFormValues.DURATION]}
           />
           <div className={classes.buttons}>
             <Button 

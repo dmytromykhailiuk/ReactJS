@@ -27,18 +27,6 @@
       transition: 0.4s;
     }
   
-    @include medium-screen {
-      width: 30px;
-      height: 30px;
-
-      &:before, &:after {
-        height: 30px;
-        width: 3px;
-        right: 15px;
-      }
-    }
-
-  
     &:hover {
       &:before, &:after {
         background-color: $pink-color;
