@@ -1,11 +1,10 @@
 export enum MovieFormValues {
   MOVIE_ID = "id",
   TITLE = "title",
-  RELEASE_DATE = "releaseDate",
-  MOVIE_URL = "url",
-  CATEGORY = "category",
+  RELEASE_DATE = "release_date",
+  MOVIE_URL = "poster_path",
+  CATEGORY = "genres",
   OVERVIEW = "overview",
   RUNTIME = "runtime",
-  DURATION = "duration",
-  RATING = "rating",
+  RATING = "vote_average",
 }

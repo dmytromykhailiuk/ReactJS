@@ -4,13 +4,13 @@ import { CloseMenuButton } from "../";
 import classes from "./ModalWrapper.module.scss";
 
 interface ModalWrapperProps {
-  header: string;
+  header?: string;
   onCloseModal: () => void;
 }
 
 const portal = document.getElementById('portal');
 
-const ModalWrapper: React.FC<ModalWrapperProps> = ({ children, header, onCloseModal }) => {
+const ModalWrapper: React.FC<ModalWrapperProps> = ({ children, header = null, onCloseModal }) => {
 
   useEffect(() => {
     document.body.style.overflow = "hidden"
@@ -26,7 +26,7 @@ const ModalWrapper: React.FC<ModalWrapperProps> = ({ children, header, onCloseMo
       <div className={classes['modal-wrapper__content-wrapper']}>
         <div className={classes['modal-wrapper__content']}>
           <CloseMenuButton onCloseButtonClicked={onCloseModal} />
-          <h2 className={classes['modal-wrapper__header']} >{ header }</h2>
+          {header && <h2 className={classes['modal-wrapper__header']} >{ header }</h2>}
           <div className={classes['modal-wrapper__body']} >{ children }</div>
         </div>
       </div>

@@ -7,6 +7,7 @@ interface CssExports {
   'movie-board__header': string;
   'movie-board__header-underline': string;
   'movie-board__no-movie-found': string;
+  'movie-board__show-more-button': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

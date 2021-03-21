@@ -6,21 +6,13 @@ export function sortMovies(
   sortingOption: SortingOptionsProperties,
   isDownDirection: boolean
 ) {
-  return movies.sort((movie1, movie2) => {
+  return movies.slice().sort((movie1, movie2) => {
     switch (sortingOption) {
-      case SortingOptionsProperties.RATING: {
-        return !isDownDirection
-          ? movie1[SortingOptionsProperties.RATING] -
-              movie2[SortingOptionsProperties.RATING]
-          : movie2[SortingOptionsProperties.RATING] -
-              movie1[SortingOptionsProperties.RATING];
-      }
+      case SortingOptionsProperties.RATING:
       case SortingOptionsProperties.DURATION: {
         return !isDownDirection
-          ? movie1[SortingOptionsProperties.DURATION] -
-              movie2[SortingOptionsProperties.DURATION]
-          : movie2[SortingOptionsProperties.DURATION] -
-              movie1[SortingOptionsProperties.DURATION];
+          ? movie1[sortingOption] - movie2[sortingOption]
+          : movie2[sortingOption] - movie1[sortingOption];
       }
       case SortingOptionsProperties.RELEASE_DATE: {
         const date1 = new Date(

@@ -4,6 +4,7 @@ interface CssExports {
   'banner': string;
   'banner--search-mode': string;
   'banner__background': string;
+  'banner__background--blured': string;
   'banner__content': string;
   'banner__header': string;
   'banner__header--search-mode': string;

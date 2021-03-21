@@ -1,18 +1,22 @@
 import {
+  AlertMovieModal,
   CreateMovieModal,
   DeleteMovieModal,
   EditMovieModal,
 } from "shared/components";
 import { MovieModalProps } from "models/movie-modal-props";
-import { MainPageModes } from "shared/enums";
+import { ModalTypes } from "shared/enums";
 
-export function renderModal(mode: MainPageModes): React.FC<MovieModalProps> {
-  switch (mode) {
-    case MainPageModes.CREATE: {
+export function renderModal(type: ModalTypes): React.FC<MovieModalProps> {
+  switch (type) {
+    case ModalTypes.CREATE: {
       return CreateMovieModal;
     }
-    case MainPageModes.EDIT: {
+    case ModalTypes.EDIT: {
       return EditMovieModal;
+    }
+    case ModalTypes.ALERT: {
+      return AlertMovieModal;
     }
     default: {
       return DeleteMovieModal;

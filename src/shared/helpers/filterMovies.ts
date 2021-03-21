@@ -18,6 +18,6 @@ export function filterMoviesByCategory(movies: Movie[], categories: string) {
     return movies;
   }
   return movies.filter((movie) =>
-    movie.category.join(", ").toLowerCase().includes(categories.toLowerCase())
+    movie.genres.join(", ").toLowerCase().includes(categories.toLowerCase())
   );
 }

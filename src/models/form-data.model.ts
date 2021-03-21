@@ -1,12 +1,11 @@
-import { Categories } from "@shared/enums";
+import { Categories } from "shared/enums";
 
 export interface FormData {
   title: string;
-  releaseDate: string;
-  url: string;
-  category: Categories[];
+  release_date: string;
+  poster_path: string;
+  genres: (Categories | string)[];
   overview: string;
-  runtime: string;
-  duration: number;
-  rating: number;
+  runtime: number;
+  vote_average: number;
 }

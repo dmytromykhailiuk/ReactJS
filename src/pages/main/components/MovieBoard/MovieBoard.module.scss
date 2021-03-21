@@ -51,9 +51,15 @@
 
     @include medium-screen {
       font-size: 60px;
-      height: 650px;
-      margin-top: 50px;
+      height: 200px;
+      margin-top: 80px;
       letter-spacing: 5px;
     }
+  }
+
+  &__show-more-button {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
   }
 }

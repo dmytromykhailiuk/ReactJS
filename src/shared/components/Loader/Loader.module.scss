@@ -1,0 +1,46 @@
+@import "scss/variables";
+
+.loader {
+  margin: auto;
+
+  &__text {
+    color: $white-color;
+    margin: 30px 0 5px 0;
+    padding-left: 10px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 2px;
+  }
+
+  &__line {
+    width: 2px;
+    height: 20px;
+    background: $pink-color;
+    margin: 0 2px;
+    margin-bottom: 30px;
+    display: inline-block;
+    animation: opacity-1 1000ms infinite ease-in-out;
+
+    &--1, &--17 { animation-delay: 800ms; }
+    &--2, &--16 { animation-delay: 700ms; } 
+    &--3, &--15 { animation-delay: 600ms; } 
+    &--4, &--14 { animation-delay: 500ms; }  
+    &--5, &--13 { animation-delay: 400ms; }
+    &--6, &--12 { animation-delay: 300ms; } 
+    &--7, &--11 { animation-delay: 200ms; }
+    &--8, &--10 { animation-delay: 100ms; }
+  }
+}
+
+@keyframes opacity-1 { 
+  0% { 
+    opacity: 1;
+  }
+  50% { 
+    opacity: 0;
+  }
+  100% { 
+    opacity: 1;
+  }  
+}
