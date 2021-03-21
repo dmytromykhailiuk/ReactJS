@@ -2,10 +2,14 @@
 // Please do not change this file!
 interface CssExports {
   'banner': string;
+  'banner--search-mode': string;
   'banner__background': string;
   'banner__content': string;
   'banner__header': string;
+  'banner__header--search-mode': string;
   'banner__image': string;
+  'banner__logo': string;
+  'banner__search-icon': string;
   'banner__title': string;
 }
 export const cssExports: CssExports;

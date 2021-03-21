@@ -4,3 +4,4 @@ export * from "./categories";
 export * from "./sorting-options";
 export * from "./movie-form-values";
 export * from "./main-page-modes";
+export * from "./router-paths";

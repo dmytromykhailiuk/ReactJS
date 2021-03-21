@@ -7,12 +7,14 @@ import classes from "./MovieBoard.module.scss";
 
 interface MovieBoardProps {
   movies: Movie[];
+  movieBoardRef: React.MutableRefObject<any>;
   onEditMovie: (movie: Movie) => void;
   onDeleteMovie: (movie: Movie) => void;
 }
 
 const MovieBoard: React.FC<MovieBoardProps> = ({ 
   movies,
+  movieBoardRef,
   onEditMovie,
   onDeleteMovie,
 }) => {
@@ -26,7 +28,7 @@ const MovieBoard: React.FC<MovieBoardProps> = ({
 
   return (
     <div className={classes['movie-board']}>
-      <div className={classes['movie-board__header']}>
+      <div className={classes['movie-board__header']} ref={movieBoardRef}>
         <CategoryPanel onChangeCategory={setCategory} selectedCategory={category}/>
         <SortPanel
           sortingOption={sortingOption}

@@ -8,13 +8,13 @@ module.exports = {
     alias: {
       scss$: path.resolve(__dirname, "../src/scss/"),
       shared$: path.resolve(__dirname, "../src/shared/"),
-      shared$: path.resolve(__dirname, "../src/pages/"),
     },
   },
   output: {
     filename: "[name].bundle.js",
     chunkFilename: "[name].bundle.js",
     path: path.resolve(__dirname, "../build"),
+    publicPath: "/",
   },
   resolve: {
     modules: [
@@ -28,6 +28,7 @@ module.exports = {
     compress: true,
     port: 3000,
     open: true,
+    historyApiFallback: true,
   },
   optimization: {
     splitChunks: {

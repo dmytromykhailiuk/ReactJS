@@ -10,7 +10,12 @@ interface SortPanelProps {
   setSortingOption: (sortingOption: SortingOptionsProperties) => void;
 }
 
-const sortingOptions: SortingOptionsProperties[] = [SortingOptionsProperties.RELEASE_DATE, SortingOptionsProperties.TITLE];
+const sortingOptions: SortingOptionsProperties[] = [
+  SortingOptionsProperties.RELEASE_DATE, 
+  SortingOptionsProperties.TITLE, 
+  SortingOptionsProperties.RATING, 
+  SortingOptionsProperties.DURATION
+];
 
 const SortPanel: React.FC<SortPanelProps> = ({ isDownDirection, sortingOption, setSortingOption, onChangeSortingDirection }) => {
   const [shouldShowOptions, setShouldShowOptionsValue] = useState(false);

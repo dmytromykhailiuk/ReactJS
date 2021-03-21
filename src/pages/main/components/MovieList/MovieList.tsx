@@ -25,6 +25,6 @@ const MovieList: React.FC<MovieListProps> = ({ movies, onEditMovie, onDeleteMovi
       }
     </ul>
   );
-}
+};
 
 export default MovieList;

@@ -3,16 +3,17 @@ import React from 'react';
 import { ModalWrapper, MovieForm } from '../';
 
 interface CreateMovieModalProps {
+  movie?: Movie;
   onCloseModal: () => void;
-  onSubmitForm: (movie: Movie) => void
+  onCloseWithSaving: (movie: Movie) => void
 }
 
 const CreateMovieModal: React.FC<CreateMovieModalProps> = ({
-  onCloseModal, onSubmitForm
+  onCloseModal, onCloseWithSaving
 }) => {
   return (
     <ModalWrapper header="ADD MOVIE" onCloseModal={onCloseModal}>
-      <MovieForm onSubmitForm={onSubmitForm} submitButtonLabel="SUBMIT"/>
+      <MovieForm onSubmitForm={onCloseWithSaving} submitButtonLabel="SUBMIT"/>
     </ModalWrapper>
   )
 }

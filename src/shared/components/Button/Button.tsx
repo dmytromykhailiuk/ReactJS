@@ -8,11 +8,12 @@ interface ButtonProps {
   isSubmit?: boolean;
   size?: ButtonSize;
   disabled?: boolean;
+  style?: React.CSSProperties;
   onButtonClicked?: (event: SyntheticEvent) => void;
 }
 
 const Button:React.FC<ButtonProps> = ({
-  children, type = ButtonTypes.PRIMARY, size = ButtonSize.BIG, onButtonClicked = () => {}, isSubmit = false, disabled = false 
+  children, type = ButtonTypes.PRIMARY, size = ButtonSize.BIG, onButtonClicked = () => {}, isSubmit = false, disabled = false, style = {} 
 }) => {
   return (
     <button 
@@ -24,6 +25,7 @@ const Button:React.FC<ButtonProps> = ({
         ${classes[type === ButtonTypes.PRIMARY ? "button--primary": "button--secondary"]} 
         ${classes[size === ButtonSize.BIG ? "button--big": "button--small"]} 
       `}
+      style={style}
       onClick={onButtonClicked}
     >
       {children}

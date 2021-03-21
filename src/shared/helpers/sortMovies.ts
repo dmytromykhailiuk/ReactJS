@@ -8,6 +8,20 @@ export function sortMovies(
 ) {
   return movies.sort((movie1, movie2) => {
     switch (sortingOption) {
+      case SortingOptionsProperties.RATING: {
+        return !isDownDirection
+          ? movie1[SortingOptionsProperties.RATING] -
+              movie2[SortingOptionsProperties.RATING]
+          : movie2[SortingOptionsProperties.RATING] -
+              movie1[SortingOptionsProperties.RATING];
+      }
+      case SortingOptionsProperties.DURATION: {
+        return !isDownDirection
+          ? movie1[SortingOptionsProperties.DURATION] -
+              movie2[SortingOptionsProperties.DURATION]
+          : movie2[SortingOptionsProperties.DURATION] -
+              movie1[SortingOptionsProperties.DURATION];
+      }
       case SortingOptionsProperties.RELEASE_DATE: {
         const date1 = new Date(
           movie1[SortingOptionsProperties.RELEASE_DATE]
@@ -16,7 +30,7 @@ export function sortMovies(
           movie2[SortingOptionsProperties.RELEASE_DATE]
         ).getTime();
 
-        return isDownDirection ? date1 - date2 : date2 - date1;
+        return !isDownDirection ? date1 - date2 : date2 - date1;
       }
       case SortingOptionsProperties.TITLE: {
         const title1 = movie1[SortingOptionsProperties.TITLE];

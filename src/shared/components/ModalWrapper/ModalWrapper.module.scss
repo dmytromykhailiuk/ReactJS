@@ -25,7 +25,7 @@
     }
 
     @include large-screen {
-      width: 50%;
+      width: 60%;
     }
   }
   
@@ -38,8 +38,8 @@
     margin-bottom: 5vh;
 
     @include large-screen {
-      margin-top: 15vh;
-      margin-bottom: 15vh;
+      margin-top: 10vh;
+      margin-bottom: 10vh;
       padding: 25px 10px 66px 90px;
     }
   }
@@ -54,7 +54,7 @@
     margin-top: 10px;
 
     @include medium-screen {
-      font-size: 40px;
+      font-size: 34px;
       letter-spacing: 3px;
     }
   }

@@ -13,3 +13,4 @@ export * from "./CreateMovieModal";
 export * from "./Dropdown";
 export * from "./DropdownOption";
 export * from "./CheckboxIcon";
+export * from "./SearchIcon";

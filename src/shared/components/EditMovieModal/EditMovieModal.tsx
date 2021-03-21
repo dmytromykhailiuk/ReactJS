@@ -5,15 +5,15 @@ import { ModalWrapper, MovieForm } from '../';
 interface EditMovieModalProps {
   movie: Movie;
   onCloseModal: () => void;
-  onSubmitForm: (movie: Movie) => void
+  onCloseWithSaving: (movie: Movie) => void
 }
 
 const EditMovieModal: React.FC<EditMovieModalProps> = ({
-  movie, onCloseModal, onSubmitForm
+  movie, onCloseModal, onCloseWithSaving
 }) => {
   return (
     <ModalWrapper header="EDIT MOVIE" onCloseModal={onCloseModal}>
-      <MovieForm onSubmitForm={onSubmitForm} movie={movie}/>
+      <MovieForm onSubmitForm={onCloseWithSaving} movie={movie}/>
     </ModalWrapper>
   )
 }
