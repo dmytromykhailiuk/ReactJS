@@ -4,10 +4,19 @@ import { Categories, SortingOptionsProperties } from "shared/enums";
 
 const prefix = "[Movies]";
 
+interface GetMoviesOptons {
+  searchingValue?: string;
+  sortingOption?: SortingOptionsProperties;
+  isDownDirection?: boolean;
+  selectedCategory?: Categories;
+  offset?: number;
+}
+
 export const loadMoviesAction = createAction(`${prefix} Load Movies`);
-export const loadMoviesSuccessAction = createAction<Movie[]>(
-  `${prefix} Load Movies Success`
-);
+export const loadMoviesSuccessAction = createAction<{
+  movies: Movie[];
+  totalAmount: number;
+}>(`${prefix} Load Movies Success`);
 export const loadMoviesFaildAction = createAction(
   `${prefix} Load Movies Faild`
 );
@@ -38,11 +47,19 @@ export const deleteMovieFaildAction = createAction(
 export const setSelectedCategoryAction = createAction<Categories>(
   `${prefix} Set Selected Category`
 );
-export const setSearchingValueAction = createAction<string>(
-  `${prefix} Set Searching Value`
+export const setSelectedCategorySuccessAction = createAction<Categories>(
+  `${prefix} Set Selected Category Success`
 );
+export const searchMoviesAction = createAction<{
+  searchingValue: string;
+  movieBoard: HTMLElement;
+}>(`${prefix} Search Movies`);
+
 export const setSortingOptionAction = createAction<SortingOptionsProperties>(
   `${prefix} Set Sorting Option`
+);
+export const setSortingOptionSuccessAction = createAction<SortingOptionsProperties>(
+  `${prefix} Set Sorting Option Success`
 );
 export const setIsDownDirectionValueAction = createAction<boolean>(
   `${prefix} Set Is Down Direction Value`
@@ -52,6 +69,30 @@ export const clearErrorMessageAction = createAction<Movie>(
   `${prefix} Clear Error Message`
 );
 
-export const showMoreMoviesAction = createAction(
-  `${prefix} Show More Movies Action`
+export const loadMoreMoviesAction = createAction(`${prefix} Load More Movies`);
+
+export const loadMoreMoviesSeccessAction = createAction<Movie[]>(
+  `${prefix} Load More Movies Seccess`
 );
+
+export const loadMoreMoviesFaildAction = createAction(
+  `${prefix} Load More Movies Faild`
+);
+
+export const loadMovieInOverviewAction = createAction<string>(
+  `${prefix} Load Movie In Overview`
+);
+
+export const loadMovieInOverviewSuccessAction = createAction<Movie>(
+  `${prefix} Load Movie In Overview Seccess`
+);
+
+export const loadMovieInOverviewFaildAction = createAction(
+  `${prefix} Load Movie In Overview Faild`
+);
+
+export const clearMovieInOverviewAction = createAction(
+  `${prefix} Clear Movie In Overview`
+);
+
+export const hideLoaderAction = createAction(`${prefix} Hide Loader`);

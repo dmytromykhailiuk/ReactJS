@@ -19,6 +19,7 @@ interface CssExports {
   'loader__line--6': string;
   'loader__line--7': string;
   'loader__line--8': string;
+  'loader__lines-wrapper': string;
   'loader__text': string;
   'opacity-1': string;
 }

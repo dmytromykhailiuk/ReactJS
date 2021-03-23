@@ -11,49 +11,67 @@ import {
   deleteMovieSuccessAction,
   deleteMovieFaildAction,
   setSelectedCategoryAction,
-  setSearchingValueAction,
   setSortingOptionAction,
   setIsDownDirectionValueAction,
   clearErrorMessageAction,
-  showMoreMoviesAction,
+  loadMoreMoviesAction,
+  loadMoreMoviesSeccessAction,
+  loadMoreMoviesFaildAction,
+  searchMoviesAction,
+  hideLoaderAction,
+  setSelectedCategorySuccessAction,
+  setSortingOptionSuccessAction,
+  loadMovieInOverviewSuccessAction,
+  clearMovieInOverviewAction,
+  loadMovieInOverviewAction,
+  loadMovieInOverviewFaildAction,
 } from "./actions";
 import { ModalsAction } from "store/modals";
-
-const defaultMoviesAmount = 12;
 
 export interface MoviesState {
   movies: Movie[];
   loaded: boolean;
   selectedMovie: Movie;
-  moviesAmountInView: number;
-  searchingValue: string;
+  movieInOverview: Movie;
+  movieInOverviewLoaded: boolean;
+  moviesAmount: number;
   selectedCategory: Categories;
   sortingOption: SortingOptionsProperties;
   isDownDirection: boolean;
   errorMessage: string;
+  moviesLoading: boolean;
+  moreMoviesLoaded: boolean;
 }
 
 const moviesInitialState: MoviesState = {
   movies: [],
   loaded: false,
   selectedMovie: null,
-  moviesAmountInView: defaultMoviesAmount,
-  searchingValue: "",
+  movieInOverview: null,
+  movieInOverviewLoaded: true,
+  moviesAmount: 0,
   selectedCategory: Categories.ALL,
   sortingOption: SortingOptionsProperties.RELEASE_DATE,
   isDownDirection: true,
   errorMessage: null,
+  moviesLoading: true,
+  moreMoviesLoaded: true,
 };
 
 const moviesReducer = createReducer<MoviesState>(
   moviesInitialState,
   (builder) =>
     builder
-      .addCase(loadMoviesSuccessAction, (state, { payload: movies }) => ({
-        ...state,
-        loaded: true,
-        movies,
-      }))
+      .addCase(
+        loadMoviesSuccessAction,
+        (state, { payload: { movies, totalAmount } }) => ({
+          ...state,
+          loaded: true,
+          moviesLoading: false,
+          movies,
+          moviesAmount: totalAmount,
+        })
+      )
       .addCase(loadMoviesFaildAction, (state, { payload: errorMessage }) => ({
         ...state,
         errorMessage,
@@ -61,6 +79,7 @@ const moviesReducer = createReducer<MoviesState>(
       .addCase(addMovieSuccessAction, (state, { payload: movie }) => ({
         ...state,
         movies: [...state.movies, movie],
+        moviesAmount: state.moviesAmount + 1,
       }))
       .addCase(addMovieFaildAction, (state, { payload: errorMessage }) => ({
         ...state,
@@ -89,6 +108,7 @@ const moviesReducer = createReducer<MoviesState>(
             ...state.movies.slice(index + 1),
           ],
           selectedMovie: null,
+          moviesAmount: state.moviesAmount - 1,
         };
       })
       .addCase(deleteMovieFaildAction, (state, { payload: errorMessage }) => ({
@@ -96,33 +116,34 @@ const moviesReducer = createReducer<MoviesState>(
         errorMessage,
         selectedMovie: null,
       }))
+      .addCase(setSelectedCategoryAction, (state) => ({
+        ...state,
+        moviesLoading: true,
+      }))
       .addCase(
-        setSelectedCategoryAction,
+        setSelectedCategorySuccessAction,
         (state, { payload: selectedCategory }) => ({
           ...state,
-          moviesAmountInView: defaultMoviesAmount,
           selectedCategory,
         })
       )
+      .addCase(setSortingOptionAction, (state) => ({
+        ...state,
+        moviesLoading: true,
+      }))
       .addCase(
-        setSearchingValueAction,
-        (state, { payload: searchingValue }) => ({
+        setSortingOptionSuccessAction,
+        (state, { payload: sortingOption }) => ({
           ...state,
-          moviesAmountInView: defaultMoviesAmount,
-          searchingValue,
+          sortingOption,
         })
       )
-      .addCase(setSortingOptionAction, (state, { payload: sortingOption }) => ({
-        ...state,
-        moviesAmountInView: defaultMoviesAmount,
-        sortingOption,
-      }))
       .addCase(
         setIsDownDirectionValueAction,
         (state, { payload: isDownDirection }) => ({
           ...state,
-          moviesAmountInView: defaultMoviesAmount,
           isDownDirection,
+          moviesLoading: true,
         })
       )
       .addCase(clearErrorMessageAction, (state) => ({
@@ -136,9 +157,46 @@ const moviesReducer = createReducer<MoviesState>(
           selectedMovie,
         })
       )
-      .addCase(showMoreMoviesAction, (state) => ({
+      .addCase(loadMoreMoviesAction, (state) => ({
         ...state,
-        moviesAmountInView: state.moviesAmountInView + defaultMoviesAmount,
+        moreMoviesLoaded: false,
+      }))
+      .addCase(loadMoreMoviesSeccessAction, (state, { payload }) => ({
+        ...state,
+        moreMoviesLoaded: true,
+        movies: [...state.movies, ...payload],
+      }))
+      .addCase(loadMoreMoviesFaildAction, (state) => ({
+        ...state,
+        moreMoviesLoaded: true,
+      }))
+      .addCase(searchMoviesAction, (state) => ({
+        ...state,
+        moviesLoading: true,
+      }))
+      .addCase(hideLoaderAction, (state) => ({
+        ...state,
+        moviesLoading: false,
+      }))
+      .addCase(loadMovieInOverviewAction, (state) => ({
+        ...state,
+        movieInOverviewLoaded: false,
+      }))
+      .addCase(
+        loadMovieInOverviewSuccessAction,
+        (state, { payload: movieInOverview }) => ({
+          ...state,
+          movieInOverview,
+          movieInOverviewLoaded: true,
+        })
+      )
+      .addCase(loadMovieInOverviewFaildAction, (state) => ({
+        ...state,
+        movieInOverviewLoaded: true,
+      }))
+      .addCase(clearMovieInOverviewAction, (state) => ({
+        ...state,
+        movieInOverview: null,
       }))
 );
 

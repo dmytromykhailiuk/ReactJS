@@ -18,14 +18,9 @@ export const selectedMovieSelector = createSelector(
   (movies) => movies.selectedMovie
 );
 
-export const moviesAmountInViewSelector = createSelector(
+export const moviesAmountSelector = createSelector(
   moviesSelector,
-  (movies) => movies.moviesAmountInView
-);
-
-export const searchingValueSelector = createSelector(
-  moviesSelector,
-  (movies) => movies.searchingValue
+  (movies) => movies.moviesAmount
 );
 
 export const selectedCategorySelector = createSelector(
@@ -41,4 +36,38 @@ export const sortingOptionSelector = createSelector(
 export const isDownDirectionSelector = createSelector(
   moviesSelector,
   (movies) => movies.isDownDirection
+);
+
+export const moviesAmountInStoreSelector = createSelector(
+  moviesSelector,
+  (movies) => movies.movies.length
+);
+
+export const moviesLoadingSelector = createSelector(
+  moviesSelector,
+  (movies) => movies.moviesLoading
+);
+
+export const moreMoviesLoadedSelector = createSelector(
+  moviesSelector,
+  (movies) => movies.moreMoviesLoaded
+);
+
+export const movieInOverviewSelector = createSelector(
+  moviesSelector,
+  (movies) => movies.movieInOverview
+);
+
+export const movieInOverviewLoadedSelector = createSelector(
+  moviesSelector,
+  (movies) => movies.movieInOverviewLoaded
+);
+
+export const moviesOptionsSelector = createSelector(
+  moviesSelector,
+  (movies) => ({
+    sortingOption: movies.sortingOption,
+    isDownDirection: movies.isDownDirection,
+    selectedCategory: movies.selectedCategory,
+  })
 );

@@ -1,93 +1,46 @@
-import React, { useCallback, useMemo, useRef } from "react";
-import { Banner, MovieBoard } from "./components";
-import { filterMoviesBySearchingValue, renderModal, scrollToElement } from "shared/helpers"
+import React, { useMemo } from "react";
+import { Banner, MovieBoardContainer } from "./components";
+import { renderModal } from "shared/helpers"
 import { Movie } from "models/";
-import { ModalTypes, RouterPaths } from "shared/enums";
-import { Redirect, useHistory, useParams, useRouteMatch } from "react-router";
-import { useSearchQuery } from "shared/hooks";
-import { useDispatch, useSelector } from "react-redux";
-import { MoviesAction, ModalsAction, Store, ModalsSelector, MoviesSelector } from "store";
+import { ModalTypes } from "shared/enums";
 import { SearchPanel, MovieItemDetails } from "./components";
+import { Loader } from "shared/components";
 
 const bluredStyles = {
   filter: 'blur(7px)',
 }
 
-interface Params {
-  id: string; 
+const loaderWrapperStyles = { marginTop: "80px", marginBottom: "80px" };
+interface MainPageProps {
+  modalInView: ModalTypes;
+  movieInOverview: Movie;
+  selectedMovie: Movie;
+  movieBoard: React.MutableRefObject<any>;
+  movies: Movie[];
+  isSuccessAlert: boolean;
+  alertMessage: string;
+  movieInOverviewLoaded: boolean;
+  navigateToMainPage: () => void;
+  onCreateMovie: () => void;
+  navigateToSearchPage: () => void;
+  setSearchingValue: (searchingValue: string) => void;
+  onEditMovie: (movie: Movie) => void;
+  onDeleteMovie: (movie: Movie) => void;
+  onCloseModal: () => void;
+  onCloseWithSaving: (movie: Movie) => void;
 }
 
-const MainPage: React.FC = () => {
-  const movies = useSelector<Store, Movie[]>(MoviesSelector.moviesDataSelector);
-  const selectedMovie = useSelector<Store, Movie>(MoviesSelector.selectedMovieSelector);
-  const modalInView = useSelector<Store, ModalTypes>(ModalsSelector.modalInViewSelector);
-  const isSuccessAlert = useSelector<Store, boolean>(ModalsSelector.isSuccessAlertSelector);
-  const alertMessage = useSelector<Store, string>(ModalsSelector.alertMessageSelector);
-  const searchingValue = useSearchQuery();
-  const { id: movieId } = useParams<Params>();
-  const history = useHistory();
-  const match = useRouteMatch();
-  const movieBoard = useRef(null);
-
-  const dispatch = useDispatch();
-
-  const movieInOverview = useMemo(() => movies.find(movie => movie.id === Number(movieId)), [movieId, movies]);
-
-  const onCloseWithSaving = useCallback((movie: Movie) => {
-    switch(modalInView) {
-      case ModalTypes.CREATE : {
-        return dispatch(MoviesAction.addMovieAction(movie))
-      }
-      case ModalTypes.EDIT : {
-        return dispatch(MoviesAction.editMovieAction(movie))
-      }
-      case ModalTypes.DELETE : {
-        return dispatch(MoviesAction.deleteMovieAction({ 
-          id: movie.id, 
-          shouldNavigateToHome: movie.id === movieInOverview?.id 
-        }));
-      }
-    }
-  }, [modalInView, movieInOverview])
-
-  const onEditMovie = useCallback((movie: Movie) => {
-    dispatch(ModalsAction.setModalInViewAction({ modalType: ModalTypes.EDIT, selectedMovie: movie }));
-  }, []);
-
-  const onDeleteMovie = useCallback((movie: Movie) => {
-    dispatch(ModalsAction.setModalInViewAction({ modalType: ModalTypes.DELETE, selectedMovie: movie }));
-  }, []);
-  
-  const onCreateMovie = useCallback(() => {
-    dispatch(ModalsAction.setModalInViewAction({ modalType: ModalTypes.CREATE }));
-  }, []);
-
-  const onCloseModal = useCallback(() => {
-    dispatch(ModalsAction.setModalInViewAction({ modalType: null }));
-  }, []);
-
-  const navigateToMainPage = useCallback(() => {
-    history.push("/");
-  }, []);
-
-  const navigateToSearchPage = useCallback(() => {
-    history.push("/search?SearchQuery=");
-  }, []);
-
-  const setSearchingValue = useCallback((searchingValue) => {
-    history.push("/search?SearchQuery=" + searchingValue);
-    scrollToElement(movieBoard.current);
-  }, [])
-  
-  const filteredMovies = useMemo(() => filterMoviesBySearchingValue(movies, searchingValue), [searchingValue, movies]);
+const MainPage: React.FC<MainPageProps> = ({ 
+  modalInView, movieInOverview, movieBoard, movieInOverviewLoaded, 
+  movies, isSuccessAlert, selectedMovie, alertMessage, 
+  navigateToMainPage, onCreateMovie, navigateToSearchPage, 
+  setSearchingValue, onEditMovie, onDeleteMovie, onCloseModal, 
+  onCloseWithSaving
+}) => {
 
   const Modal = useMemo(() => renderModal(modalInView), [modalInView]);
   
   const contentStyles = modalInView ? bluredStyles: {};
-
-  if (!movieInOverview && movies.length && match.path === RouterPaths.FILM) {
-    return <Redirect to={RouterPaths.ERROR}/>
-  }
 
   return (
     <>
@@ -98,14 +51,24 @@ const MainPage: React.FC = () => {
           onLogoClicked={navigateToMainPage}
           onSearchIconClicked={navigateToSearchPage}
         >
-          { movieInOverview ? <MovieItemDetails movie={movieInOverview}/> : <SearchPanel onChangeSearchingValue={setSearchingValue} /> }
+          { movieInOverview && movieInOverviewLoaded ? (
+            <MovieItemDetails movie={movieInOverview}/>
+          ):(
+            <>
+              { movieInOverviewLoaded ? (
+                <SearchPanel onChangeSearchingValue={setSearchingValue} />
+              ):(
+                <div style={loaderWrapperStyles}><Loader /></div>
+              ) } 
+            </>     
+          )} 
         </Banner>
       </header>
 
       <main style={contentStyles}>
-        <MovieBoard
+        <MovieBoardContainer
           movieBoardRef={movieBoard}
-          movies={filteredMovies}
+          movies={movies}
           onEditMovie={onEditMovie}
           onDeleteMovie={onDeleteMovie}
         />

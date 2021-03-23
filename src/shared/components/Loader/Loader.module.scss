@@ -13,6 +13,11 @@
     letter-spacing: 2px;
   }
 
+  &__lines-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
   &__line {
     width: 2px;
     height: 20px;
