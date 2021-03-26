@@ -3,14 +3,15 @@ import { Movie } from "models/movie.model";
 import React, { useCallback, useMemo, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ModalsAction, ModalsSelector, MoviesAction, MoviesSelector, Store } from "store";
-import { MainPage } from "./";
+import { MainPageViewProps } from "./MainPageView";
 import { useHistory, useParams, useRouteMatch } from "react-router";
+import { scrollToElement } from "shared/helpers";
 
 interface Params {
   id: string; 
 }
 
-const MainPageContainer: React.FC = () => {
+const MainPageContainer = (MainPageView: React.FC<MainPageViewProps>) => () => {
   const movies = useSelector<Store, Movie[]>(MoviesSelector.moviesDataSelector);
   const selectedMovie = useSelector<Store, Movie>(MoviesSelector.selectedMovieSelector);
   const modalInView = useSelector<Store, ModalTypes>(ModalsSelector.modalInViewSelector);
@@ -74,12 +75,16 @@ const MainPageContainer: React.FC = () => {
     history.push(RouterPaths.SEARCH + "?SearchQuery=");
   }, []);
 
+  const scrollToMovies = useCallback(() => {
+    scrollToElement(movieBoard.current);
+  }, []);
+
   const setSearchingValue = useCallback((searchingValue: string) => {
-    dispatch(MoviesAction.searchMoviesAction({ searchingValue, movieBoard: movieBoard.current }));
+    dispatch(MoviesAction.searchMoviesAction({ searchingValue, scrollToMovies }));
   }, []);
 
   return (
-    <MainPage 
+    <MainPageView 
       modalInView={modalInView}
       movieInOverview={movieInOverview}
       movieBoard={movieBoard}

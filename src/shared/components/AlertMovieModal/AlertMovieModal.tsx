@@ -13,7 +13,7 @@ const AlertMovieModal: React.FC<AlertMovieModalProps> = ({ onCloseModal, isSucce
   return (
     <ModalWrapper onCloseModal={onCloseModal}>
       <div className={classes['alert-movie-modal__logo']}>
-        { isSuccessAlert ? <CheckboxIcon isLarge={true} /> : "!" }
+        { isSuccessAlert ? <CheckboxIcon isLarge /> : "!" }
       </div>
       <div className={classes['alert-movie-modal__title']}>{ isSuccessAlert ? "CONGRADULATIONS !" : "SOMETHING WENT WRONG !" }</div>
       <div className={classes['alert-movie-modal__message']}>{ alertMessage }</div>

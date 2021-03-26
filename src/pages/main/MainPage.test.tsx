@@ -1,8 +1,8 @@
 import React from "react";
-import { MainPageContainer } from "./";
+import { MainPage } from "./";
 
 describe("MainPageContainer", () => {
   it("just for passing", () => {
-    expect(<MainPageContainer />).toBeTruthy();
+    expect(<MainPage />).toBeTruthy();
   });
 })

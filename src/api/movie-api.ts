@@ -7,7 +7,7 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-interface GetMoviesOptons {
+interface GetMoviesOptions {
   sortingOption: SortingOptionsProperties;
   isDownDirection: boolean;
   selectedCategory: Categories;
@@ -25,7 +25,7 @@ export function getMovies({
   selectedCategory,
   searchingValue = "",
   offset = 0,
-}: GetMoviesOptons): Promise<LoadMoviesResponse> {
+}: GetMoviesOptions): Promise<LoadMoviesResponse> {
   return fetch(
     API_URL +
       `?limit=${limit}&offset=${offset}&searchBy=title&search=${searchingValue}&sortOrder=${

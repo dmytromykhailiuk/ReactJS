@@ -5,8 +5,7 @@ import classes from "./MovieItem.module.scss";
 import { MovieMenu } from "../";
 import { isClickInside } from "shared/helpers";
 import { useHistory } from "react-router";
-
-const DEFAULT_IMG_PATH = "https://diesel.lviv.ua/img/no-picture.png";
+import { useDefaultImage } from "shared/hooks";
 
 interface MovieItemProps {
   movie: Movie;
@@ -20,15 +19,7 @@ const MovieItem: React.FC<MovieItemProps> = React.memo(({
   onDeleteMovie,
 }) => {
   const [shoudShowMenu, setShoudShowMenuValue] = useState(false);
-  const [hasError, setHasErrorValue] = useState(false);
-
-  useMemo(() => {
-    setHasErrorValue(false);
-  }, [movie.id]);
-
-  const setError = useCallback(() => {
-    setHasErrorValue(true);
-  }, []);
+  const [defaultImage, setError] = useDefaultImage(movie.poster_path);
 
   const history = useHistory();
 
@@ -61,7 +52,7 @@ const MovieItem: React.FC<MovieItemProps> = React.memo(({
     <div className={classes.movie} onClick={onMovieItemClick}>
       <div className={classes["movie__image-wrapper"]}>
         <img 
-          src={hasError ? DEFAULT_IMG_PATH : movie.poster_path} 
+          src={defaultImage || movie.poster_path} 
           alt={movie.title}
           className={classes["movie__image"]}
           onError={setError}

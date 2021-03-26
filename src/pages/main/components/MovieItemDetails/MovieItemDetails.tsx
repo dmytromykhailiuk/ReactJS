@@ -1,31 +1,22 @@
 import { Movie } from 'models/movie.model';
-import React, { useCallback, useMemo, useState } from 'react';
+import React from 'react';
 import classes from './MovieItemDetails.module.scss'
+import { useDefaultImage } from 'shared/hooks';
 
 interface MovieItemDetailsProps {
   movie: Movie;
 }
 
-const DEFAULT_IMG_PATH = "https://diesel.lviv.ua/img/no-picture.png";
-
 const MovieItemDetails: React.FC<MovieItemDetailsProps> = ({ movie: { 
-  poster_path, title, vote_average, genres, release_date, runtime, overview, id
+  poster_path, title, vote_average, genres, release_date, runtime, overview
 } }) => {
-  const [hasError, setHasErrorValue] = useState(false);
+  const [defaultImage, setError] = useDefaultImage(poster_path);
 
-  useMemo(() => {
-    setHasErrorValue(false);
-  }, [id]);
-
-  const setError = useCallback(() => {
-    setHasErrorValue(true);
-  }, []);
-  
   return (
     <div className={classes["movie-details"]}>
       <img 
         className={classes["movie-details__image"]} 
-        src={ hasError ? DEFAULT_IMG_PATH : poster_path }
+        src={ defaultImage || poster_path }
         alt={title}
         onError={setError}
       />

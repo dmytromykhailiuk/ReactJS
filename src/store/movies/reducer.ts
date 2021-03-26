@@ -87,6 +87,10 @@ const moviesReducer = createReducer<MoviesState>(
       }))
       .addCase(editMovieSuccessAction, (state, { payload: editedMovie }) => ({
         ...state,
+        movieInOverview:
+          state.movieInOverview?.id === editedMovie.id
+            ? editedMovie
+            : state.movieInOverview,
         movies: [
           ...state.movies.map((movie) =>
             movie.id === editedMovie.id ? editedMovie : movie

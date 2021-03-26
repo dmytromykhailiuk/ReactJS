@@ -4,14 +4,6 @@ import { Categories, SortingOptionsProperties } from "shared/enums";
 
 const prefix = "[Movies]";
 
-interface GetMoviesOptons {
-  searchingValue?: string;
-  sortingOption?: SortingOptionsProperties;
-  isDownDirection?: boolean;
-  selectedCategory?: Categories;
-  offset?: number;
-}
-
 export const loadMoviesAction = createAction(`${prefix} Load Movies`);
 export const loadMoviesSuccessAction = createAction<{
   movies: Movie[];
@@ -52,15 +44,15 @@ export const setSelectedCategorySuccessAction = createAction<Categories>(
 );
 export const searchMoviesAction = createAction<{
   searchingValue: string;
-  movieBoard: HTMLElement;
+  scrollToMovies: () => void;
 }>(`${prefix} Search Movies`);
 
 export const setSortingOptionAction = createAction<SortingOptionsProperties>(
   `${prefix} Set Sorting Option`
 );
-export const setSortingOptionSuccessAction = createAction<SortingOptionsProperties>(
-  `${prefix} Set Sorting Option Success`
-);
+export const setSortingOptionSuccessAction = createAction<
+  SortingOptionsProperties
+>(`${prefix} Set Sorting Option Success`);
 export const setIsDownDirectionValueAction = createAction<boolean>(
   `${prefix} Set Is Down Direction Value`
 );

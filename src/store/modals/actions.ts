@@ -4,11 +4,11 @@ import { ModalTypes } from "shared/enums";
 
 const prefix = "[Modals]";
 
-interface SetModalInViewActionPeyload {
+interface SetModalInViewActionPayload {
   modalType: ModalTypes;
   selectedMovie?: Movie;
 }
 
-export const setModalInViewAction = createAction<SetModalInViewActionPeyload>(
+export const setModalInViewAction = createAction<SetModalInViewActionPayload>(
   `${prefix} Set Modal In View`
 );

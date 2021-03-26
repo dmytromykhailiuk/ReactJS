@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Footer, GoUpButton } from "shared/components";
 import { useDispatch } from "react-redux";
 import { loadMoviesAction } from "store/movies/actions";
-import { Routs } from "router";
+import { Routes } from "router";
 
 const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ const App: React.FC = () => {
 
   return (
     <>  
-      <Routs />
+      <Routes />
       <Footer />
       <GoUpButton />
     </>

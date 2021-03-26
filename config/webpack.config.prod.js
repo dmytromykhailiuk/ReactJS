@@ -61,7 +61,10 @@ module.exports = {
         use: [
           {
             loader: "file-loader",
-            options: { name: "img/[name]-[sha1:hash:7].[ext]" },
+            options: {
+              name: "img/[name]-[sha1:hash:7].[ext]",
+              outputPath: "assets",
+            },
           },
           {
             loader: "image-webpack-loader",

@@ -5,7 +5,7 @@ import { ButtonTypes, Categories, SortingOptionsProperties } from 'shared/enums'
 import classes from "./MovieBoard.module.scss";
 import { Button, Loader } from 'shared/components';
 
-interface MovieBoardProps {
+export interface MovieBoardViewProps {
   movies: Movie[];
   movieBoardRef: React.MutableRefObject<any>;
   category: Categories;
@@ -23,7 +23,7 @@ interface MovieBoardProps {
   showMoreMovies: () => void;
 }
 
-const MovieBoard: React.FC<MovieBoardProps> = ({ 
+const MovieBoardView: React.FC<MovieBoardViewProps> = ({ 
   movies,
   movieBoardRef,
   category,
@@ -88,4 +88,4 @@ const MovieBoard: React.FC<MovieBoardProps> = ({
   )
 }
 
-export default MovieBoard;
+export default MovieBoardView;

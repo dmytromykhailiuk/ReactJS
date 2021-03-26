@@ -1,2 +1,4 @@
-export { default as MovieBoard } from "./MovieBoard";
-export { default as MovieBoardContainer } from "./MovieBoardContainer";
+import MovieBoardView from "./MovieBoardView";
+import MovieBoardContainer from "./MovieBoardContainer";
+
+export const MovieBoard = MovieBoardContainer(MovieBoardView);

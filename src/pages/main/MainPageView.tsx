@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Banner, MovieBoardContainer } from "./components";
+import { Banner, MovieBoard } from "./components";
 import { renderModal } from "shared/helpers"
 import { Movie } from "models/";
 import { ModalTypes } from "shared/enums";
@@ -11,7 +11,8 @@ const bluredStyles = {
 }
 
 const loaderWrapperStyles = { marginTop: "80px", marginBottom: "80px" };
-interface MainPageProps {
+
+export interface MainPageViewProps {
   modalInView: ModalTypes;
   movieInOverview: Movie;
   selectedMovie: Movie;
@@ -30,11 +31,22 @@ interface MainPageProps {
   onCloseWithSaving: (movie: Movie) => void;
 }
 
-const MainPage: React.FC<MainPageProps> = ({ 
-  modalInView, movieInOverview, movieBoard, movieInOverviewLoaded, 
-  movies, isSuccessAlert, selectedMovie, alertMessage, 
-  navigateToMainPage, onCreateMovie, navigateToSearchPage, 
-  setSearchingValue, onEditMovie, onDeleteMovie, onCloseModal, 
+const MainPageView: React.FC<MainPageViewProps> = ({ 
+  modalInView, 
+  movieInOverview, 
+  movieBoard, 
+  movieInOverviewLoaded, 
+  movies, 
+  isSuccessAlert, 
+  selectedMovie, 
+  alertMessage, 
+  navigateToMainPage, 
+  onCreateMovie, 
+  navigateToSearchPage, 
+  setSearchingValue, 
+  onEditMovie, 
+  onDeleteMovie, 
+  onCloseModal, 
   onCloseWithSaving
 }) => {
 
@@ -66,7 +78,7 @@ const MainPage: React.FC<MainPageProps> = ({
       </header>
 
       <main style={contentStyles}>
-        <MovieBoardContainer
+        <MovieBoard
           movieBoardRef={movieBoard}
           movies={movies}
           onEditMovie={onEditMovie}
@@ -86,4 +98,4 @@ const MainPage: React.FC<MainPageProps> = ({
   )
 }
 
-export default MainPage;
+export default MainPageView;

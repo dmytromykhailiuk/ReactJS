@@ -3,7 +3,7 @@ import { Movie } from "models/movie.model";
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MoviesAction, MoviesSelector, Store } from "store";
-import { MovieBoard } from "./";
+import { MovieBoardViewProps } from "./MovieBoardView";
 
 interface MovieBoardContainerProps {
   movies: Movie[];
@@ -12,7 +12,7 @@ interface MovieBoardContainerProps {
   onDeleteMovie: (movie: Movie) => void;
 }
 
-const MovieBoardContainer: React.FC<MovieBoardContainerProps> = ({ 
+const MovieBoardContainer = (MovieBoardView: React.FC<MovieBoardViewProps>): React.FC<MovieBoardContainerProps> => ({ 
   movies, movieBoardRef, onEditMovie, onDeleteMovie
 }) => {
 
@@ -43,7 +43,7 @@ const MovieBoardContainer: React.FC<MovieBoardContainerProps> = ({
   }, []);
 
   return (
-    <MovieBoard 
+    <MovieBoardView 
       movies={movies}
       movieBoardRef={movieBoardRef}
       category={category}

@@ -1,2 +1,2 @@
-export { default as Routs } from "./Routs";
+export { default as Routes } from "./Routes";
 export * from "./history";

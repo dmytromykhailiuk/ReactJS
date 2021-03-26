@@ -2,14 +2,14 @@ import { RouterPaths } from "shared/enums";
 import React from "react";
 import { Redirect, Route, Switch } from "react-router";
 import { ErrorPage } from "pages/error";
-import { MainPageContainer } from "pages/main";
+import { MainPage } from "pages/main";
 
-const Routs = () => {
+const Routes = () => {
   return (
     <Switch>
-      <Route path={RouterPaths.HOME} exact component={MainPageContainer} />
-      <Route path={RouterPaths.FILM} component={MainPageContainer} />
-      <Route path={RouterPaths.SEARCH} component={MainPageContainer} />
+      <Route path={RouterPaths.HOME} exact component={MainPage} />
+      <Route path={RouterPaths.FILM} component={MainPage} />
+      <Route path={RouterPaths.SEARCH} component={MainPage} />
       <Route path={RouterPaths.ERROR} render={({ history }) => {
         return <ErrorPage navigateToHome={() => history.push(RouterPaths.HOME)} />  
       }} />
@@ -18,4 +18,4 @@ const Routs = () => {
   )
 };
 
-export default Routs;
+export default Routes;
