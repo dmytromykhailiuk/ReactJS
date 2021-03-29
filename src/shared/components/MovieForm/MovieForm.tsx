@@ -13,10 +13,11 @@ interface MovieFormProps {
   submitButtonLabel?: string;
 }
 
+const tagline = "bla-bla";
+
 const EXTRA_DATA = {
   budget: 100000, 
-  revenue: 100000, 
-  tagline: "bla-bla", 
+  revenue: 100000,  
   vote_count: 100000
 };
 
@@ -35,7 +36,7 @@ const MovieForm: React.FC<MovieFormProps> = ({ onSubmitForm, movie = {}, submitB
       validationSchema={ValidationSchema}
       validateOnBlur={true}
       onSubmit={(values: FormData) => {
-        onSubmitForm({ ...EXTRA_DATA, ...movie, ...values });
+        onSubmitForm({ ...EXTRA_DATA, ...movie, tagline, ...values });
       }}
     >
       {(formik) => (

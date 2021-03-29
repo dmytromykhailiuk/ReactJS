@@ -20,8 +20,7 @@ const ValidationSchema = Yup.object().shape({
     .required("Runtime is required"),
   [MovieFormValues.RATING]: Yup.number()
     .min(0, "Rating cannot be negative")
-    .max(10, "Rating cannot be greater than 10")
-    .required("Rating is required"),
+    .max(10, "Rating cannot be greater than 10"),
 });
 
 export { ValidationSchema };
