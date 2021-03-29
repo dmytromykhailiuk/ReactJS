@@ -1,5 +1,6 @@
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const ImageminPlugin = require("imagemin-webpack-plugin").default;
 
 module.exports = {
   entry: [path.resolve(__dirname, "../src/index.tsx")],
@@ -35,5 +36,10 @@ module.exports = {
       chunks: "all",
     },
   },
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [
+    new CleanWebpackPlugin(),
+    new ImageminPlugin({
+      test: /\.(jpg|png)$/,
+    }),
+  ],
 };

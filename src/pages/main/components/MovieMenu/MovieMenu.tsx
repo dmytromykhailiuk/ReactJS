@@ -4,7 +4,7 @@ import CloseMenuButton from 'shared/components/CloseMenuButton/CloseMenuButton';
 import { useClickOutside } from 'shared/hooks';
 
 interface MovieMenuProps {
-  uniqueClass: string;
+  uniqueClass: number;
   onCloseButtonClicked?: () => void;
   onEditButtonClicked?: () => void;
   onDeleteButtonClicked?: () => void;
@@ -16,7 +16,7 @@ const MovieMenu: React.FC<MovieMenuProps> = ({
   onEditButtonClicked = () => {},
   onDeleteButtonClicked = () => {},
 }) => {
-  useClickOutside(uniqueClass, onCloseButtonClicked);
+  useClickOutside(String(uniqueClass), onCloseButtonClicked);
 
   return (
     <div className={`${uniqueClass} ${classes["movie-menu"]}`}>

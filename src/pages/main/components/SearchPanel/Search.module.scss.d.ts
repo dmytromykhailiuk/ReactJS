@@ -4,6 +4,7 @@ interface CssExports {
   'search': string;
   'search__button': string;
   'search__input': string;
+  'search__title': string;
 }
 export const cssExports: CssExports;
 export default cssExports;

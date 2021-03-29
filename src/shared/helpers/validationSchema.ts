@@ -15,14 +15,12 @@ const ValidationSchema = Yup.object().shape({
     .min(1, "Select at least one genre to proceed")
     .required("Ganre is required"),
   [MovieFormValues.OVERVIEW]: Yup.string().required("Owerview is required"),
-  [MovieFormValues.RUNTIME]: Yup.string().required("Runtime is required"),
-  [MovieFormValues.DURATION]: Yup.number()
-    .min(0, "Duration cannot be negative")
-    .required("Duration is required"),
+  [MovieFormValues.RUNTIME]: Yup.number()
+    .min(0, "Runtime cannot be negative")
+    .required("Runtime is required"),
   [MovieFormValues.RATING]: Yup.number()
     .min(0, "Rating cannot be negative")
-    .max(10, "Rating cannot be greater than 10")
-    .required("Rating is required"),
+    .max(10, "Rating cannot be greater than 10"),
 });
 
 export { ValidationSchema };

@@ -1,13 +1,13 @@
 export enum SortingOptionsProperties {
-  RELEASE_DATE = "releaseDate",
+  RELEASE_DATE = "release_date",
   TITLE = "title",
-  DURATION = "duration",
-  RATING = "rating",
+  DURATION = "runtime",
+  RATING = "vote_average",
 }
 
 export enum SortingOptions {
-  releaseDate = "RELEASE DATE",
+  release_date = "RELEASE DATE",
   title = "TITLE",
-  duration = "DURATION",
-  rating = "RATING",
+  runtime = "DURATION",
+  vote_average = "RATING",
 }

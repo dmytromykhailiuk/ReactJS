@@ -21,7 +21,7 @@ const ErrorPage: React.FC<ErrorPageProps> = ({ navigateToHome }) => {
           GO BACK TO HOME
         </Button>
       </div>
-      <div className={classes["error-page__logo"]}><Logo /></div>
+      <div onClick={navigateToHome} className={classes["error-page__logo"]}><Logo /></div>
     </div>
   );
 };

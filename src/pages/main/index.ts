@@ -1,1 +1,4 @@
-export { default as MainPage } from "./MainPage";
+import MainPageView from "./MainPageView";
+import MainPageContainer from "./MainPageContainer";
+
+export const MainPage = MainPageContainer(MainPageView);

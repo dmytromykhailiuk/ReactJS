@@ -17,24 +17,27 @@ const SearchPanel: React.FC<SearchPanelProps> = ({ onChangeSearchingValue }) => 
   }, [value])
   
   return (
-    <form className={classes.search} onSubmit={onSubmit}>
-      <div className={classes.search__input}>
-        <Input 
-          value={value} 
-          name="search"
-          placeholder="What do you want to watch?"
-          onChange={onChangeValue}
-        />
-      </div>
-      <div className={classes.search__button}>
-        <Button 
-          type={ButtonTypes.PRIMARY} 
-          isSubmit={true}
-        >
-          SEARCH
-        </Button>
-      </div>
-    </form>
+    <>
+      <h1 className={classes.search__title}>FIND YOUR MOVIE</h1>
+      <form className={classes.search} onSubmit={onSubmit}>
+        <div className={classes.search__input}>
+          <Input 
+            value={value} 
+            name="search"
+            placeholder="What do you want to watch?"
+            onChange={onChangeValue}
+          />
+        </div>
+        <div className={classes.search__button}>
+          <Button 
+            type={ButtonTypes.PRIMARY} 
+            isSubmit={true}
+          >
+            SEARCH
+          </Button>
+        </div>
+      </form>
+    </>
   )
 };
 

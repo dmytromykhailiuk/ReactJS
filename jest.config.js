@@ -28,6 +28,7 @@ module.exports = {
   moduleNameMapper: {
     "\\.(css)$": "identity-obj-proxy",
     "\\.(scss)$": "identity-obj-proxy",
+    "\\.(png)$": "identity-obj-proxy",
   },
   coveragePathIgnorePatterns: [
     ".*\\.mock.ts$",

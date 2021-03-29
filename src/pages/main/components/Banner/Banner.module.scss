@@ -58,6 +58,11 @@
     left: 0;
     right: 0;
     z-index: 2;
+    background-color: #000000cc;
+
+    &--blured {
+      background-color: #000000ee;
+    }
   }
 
   &__image {
