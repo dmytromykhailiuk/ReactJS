@@ -15,7 +15,7 @@ const modalsInitialState: ModalsState = {
   isSuccessAlert: true,
 };
 
-enum AlertMessages {
+export enum AlertMessages {
   SUCCESS_ADD = "The movie has been added to database successfully",
   SUCCESS_EDIT = "The movie has been edited in database successfully",
   SUCCESS_DELETE = "The movie has been deleted from database successfully",

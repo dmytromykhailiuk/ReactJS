@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeleteMovieModal should match first snepshot: first 1`] = `
+<ModalWrapper
+  header="DELETE MOVIE"
+  onCloseModal={[Function]}
+>
+  <div
+    className="delete-movie-modal__body"
+  >
+    Are you sure you want to delete this movie?
+  </div>
+  <div
+    className="delete-movie-modal__control"
+  >
+    <Button
+      onButtonClicked={[Function]}
+    >
+      Confirm
+    </Button>
+  </div>
+</ModalWrapper>
+`;

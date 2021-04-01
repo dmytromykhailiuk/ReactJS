@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GoUpButton should match first snapshot 1`] = `
+<div
+  className="scroll-btn scroll-btn--hide"
+  onClick={[Function]}
+>
+  <p>
+    UP
+  </p>
+</div>
+`;
+
+exports[`GoUpButton should match second snapshot 1`] = `
+<div
+  className="scroll-btn"
+  onClick={[Function]}
+>
+  <p>
+    UP
+  </p>
+</div>
+`;

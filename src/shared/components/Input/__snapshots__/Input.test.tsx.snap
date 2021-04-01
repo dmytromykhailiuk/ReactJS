@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input should match first snapshot 1`] = `
+<Fragment>
+  <label
+    className="label"
+    htmlFor="name"
+  >
+    label
+  </label>
+  <input
+    className="input"
+    disabled={false}
+    id="name"
+    name="name"
+    onBlur={[Function]}
+    onChange={[Function]}
+    placeholder="write you name"
+    type="text"
+    value="1211"
+  />
+</Fragment>
+`;
+
+exports[`Input should match snapshot with error state 1`] = `
+<Fragment>
+  <input
+    className="input input--error"
+    disabled={false}
+    id=""
+    name=""
+    onBlur={[Function]}
+    onChange={[Function]}
+    placeholder=""
+    type="text"
+    value=""
+  />
+  <div
+    className="input__error"
+  >
+    some error
+  </div>
+</Fragment>
+`;

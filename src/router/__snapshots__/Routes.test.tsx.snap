@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Routes should match snapshot 1`] = `
+<Switch>
+  <Route
+    component={[Function]}
+    exact={true}
+    path="/"
+  />
+  <Route
+    component={[Function]}
+    path="/film/:id"
+  />
+  <Route
+    component={[Function]}
+    path="/search"
+  />
+  <Route
+    path="/404"
+    render={[Function]}
+  />
+  <Redirect
+    to="/404"
+  />
+</Switch>
+`;

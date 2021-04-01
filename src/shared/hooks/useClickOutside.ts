@@ -1,5 +1,7 @@
 import { useEffect, useMemo } from "react";
 import { clickOutside } from "shared/helpers";
+import { useEventListener } from "./useEventListener";
+import { EventTypes } from "shared/enums";
 
 export function useClickOutside(
   className: string,
@@ -8,12 +10,5 @@ export function useClickOutside(
 ) {
   const clickOutsides = useMemo(() => clickOutside(className, callback), []);
 
-  useEffect(() => {
-    if (shouldUse) {
-      document.addEventListener("click", clickOutsides);
-      return () => {
-        document.removeEventListener("click", clickOutsides);
-      };
-    }
-  }, [shouldUse]);
+  useEventListener(EventTypes.CLICK, clickOutsides, [shouldUse], shouldUse);
 }

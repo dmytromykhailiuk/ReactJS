@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loader should match snapshot 1`] = `
+<div
+  className="loader"
+>
+  <div
+    className="loader__text"
+  >
+    Loading...
+  </div>
+  <div
+    className="loader__lines-wrapper"
+  >
+    <span
+      className="loader__line loader__line--1"
+    />
+    <span
+      className="loader__line loader__line--2"
+    />
+    <span
+      className="loader__line loader__line--3"
+    />
+    <span
+      className="loader__line loader__line--4"
+    />
+    <span
+      className="loader__line loader__line--5"
+    />
+    <span
+      className="loader__line loader__line--6"
+    />
+    <span
+      className="loader__line loader__line--7"
+    />
+    <span
+      className="loader__line loader__line--8"
+    />
+    <span
+      className="loader__line"
+    />
+    <span
+      className="loader__line loader__line--10"
+    />
+    <span
+      className="loader__line loader__line--11"
+    />
+    <span
+      className="loader__line loader__line--12"
+    />
+    <span
+      className="loader__line loader__line--13"
+    />
+    <span
+      className="loader__line loader__line--14"
+    />
+    <span
+      className="loader__line loader__line--15"
+    />
+    <span
+      className="loader__line loader__line--16"
+    />
+    <span
+      className="loader__line loader__line--17"
+    />
+  </div>
+</div>
+`;

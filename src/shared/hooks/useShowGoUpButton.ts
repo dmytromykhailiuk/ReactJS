@@ -1,4 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
+import { useEventListener } from "./useEventListener";
+import { EventTypes } from "shared/enums";
 
 export function useShowGoUpButton(): boolean {
   const [showGoUpButton, setShowGoUpButtonValue] = useState<boolean>(false);
@@ -11,12 +13,7 @@ export function useShowGoUpButton(): boolean {
     }
   }, [showGoUpButton]);
 
-  useEffect(() => {
-    document.addEventListener("scroll", setShowGoUpButton);
-    return () => {
-      document.removeEventListener("scroll", setShowGoUpButton);
-    };
-  }, [showGoUpButton]);
+  useEventListener(EventTypes.SCROLL, setShowGoUpButton, [showGoUpButton]);
 
   return showGoUpButton;
 }

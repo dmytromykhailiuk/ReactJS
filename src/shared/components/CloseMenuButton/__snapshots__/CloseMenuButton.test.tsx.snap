@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckboxIcon should match first snepshot: first 1`] = `
+<div
+  className="close-menu-button__wrapper"
+>
+  <div
+    className="close-menu-button__button"
+    onClick={[Function]}
+  />
+</div>
+`;
+
+exports[`CheckboxIcon should match second snepshot: second 1`] = `
+<div
+  className="close-menu-button__wrapper"
+>
+  <div
+    className="close-menu-button__button close-menu-button__button--small"
+    onClick={[Function]}
+  />
+</div>
+`;

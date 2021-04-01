@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Banner should match first snepshot: first 1`] = `
+<div
+  className="banner"
+>
+  <div
+    className="banner__image"
+  />
+  <div
+    className="banner__background banner__background--blured"
+  />
+  <div
+    className="banner__content"
+  >
+    <div
+      className="banner__header"
+    >
+      <div
+        className="banner__logo"
+        onClick={[Function]}
+      >
+        <Logo />
+      </div>
+      <div
+        className="banner__search-icon"
+        onClick={[Function]}
+      >
+        <SearchIcon />
+      </div>
+    </div>
+    Children
+  </div>
+</div>
+`;

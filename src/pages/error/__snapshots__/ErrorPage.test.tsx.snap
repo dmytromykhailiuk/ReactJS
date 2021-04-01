@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorPage should match first snepshot: first 1`] = `
+<div
+  className="error-page"
+>
+  <h2
+    className="error-page__title"
+  >
+    Page Not Found
+  </h2>
+  <div
+    className="error-page__error-number"
+  >
+    404
+  </div>
+  <div
+    className="error-page__button"
+  >
+    <Button
+      onButtonClicked={[Function]}
+      style={
+        Object {
+          "width": "300px",
+        }
+      }
+      type="secondary"
+    >
+      GO BACK TO HOME
+    </Button>
+  </div>
+  <div
+    className="error-page__logo"
+    onClick={[Function]}
+  >
+    <Logo />
+  </div>
+</div>
+`;

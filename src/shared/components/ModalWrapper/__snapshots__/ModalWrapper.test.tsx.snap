@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalWrapper should match first snapshot 1`] = `
+<div
+  className="modal-wrapper"
+>
+  <div
+    className="modal-wrapper__content-wrapper"
+  >
+    <div
+      className="modal-wrapper__content"
+    >
+      <CloseMenuButton
+        onCloseButtonClicked={[Function]}
+      />
+      <div
+        className="modal-wrapper__body"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ModalWrapper should match second snapshot 1`] = `
+<div
+  className="modal-wrapper"
+>
+  <div
+    className="modal-wrapper__content-wrapper"
+  >
+    <div
+      className="modal-wrapper__content"
+    >
+      <CloseMenuButton
+        onCloseButtonClicked={[Function]}
+      />
+      <h2
+        className="modal-wrapper__header"
+      >
+        Modal
+      </h2>
+      <div
+        className="modal-wrapper__body"
+      />
+    </div>
+  </div>
+</div>
+`;

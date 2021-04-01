@@ -35,6 +35,10 @@ module.exports = {
     ".*\\.module.ts$",
     ".*\\.config.ts$",
     ".*\\.models.ts$",
+    ".*\\Container.tsx$",
+    "clickOutside.ts$",
+    "clickInside.ts$",
+    "goUp.ts$",
     "setupTests.ts",
     "index.js",
     "index.ts",
@@ -43,5 +47,6 @@ module.exports = {
     "/utils/",
     "/assets/",
     "/icons/",
+    "/enums/",
   ],
 };

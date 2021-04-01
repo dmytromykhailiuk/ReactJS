@@ -3,6 +3,7 @@ import React from "react";
 import { Redirect, Route, Switch } from "react-router";
 import { ErrorPage } from "pages/error";
 import { MainPage } from "pages/main";
+import { navigateToHome } from "../shared/helpers";
 
 const Routes = () => {
   return (
@@ -10,8 +11,8 @@ const Routes = () => {
       <Route path={RouterPaths.HOME} exact component={MainPage} />
       <Route path={RouterPaths.FILM} component={MainPage} />
       <Route path={RouterPaths.SEARCH} component={MainPage} />
-      <Route path={RouterPaths.ERROR} render={({ history }) => {
-        return <ErrorPage navigateToHome={() => history.push(RouterPaths.HOME)} />  
+      <Route path={RouterPaths.ERROR} render={() => {
+        return <ErrorPage navigateToHome={navigateToHome} />  
       }} />
       <Redirect to={RouterPaths.ERROR}/>
     </Switch>
