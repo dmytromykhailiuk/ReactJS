@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { clickOutside } from "shared/helpers";
 import { useEventListener } from "./useEventListener";
 import { EventTypes } from "shared/enums";

@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieMenu should match snepshot 1`] = `
+<div
+  className="12111 movie-menu"
+>
+  <CloseMenuButton
+    isSmall={true}
+    onCloseButtonClicked={[Function]}
+  />
+  <div
+    className="movie-menu__button"
+    onClick={[Function]}
+  >
+    Edit
+  </div>
+  <div
+    className="movie-menu__button"
+    onClick={[Function]}
+  >
+    Delete
+  </div>
+</div>
+`;

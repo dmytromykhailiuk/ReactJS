@@ -5,14 +5,14 @@ import toJson from 'enzyme-to-json';
 import { Categories } from "../../../../shared/enums";
 
 describe("CategoryPanel", () => {
-  it("should match first snepshot", () => {
+  it("should match snepshot", () => {
     const wrapper = shallow(
       <CategoryPanel
         selectedCategory={Categories.ALL}
         onChangeCategory={() => {}}
       />
     )
-    expect(toJson(wrapper)).toMatchSnapshot("first");
+    expect(toJson(wrapper)).toMatchSnapshot();
   })
 
   it("should call 'onChangeCategory' if was click on category", () => {

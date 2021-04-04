@@ -1,28 +1,28 @@
-import { shallow } from "enzyme";
+import { shallow, ShallowWrapper } from "enzyme";
 import { AlertMovieModal } from "./";
 import React from "react";
 import toJson from 'enzyme-to-json';
+import { CheckboxIcon } from "../CheckboxIcon";
 
 describe("AlertMovieModal", () => {
-  it("shoud match first snepshot", () => {
-    const wrapper = shallow(
-      <AlertMovieModal 
-        onCloseModal={() => {}}
-        isSuccessAlert={true}
-        alertMessage={"alert message"}
-      />
-    );
-    expect(toJson(wrapper)).toMatchSnapshot("first");
-  });
+  let wrapper: ShallowWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>;
 
-  it("shoud match second snepshot", () => {
-    const wrapper = shallow(
+  beforeEach(() => {
+    wrapper = shallow(
       <AlertMovieModal 
         onCloseModal={() => {}}
         isSuccessAlert={false}
         alertMessage={"alert message"}
       />
-    )
-    expect(toJson(wrapper)).toMatchSnapshot("second");
+    );
+  })
+  it("shoud match snepshot", () => {
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
+
+  it("shoud show 'CheckboxIcon' when isSuccessAlert equal true", () => {
+    wrapper.setProps({ isSuccessAlert: true });
+    expect(wrapper.exists(CheckboxIcon)).toBeTruthy();
+    expect(wrapper.find('.alert-movie-modal__title').text()).toEqual("CONGRADULATIONS !");
   })
 })

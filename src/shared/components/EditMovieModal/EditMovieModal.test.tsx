@@ -4,7 +4,7 @@ import { EditMovieModal } from "./";
 import toJson from 'enzyme-to-json';
 
 describe("EditMovieModal", () => {
-  it("should match first snepshot", () => {
+  it("should match snepshot", () => {
     const wrapper = shallow(
       <EditMovieModal
         movie={{} as any}
@@ -12,6 +12,6 @@ describe("EditMovieModal", () => {
         onCloseWithSaving={() => {}}
       />
     )
-    expect(toJson(wrapper)).toMatchSnapshot("first");
+    expect(toJson(wrapper)).toMatchSnapshot();
   })
 })

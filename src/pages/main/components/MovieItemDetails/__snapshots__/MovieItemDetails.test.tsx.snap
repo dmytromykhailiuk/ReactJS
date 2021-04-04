@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieItemDetails should match snepshot 1`] = `
+<div
+  className="movie-details"
+>
+  <img
+    alt="Fifty Shades Freed"
+    className="movie-details__image"
+    onError={[Function]}
+    src="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+  />
+  <div
+    className="movie-details__info"
+  >
+    <div
+      className="movie-details__first-info-line"
+    >
+      <h2
+        className="movie-details__title"
+      >
+        Fifty Shades Freed
+      </h2>
+      <div
+        className="movie-details__rating"
+      >
+        6.1
+      </div>
+    </div>
+    <p
+      className="movie-details__category"
+    >
+      Drama, Romance
+    </p>
+    <div
+      className="movie-details__third-info-line"
+    >
+      <div
+        className="movie-details__release-date"
+      >
+        2018
+      </div>
+      <div>
+        106
+         min
+      </div>
+    </div>
+    <div
+      className="movie-details__overview"
+    >
+       
+      Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins.
+       
+    </div>
+  </div>
+</div>
+`;

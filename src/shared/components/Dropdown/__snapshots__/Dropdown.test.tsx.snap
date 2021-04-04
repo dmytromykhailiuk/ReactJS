@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Dropdown should match first snapshot 1`] = `
+exports[`Dropdown should match snapshot 1`] = `
 <div
   className="dropdown"
 >
@@ -27,32 +27,6 @@ exports[`Dropdown should match first snapshot 1`] = `
   >
     error
   </div>
-  <div
-    className="dropdown__options-wrapper"
-  />
-</div>
-`;
-
-exports[`Dropdown should match second snapshot 1`] = `
-<div
-  className="dropdown"
->
-  <div
-    className="interface"
-    onClick={[Function]}
-  >
-    <div
-      className="dropdown__field"
-    >
-      s q
-      <div
-        className="dropdown__arrow-down"
-      />
-    </div>
-  </div>
-  <div
-    className="dropdown__error"
-  />
   <div
     className="dropdown__options-wrapper"
   />

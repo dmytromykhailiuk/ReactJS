@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieList should match snepshot 1`] = `
+<ul
+  className="movie-list"
+>
+  <li
+    key="13211"
+  >
+    <Memo()
+      movie={
+        Object {
+          "id": 13211,
+        }
+      }
+      onDeleteMovie={[Function]}
+      onEditMovie={[Function]}
+    />
+  </li>
+</ul>
+`;

@@ -28,14 +28,14 @@ module.exports = {
   moduleNameMapper: {
     "\\.(css)$": "identity-obj-proxy",
     "\\.(scss)$": "identity-obj-proxy",
-    "\\.(png)$": "identity-obj-proxy",
+    "\\.(png|svg|pdf|jpg|jpeg)$": "<rootDir>/fileMock.ts",
   },
   coveragePathIgnorePatterns: [
     ".*\\.mock.ts$",
     ".*\\.module.ts$",
     ".*\\.config.ts$",
     ".*\\.models.ts$",
-    ".*\\Container.tsx$",
+    "Container.tsx$",
     "clickOutside.ts$",
     "clickInside.ts$",
     "goUp.ts$",

@@ -1,5 +1,5 @@
 import { ModalWrapper } from "./";
-import { shallow, mount } from "enzyme";
+import { shallow, mount, ReactWrapper } from "enzyme";
 import React from "react";
 import toJson from "enzyme-to-json";
 import ReactDOM from "react-dom";
@@ -8,6 +8,8 @@ jest.mock("react-dom");
 (ReactDOM.createPortal as jest.Mock).mockImplementation((arg) => arg);
 
 describe("ModalWrapper", () => {
+  let wrapper: ReactWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>;
+
   beforeEach(() => {
     global.document = {
       getElementById: jest.fn().mockReturnValue({} as any),
@@ -17,25 +19,25 @@ describe("ModalWrapper", () => {
         }
       }
     } as any;
+
+    wrapper = mount(<ModalWrapper onCloseModal={() => {}} />);
   })
 
-  it("should match first snapshot", () => {
-    const wrapper = shallow(<ModalWrapper onCloseModal={() => {}} />);
+  it("should match snapshot", () => {
     expect(toJson(wrapper)).toMatchSnapshot();
   })
 
-  it("should match second snapshot", () => { 
+  it("should show header when header was passed", () => { 
     const wrapper = shallow(<ModalWrapper header={"Modal"} onCloseModal={() => {}} />);
-    expect(toJson(wrapper)).toMatchSnapshot();
+    wrapper.setProps({ header: "Modal" });
+    expect(wrapper.exists(".modal-wrapper__header")).toBeTruthy();
   })
 
   it("should style be hidden after component mounting", () => { 
-    mount(<ModalWrapper onCloseModal={() => {}} />);
     expect(document.body.style.overflow).toEqual("hidden");
   })
 
   it("should style be hidden after component unmounting", () => { 
-    const wrapper = mount(<ModalWrapper onCloseModal={() => {}} />);
     wrapper.unmount();
     expect(document.body.style.overflow).toEqual("visible");
   })

@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieBoardView should match snepshot 1`] = `
+<div
+  className="movie-board"
+>
+  <div
+    className="movie-board__header"
+  >
+    <CategoryPanel
+      onChangeCategory={[Function]}
+      selectedCategory="ALL"
+    />
+    <SortPanel
+      isDownDirection={true}
+      onChangeSortingDirection={[Function]}
+      setSortingOption={[Function]}
+      sortingOption="release_date"
+    />
+    <div
+      className="movie-board__header-underline"
+    />
+  </div>
+  <h2
+    className="movie-board__count"
+  >
+    <span
+      className="movie-board__count-number"
+    >
+      10
+    </span>
+      movie
+    s
+     found
+  </h2>
+  <MovieList
+    movies={
+      Array [
+        Object {
+          "id": 2,
+        },
+      ]
+    }
+    onDeleteMovie={[Function]}
+    onEditMovie={[Function]}
+  />
+  <div
+    className="movie-board__show-more-button"
+  >
+    <Button
+      onButtonClicked={[Function]}
+      type="secondary"
+    >
+      SHOW MORE
+    </Button>
+  </div>
+</div>
+`;

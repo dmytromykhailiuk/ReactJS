@@ -21,24 +21,3 @@ exports[`Input should match first snapshot 1`] = `
   />
 </Fragment>
 `;
-
-exports[`Input should match snapshot with error state 1`] = `
-<Fragment>
-  <input
-    className="input input--error"
-    disabled={false}
-    id=""
-    name=""
-    onBlur={[Function]}
-    onChange={[Function]}
-    placeholder=""
-    type="text"
-    value=""
-  />
-  <div
-    className="input__error"
-  >
-    some error
-  </div>
-</Fragment>
-`;

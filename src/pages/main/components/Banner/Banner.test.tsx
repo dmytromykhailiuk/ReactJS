@@ -5,7 +5,7 @@ import toJson from 'enzyme-to-json';
 import { Button } from "../../../../shared/components";
 
 describe("Banner", () => {
-  it("should match first snepshot", () => {
+  it("should match snepshot", () => {
     const wrapper = shallow(
       <Banner
         isMovieInOverviewMode
@@ -16,7 +16,7 @@ describe("Banner", () => {
         Children
       </Banner>
     )
-    expect(toJson(wrapper)).toMatchSnapshot("first");
+    expect(toJson(wrapper)).toMatchSnapshot();
   })
 
   it("should show Button if 'isMovieInOverviewMode' equal false ", () => {

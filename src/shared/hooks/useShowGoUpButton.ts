@@ -1,14 +1,16 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useEventListener } from "./useEventListener";
-import { EventTypes } from "shared/enums";
+import { EventTypes } from "../enums";
+import { getPageYOffsetValue } from "../helpers";
 
 export function useShowGoUpButton(): boolean {
   const [showGoUpButton, setShowGoUpButtonValue] = useState<boolean>(false);
 
   const setShowGoUpButton = useCallback(() => {
-    if (!showGoUpButton && window.pageYOffset > 200) {
+    const pageYOffset = getPageYOffsetValue();
+    if (!showGoUpButton && pageYOffset > 200) {
       setShowGoUpButtonValue(true);
-    } else if (showGoUpButton && window.pageYOffset < 100) {
+    } else if (showGoUpButton && pageYOffset < 100) {
       setShowGoUpButtonValue(false);
     }
   }, [showGoUpButton]);

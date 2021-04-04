@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button should match first snepshot: first 1`] = `
+exports[`Button should match snepshot 1`] = `
 <button
   className="
         button 
@@ -12,23 +12,6 @@ exports[`Button should match first snepshot: first 1`] = `
   onClick={[Function]}
   style={Object {}}
   type="button"
->
-  Button
-</button>
-`;
-
-exports[`Button should match second snepshot: second 1`] = `
-<button
-  className="
-        button 
-         
-        button--secondary 
-        button--small 
-      "
-  disabled={false}
-  onClick={[Function]}
-  style={Object {}}
-  type="submit"
 >
   Button
 </button>

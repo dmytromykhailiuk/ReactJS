@@ -8,15 +8,15 @@ jest.mock("../../hooks");
 
 describe("GoUpButton", () => {
   it("should match first snapshot", () => {
-    (useShowGoUpButton as jest.Mock).mockReturnValue(false);
+    (useShowGoUpButton as jest.Mock).mockReturnValue(true);
     const wrapper = shallow(<GoUpButton />);
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 
-  it("should match second snapshot", () => {
-    (useShowGoUpButton as jest.Mock).mockReturnValue(true);
+  it("should contains 'scroll-btn--hide'", () => {
+    (useShowGoUpButton as jest.Mock).mockReturnValue(false);
     const wrapper = shallow(<GoUpButton />);
-    expect(toJson(wrapper)).toMatchSnapshot()
+    expect(wrapper.exists(".scroll-btn--hide")).toBeTruthy()
   })
 
   it("should call useShowGoUpButton function", () => {

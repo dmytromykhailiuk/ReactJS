@@ -1,30 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DropdownOption should match first snapshot 1`] = `
+exports[`DropdownOption should match snapshot 1`] = `
 <div
   className="dropdown-option"
 >
   <div
     className="dropdown-option__checkbox"
-  >
-    <div
-      className="dropdown-option__checkbox-icon"
-    >
-      <CheckboxIcon />
-    </div>
-  </div>
-  <div
-    className="dropdown-option__content"
-  />
-</div>
-`;
-
-exports[`DropdownOption should match second snapshot 1`] = `
-<div
-  className="dropdown-option"
->
-  <div
-    className="dropdown-option__checkbox dropdown-option__checkbox--checked"
   >
     <div
       className="dropdown-option__checkbox-icon"

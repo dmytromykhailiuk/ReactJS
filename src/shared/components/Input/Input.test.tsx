@@ -19,16 +19,16 @@ describe("Input", () => {
         onBlur={() => {}}
       />
     );
-    expect(toJson(wrapper)).toMatchSnapshot()
+    expect(toJson(wrapper)).toMatchSnapshot();
   })
 
-  it("should match snapshot with error state", () => {
+  it("should error error message when has error", () => {
     const wrapper = shallow(
       <Input
         error={"some error"}
       />
-    );
-    expect(toJson(wrapper)).toMatchSnapshot()
+    );   
+    expect(wrapper.exists(".input__error")).toBeTruthy()
   })
 
   it("should call onBlur function when blur event occurred", () => {

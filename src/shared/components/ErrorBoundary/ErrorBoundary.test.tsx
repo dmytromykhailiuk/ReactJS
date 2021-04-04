@@ -20,6 +20,6 @@ describe("ErrorBoundary", () => {
     wrapper.find(Component).simulateError({});
     expect(componentDidCatch).toHaveBeenCalled();
     expect(setState).toHaveBeenCalledWith({ hasError: true });
-    expect(toJson(wrapper)).toMatchSnapshot()
+    expect(wrapper.exists('h1')).toBeTruthy()
   })
 })

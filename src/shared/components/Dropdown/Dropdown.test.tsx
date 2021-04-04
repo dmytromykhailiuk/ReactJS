@@ -17,7 +17,7 @@ describe("Dropdown", () => {
     (useField as jest.Mock).mockImplementation(() => [null, { value: [] }, { setValue, setTouched }]);
     (useClickOutside as jest.Mock).mockImplementation(() => {});
   })
-  it("should match first snapshot", () => {
+  it("should match snapshot", () => {
     const wrapper = shallow(
       <Dropdown
         name={"dropdown"}
@@ -25,17 +25,6 @@ describe("Dropdown", () => {
         label={"label"}
         placeholder={"placeholder"}
         error={"error"}
-      />
-    );
-    expect(toJson(wrapper)).toMatchSnapshot()
-  })
-
-  it("should match second snapshot", () => {
-    (useField as jest.Mock).mockImplementation(() => [null, { value: ["s", "q"] }, { setValue, setTouched }]);
-    const wrapper = shallow(
-      <Dropdown
-        name={"dropdown"}
-        options={["s", "q"] as any}
       />
     );
     expect(toJson(wrapper)).toMatchSnapshot()

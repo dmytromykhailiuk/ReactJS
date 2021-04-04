@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortPanel should match snapshot 1`] = `
+<div
+  className="sort-panel"
+>
+  <div
+    className="sort-panel__options-wrapper"
+  >
+    <div
+      className="sort-panel__title"
+      onClick={[Function]}
+    >
+      SORT BY
+    </div>
+  </div>
+  <ul
+    className="sort-panel__selected-option-wrapper"
+    onClick={[Function]}
+  >
+    <li
+      className="sort-panel__selected-option"
+    >
+      DURATION
+      <div
+        className="sort-panel__arrow-down"
+      />
+    </li>
+  </ul>
+</div>
+`;

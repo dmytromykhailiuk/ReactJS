@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MainPageView should match snepshot 1`] = `
+<Fragment>
+  <header
+    style={Object {}}
+  >
+    <Memo()
+      isMovieInOverviewMode={false}
+      onCreateMovie={[Function]}
+      onLogoClicked={[Function]}
+      onSearchIconClicked={[Function]}
+    >
+      <div
+        style={
+          Object {
+            "marginBottom": "80px",
+            "marginTop": "80px",
+          }
+        }
+      >
+        <Loader />
+      </div>
+    </Memo()>
+  </header>
+  <main
+    style={Object {}}
+  >
+    <Component
+      movieBoardRef={Object {}}
+      movies={
+        Array [
+          Object {
+            "id": 2,
+          },
+        ]
+      }
+      onDeleteMovie={[Function]}
+      onEditMovie={[Function]}
+    />
+  </main>
+</Fragment>
+`;

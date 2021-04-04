@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`EditMovieModal should match first snepshot: first 1`] = `
+exports[`EditMovieModal should match snepshot 1`] = `
 <ModalWrapper
   header="EDIT MOVIE"
   onCloseModal={[Function]}
