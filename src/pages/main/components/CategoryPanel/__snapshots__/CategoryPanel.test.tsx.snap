@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CategoryPanel should match snepshot 1`] = `
+<ul
+  className="category-panel"
+>
+  <li
+    className="category-panel__item category-panel__item--active"
+    onClick={[Function]}
+  >
+    ALL
+  </li>
+  <li
+    className="category-panel__item"
+    key="Documentary"
+    onClick={[Function]}
+  >
+    Documentary
+  </li>
+  <li
+    className="category-panel__item"
+    key="Comedy"
+    onClick={[Function]}
+  >
+    Comedy
+  </li>
+  <li
+    className="category-panel__item"
+    key="Horror"
+    onClick={[Function]}
+  >
+    Horror
+  </li>
+  <li
+    className="category-panel__item"
+    key="Crime"
+    onClick={[Function]}
+  >
+    Crime
+  </li>
+</ul>
+`;

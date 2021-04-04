@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown should match snapshot 1`] = `
+<div
+  className="dropdown"
+>
+  <div
+    className="interface"
+    onClick={[Function]}
+  >
+    <div
+      className="dropdown__label"
+    >
+      label
+    </div>
+    <div
+      className="dropdown__field dropdown__field--placeholder dropdown__field--error"
+    >
+      placeholder
+      <div
+        className="dropdown__arrow-down"
+      />
+    </div>
+  </div>
+  <div
+    className="dropdown__error"
+  >
+    error
+  </div>
+  <div
+    className="dropdown__options-wrapper"
+  />
+</div>
+`;

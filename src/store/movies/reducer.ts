@@ -176,6 +176,7 @@ const moviesReducer = createReducer<MoviesState>(
       }))
       .addCase(searchMoviesAction, (state) => ({
         ...state,
+        selectedCategory: Categories.ALL,
         moviesLoading: true,
       }))
       .addCase(hideLoaderAction, (state) => ({

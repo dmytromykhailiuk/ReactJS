@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieList should match snepshot 1`] = `
+<Fragment>
+  <h1
+    className="search__title"
+  >
+    FIND YOUR MOVIE
+  </h1>
+  <form
+    className="search"
+    onSubmit={[Function]}
+  >
+    <div
+      className="search__input"
+    >
+      <Input
+        name="search"
+        onChange={[Function]}
+        placeholder="What do you want to watch?"
+        value=""
+      />
+    </div>
+    <div
+      className="search__button"
+    >
+      <Button
+        isSubmit={true}
+        type="primary"
+      >
+        SEARCH
+      </Button>
+    </div>
+  </form>
+</Fragment>
+`;

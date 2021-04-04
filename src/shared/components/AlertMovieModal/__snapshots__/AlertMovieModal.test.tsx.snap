@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlertMovieModal shoud match snepshot 1`] = `
+<ModalWrapper
+  onCloseModal={[Function]}
+>
+  <div
+    className="alert-movie-modal__logo"
+  >
+    !
+  </div>
+  <div
+    className="alert-movie-modal__title"
+  >
+    SOMETHING WENT WRONG !
+  </div>
+  <div
+    className="alert-movie-modal__message"
+  >
+    alert message
+  </div>
+</ModalWrapper>
+`;

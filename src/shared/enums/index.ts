@@ -5,3 +5,4 @@ export * from "./sorting-options";
 export * from "./movie-form-values";
 export * from "./router-paths";
 export * from "./modal-types";
+export * from "./event-types";

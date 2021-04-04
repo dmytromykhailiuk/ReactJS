@@ -5,16 +5,16 @@ import { useClickOutside } from 'shared/hooks';
 
 interface MovieMenuProps {
   uniqueClass: number;
-  onCloseButtonClicked?: () => void;
-  onEditButtonClicked?: () => void;
-  onDeleteButtonClicked?: () => void;
+  onCloseButtonClicked: () => void;
+  onEditButtonClicked: () => void;
+  onDeleteButtonClicked: () => void;
 }
 
 const MovieMenu: React.FC<MovieMenuProps> = ({
   uniqueClass,
-  onCloseButtonClicked = () => {},
-  onEditButtonClicked = () => {},
-  onDeleteButtonClicked = () => {},
+  onCloseButtonClicked,
+  onEditButtonClicked,
+  onDeleteButtonClicked,
 }) => {
   useClickOutside(String(uniqueClass), onCloseButtonClicked);
 

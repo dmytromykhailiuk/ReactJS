@@ -1,11 +1,11 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { Movie } from "models";
 import { ThreeDotsIcon } from "shared/components";
 import classes from "./MovieItem.module.scss";
 import { MovieMenu } from "../";
 import { isClickInside } from "shared/helpers";
-import { useHistory } from "react-router";
 import { useDefaultImage } from "shared/hooks";
+import { history } from "router";
 
 interface MovieItemProps {
   movie: Movie;
@@ -20,8 +20,6 @@ const MovieItem: React.FC<MovieItemProps> = React.memo(({
 }) => {
   const [shoudShowMenu, setShoudShowMenuValue] = useState(false);
   const [defaultImage, setError] = useDefaultImage(movie.poster_path);
-
-  const history = useHistory();
 
   const onCloseMenu = useCallback(() => {
     setShoudShowMenuValue(false);

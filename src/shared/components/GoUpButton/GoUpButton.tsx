@@ -2,7 +2,7 @@ import React from "react";
 import classnames from "classnames";
 import classes from "./GoUpButton.module.scss"
 import { goUp } from "shared/helpers";
-import { useShowGoUpButton } from "shared/hooks";
+import { useShowGoUpButton } from "../../hooks";
 
 const GoUpButton: React.FC = () => {
   const showGoUpButton = useShowGoUpButton();

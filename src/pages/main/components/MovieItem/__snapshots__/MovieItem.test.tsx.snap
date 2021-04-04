@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MovieItem should match snapshot 1`] = `
+<Memo()
+  movie={
+    Object {
+      "budget": 55000000,
+      "genres": Array [
+        "Drama",
+        "Romance",
+      ],
+      "id": 337167,
+      "overview": "Believing they have left behind shadowy figures from their past, newlyweds Christian and Ana fully embrace an inextricable connection and shared life of luxury. But just as she steps into her role as Mrs. Grey and he relaxes into an unfamiliar stability, new threats could jeopardize their happy ending before it even begins.",
+      "poster_path": "https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg",
+      "release_date": "2018-02-07",
+      "revenue": 136906000,
+      "runtime": 106,
+      "tagline": "Don't miss the climax",
+      "title": "Fifty Shades Freed",
+      "vote_average": 6.1,
+      "vote_count": 1195,
+    }
+  }
+  onDeleteMovie={[MockFunction]}
+  onEditMovie={[MockFunction]}
+>
+  <div
+    className="movie"
+    onClick={[Function]}
+  >
+    <div
+      className="movie__image-wrapper"
+    >
+      <img
+        alt="Fifty Shades Freed"
+        className="movie__image"
+        onError={[Function]}
+        src="https://image.tmdb.org/t/p/w500/3kcEGnYBHDeqmdYf8ZRbKdfmlUy.jpg"
+      />
+      <div
+        className="movie__three-dots"
+        onClick={[Function]}
+      >
+        <ThreeDotsIcon>
+          <div
+            className="icon"
+          >
+            <svg
+              className="bi bi-three-dots-vertical"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"
+              />
+            </svg>
+          </div>
+        </ThreeDotsIcon>
+      </div>
+    </div>
+    <div
+      className="movie__footer"
+    >
+      <div>
+        <div
+          className="movie__name"
+        >
+          Fifty Shades Freed
+        </div>
+        <div
+          className="movie__category"
+        >
+          Drama, Romance
+        </div>
+      </div>
+      <div
+        className="movie__release"
+      >
+        2018
+      </div>
+    </div>
+  </div>
+</Memo()>
+`;

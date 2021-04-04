@@ -3,7 +3,7 @@ import React, { useCallback, useState } from "react";
 import classes from "./Dropdown.module.scss";
 import { useField } from "formik";
 import { DropdownOption } from "../DropdownOption";
-import { useClickOutside } from "shared/hooks";
+import { useClickOutside } from "../../hooks";
 import classnames from "classnames";
 
 interface DropdownProps {
@@ -39,7 +39,7 @@ const Dropdown: React.FC<DropdownProps> = ({ name, options, label = '', placehol
 
   return (
     <div className={classes.dropdown}>
-      <div onClick={onTrigerDropdownOptions}>
+      <div className="interface" onClick={onTrigerDropdownOptions}>
         { label && <div className={classes.dropdown__label}>{ label }</div> }
         <div
           className={classnames(

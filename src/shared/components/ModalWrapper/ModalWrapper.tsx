@@ -15,9 +15,7 @@ const ModalWrapper: React.FC<ModalWrapperProps> = ({ children, header = null, on
   useEffect(() => {
     document.body.style.overflow = "hidden"
     return () => {
-      if (portal.childNodes.length === 0) {
-        document.body.style.overflow = "visible"
-      }
+      document.body.style.overflow = "visible"
     }
   }, []);
 

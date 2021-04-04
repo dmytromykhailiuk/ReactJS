@@ -2,7 +2,7 @@ export function goUp(): void {
   let timeOut: NodeJS.Timeout;
   let position: number;
   let animation: boolean = false;
-  const goUp1 = () => {
+  const recursiveFn = () => {
     var top = Math.max(
       document.body.scrollTop,
       document.documentElement.scrollTop
@@ -23,11 +23,11 @@ export function goUp(): void {
       } else {
         window.scrollBy(0, (-20 * position) / 1000);
       }
-      timeOut = setTimeout(() => goUp1(), 20);
+      timeOut = setTimeout(() => recursiveFn(), 20);
     } else {
       clearTimeout(timeOut);
       animation = false;
     }
   };
-  return goUp1();
+  return recursiveFn();
 }

@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateMovieModal should match first snepshot: first 1`] = `
+<ModalWrapper
+  header="ADD MOVIE"
+  onCloseModal={[Function]}
+>
+  <MovieForm
+    onSubmitForm={[Function]}
+    submitButtonLabel="SUBMIT"
+  />
+</ModalWrapper>
+`;

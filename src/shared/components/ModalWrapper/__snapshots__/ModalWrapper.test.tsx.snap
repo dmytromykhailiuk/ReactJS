@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModalWrapper should match snapshot 1`] = `
+<ModalWrapper
+  onCloseModal={[Function]}
+>
+  <div
+    className="modal-wrapper"
+  >
+    <div
+      className="modal-wrapper__content-wrapper"
+    >
+      <div
+        className="modal-wrapper__content"
+      >
+        <CloseMenuButton
+          onCloseButtonClicked={[Function]}
+        >
+          <div
+            className="close-menu-button__wrapper"
+          >
+            <div
+              className="close-menu-button__button"
+              onClick={[Function]}
+            />
+          </div>
+        </CloseMenuButton>
+        <div
+          className="modal-wrapper__body"
+        />
+      </div>
+    </div>
+  </div>
+</ModalWrapper>
+`;
