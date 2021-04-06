@@ -9,11 +9,8 @@ const Routes = () => {
   return (
     <Switch>
       <Route path={RouterPaths.HOME} exact component={MainPage} />
-      <Route path={RouterPaths.FILM} component={MainPage} />
-      <Route path={RouterPaths.SEARCH} component={MainPage} />
-      <Route path={RouterPaths.ERROR} render={() => {
-        return <ErrorPage navigateToHome={navigateToHome} />  
-      }} />
+      <Route path={[RouterPaths.FILM, RouterPaths.SEARCH]} component={MainPage} />
+      <Route path={RouterPaths.ERROR} render={() => <ErrorPage navigateToHome={navigateToHome} /> } />
       <Redirect to={RouterPaths.ERROR}/>
     </Switch>
   )

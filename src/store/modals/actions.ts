@@ -12,3 +12,7 @@ interface SetModalInViewActionPayload {
 export const setModalInViewAction = createAction<SetModalInViewActionPayload>(
   `${prefix} Set Modal In View`
 );
+
+export const setErrorMessagesAction = createAction<string[]>(
+  `${prefix} Set Error Messages`
+);

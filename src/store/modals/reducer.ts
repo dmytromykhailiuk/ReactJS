@@ -1,18 +1,20 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { ModalTypes } from "shared/enums";
 import { MoviesAction } from "store/movies";
-import { setModalInViewAction } from "./actions";
+import { setErrorMessagesAction, setModalInViewAction } from "./actions";
 
 export interface ModalsState {
   modalInView: ModalTypes;
   alertMessage: string;
   isSuccessAlert: boolean;
+  errorMessages: string[];
 }
 
 const modalsInitialState: ModalsState = {
   modalInView: null,
   alertMessage: "",
   isSuccessAlert: true,
+  errorMessages: [],
 };
 
 export enum AlertMessages {
@@ -28,11 +30,16 @@ export const modalsReducer = createReducer<ModalsState>(
   modalsInitialState,
   (builder) =>
     builder
+      .addCase(setErrorMessagesAction, (state, { payload: errorMessages }) => ({
+        ...state,
+        errorMessages,
+      }))
       .addCase(
         setModalInViewAction,
         (state, { payload: { modalType: modalInView } }) => ({
           ...state,
           modalInView,
+          errorMessages: [],
         })
       )
       .addCase(MoviesAction.addMovieSuccessAction, (state) => ({
@@ -40,35 +47,41 @@ export const modalsReducer = createReducer<ModalsState>(
         isSuccessAlert: true,
         modalInView: ModalTypes.ALERT,
         alertMessage: AlertMessages.SUCCESS_ADD,
+        errorMessages: [],
       }))
       .addCase(MoviesAction.editMovieSuccessAction, (state) => ({
         ...state,
         isSuccessAlert: true,
         modalInView: ModalTypes.ALERT,
         alertMessage: AlertMessages.SUCCESS_EDIT,
+        errorMessages: [],
       }))
       .addCase(MoviesAction.deleteMovieSuccessAction, (state) => ({
         ...state,
         isSuccessAlert: true,
         modalInView: ModalTypes.ALERT,
         alertMessage: AlertMessages.SUCCESS_DELETE,
+        errorMessages: [],
       }))
       .addCase(MoviesAction.addMovieFaildAction, (state) => ({
         ...state,
         isSuccessAlert: false,
         modalInView: ModalTypes.ALERT,
         alertMessage: AlertMessages.FAILED_ADD,
+        errorMessages: [],
       }))
       .addCase(MoviesAction.editMovieFaildAction, (state) => ({
         ...state,
         isSuccessAlert: false,
         modalInView: ModalTypes.ALERT,
         alertMessage: AlertMessages.FAILED_EDIT,
+        errorMessages: [],
       }))
       .addCase(MoviesAction.deleteMovieFaildAction, (state) => ({
         ...state,
         isSuccessAlert: false,
         modalInView: ModalTypes.ALERT,
         alertMessage: AlertMessages.FAILED_DELETE,
+        errorMessages: [],
       }))
 );

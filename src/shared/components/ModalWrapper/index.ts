@@ -1,1 +1,4 @@
-export { default as ModalWrapper } from "./ModalWrapper";
+import ModalWrapperContainer from "./ModalWrapperContainer";
+import ModalWrapperView from "./ModalWrapperView";
+
+export const ModalWrapper = ModalWrapperContainer(ModalWrapperView);

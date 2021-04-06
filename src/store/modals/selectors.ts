@@ -17,3 +17,8 @@ export const isSuccessAlertSelector = createSelector(
   modalsSelector,
   (modals) => modals.isSuccessAlert
 );
+
+export const errorMessagesSelector = createSelector(
+  modalsSelector,
+  (modals) => modals.errorMessages
+);

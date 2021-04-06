@@ -1,12 +1,13 @@
 import { modalsReducer, ModalsState, AlertMessages } from "./reducer";
 import { ModalTypes } from "../../shared/enums";
-import { setModalInViewAction } from "./actions";
+import { setErrorMessagesAction, setModalInViewAction } from "./actions";
 import { MoviesAction } from "../movies";
 
 const modalsState: ModalsState = {
   modalInView: null,
   alertMessage: "",
   isSuccessAlert: true,
+  errorMessages: [],
 };
 
 const UNEXPECTED_TYPE = "UNEXPECTED";
@@ -29,6 +30,15 @@ describe("modalsReducer", () => {
           setModalInViewAction({ modalType: modalInView })
         )
       ).toEqual({ ...modalsState, modalInView });
+    });
+  });
+
+  describe("setErrorMessagesAction", () => {
+    it("should return state with new errorMessages data", () => {
+      const errorMessages = ["1"];
+      expect(
+        modalsReducer(modalsState, setErrorMessagesAction(errorMessages))
+      ).toEqual({ ...modalsState, errorMessages });
     });
   });
 

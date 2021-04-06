@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DeleteMovieModal should match first snepshot: first 1`] = `
-<ModalWrapper
+<Component
   header="DELETE MOVIE"
   onCloseModal={[Function]}
 >
@@ -19,5 +19,5 @@ exports[`DeleteMovieModal should match first snepshot: first 1`] = `
       Confirm
     </Button>
   </div>
-</ModalWrapper>
+</Component>
 `;

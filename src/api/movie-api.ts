@@ -50,7 +50,18 @@ export function addMovie(movie: Movie): Promise<Movie> {
     method: "POST",
     headers,
     body: JSON.stringify(movie),
-  }).then((res) => res.json());
+  }).then((res) =>
+    res.json().then((data) => {
+      if (!res.ok && res.status === 400) {
+        throw {
+          messages: data.messages,
+          status: res.status,
+        };
+      } else {
+        return data;
+      }
+    })
+  );
 }
 
 export function editMovie(movie: Movie): Promise<Movie> {
@@ -58,12 +69,18 @@ export function editMovie(movie: Movie): Promise<Movie> {
     method: "PUT",
     headers,
     body: JSON.stringify(movie),
-  }).then((res) => {
-    if (!res.ok) {
-      throw new Error("Bad Request");
-    }
-    return res.json();
-  });
+  }).then((res) =>
+    res.json().then((data) => {
+      if (!res.ok && res.status === 400) {
+        throw {
+          messages: data.messages,
+          status: res.status,
+        };
+      } else {
+        return data;
+      }
+    })
+  );
 }
 
 export function deleteMovie(id: number): Promise<Response> {

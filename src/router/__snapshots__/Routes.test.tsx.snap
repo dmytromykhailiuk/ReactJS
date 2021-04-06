@@ -9,11 +9,12 @@ exports[`Routes should match snapshot 1`] = `
   />
   <Route
     component={[Function]}
-    path="/film/:id"
-  />
-  <Route
-    component={[Function]}
-    path="/search"
+    path={
+      Array [
+        "/film/:id",
+        "/search",
+      ]
+    }
   />
   <Route
     path="/404"

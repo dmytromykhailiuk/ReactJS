@@ -103,6 +103,22 @@ describe("movie-api", () => {
         });
       });
     });
+
+    it("should throw error", () => {
+      const mockFetchPromise = Promise.resolve({
+        json: () => mockJSONPromise,
+        ok: false,
+        status: 400,
+      });
+      global.fetch = jest.fn().mockImplementation(() => mockFetchPromise);
+      addMovie(movie).catch(() => {
+        expect(global.fetch).toHaveBeenCalledWith(`${API_URL}`, {
+          method: "POST",
+          headers,
+          body: JSON.stringify(movie),
+        });
+      });
+    });
   });
 
   describe("deleteMovie", () => {
@@ -139,10 +155,11 @@ describe("movie-api", () => {
       });
     });
 
-    it("should called with same url and data", () => {
-      mockFetchPromise = Promise.resolve({
+    it("should throw error", () => {
+      const mockFetchPromise = Promise.resolve({
         json: () => mockJSONPromise,
         ok: false,
+        status: 400,
       });
       global.fetch = jest.fn().mockImplementation(() => mockFetchPromise);
       editMovie(movie).catch(() => {

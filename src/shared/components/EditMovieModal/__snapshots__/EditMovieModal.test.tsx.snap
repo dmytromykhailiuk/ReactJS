@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EditMovieModal should match snepshot 1`] = `
-<ModalWrapper
+<Component
   header="EDIT MOVIE"
   onCloseModal={[Function]}
 >
@@ -9,5 +9,5 @@ exports[`EditMovieModal should match snepshot 1`] = `
     movie={Object {}}
     onSubmitForm={[Function]}
   />
-</ModalWrapper>
+</Component>
 `;

@@ -5,6 +5,8 @@ interface CssExports {
   'modal-wrapper__body': string;
   'modal-wrapper__content': string;
   'modal-wrapper__content-wrapper': string;
+  'modal-wrapper__error': string;
+  'modal-wrapper__errors': string;
   'modal-wrapper__header': string;
 }
 export const cssExports: CssExports;

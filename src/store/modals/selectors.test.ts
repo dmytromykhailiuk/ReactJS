@@ -2,6 +2,7 @@ import {
   modalInViewSelector,
   alertMessageSelector,
   isSuccessAlertSelector,
+  errorMessagesSelector,
 } from "./selectors";
 import { Store } from "../";
 
@@ -22,6 +23,14 @@ describe("Modals State Selectors", () => {
     it("should return 'modalInView' value", () => {
       expect(modalInViewSelector(modalsStateMock)).toEqual(
         modalsStateMock.modals.modalInView
+      );
+    });
+  });
+
+  describe("errorMessagesSelector", () => {
+    it("should return 'errorMessages' data", () => {
+      expect(errorMessagesSelector(modalsStateMock)).toEqual(
+        modalsStateMock.modals.errorMessages
       );
     });
   });

@@ -44,6 +44,22 @@
     }
   }
 
+  &__errors {
+    border: 2px solid $pink-color;
+    border-radius: 5px;
+    padding: 20px;
+    margin-right: 15px;
+
+    @include large-screen {
+      margin-right: 66px;
+    }
+  }
+
+  &__error {
+    color: $pink-color;
+    margin: 10px 0;
+  }
+
   &__header {
     color: $white-color;
     font-weight: normal;    

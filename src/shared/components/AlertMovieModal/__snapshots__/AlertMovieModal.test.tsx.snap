@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AlertMovieModal shoud match snepshot 1`] = `
-<ModalWrapper
+<Component
   onCloseModal={[Function]}
 >
   <div
@@ -19,5 +19,5 @@ exports[`AlertMovieModal shoud match snepshot 1`] = `
   >
     alert message
   </div>
-</ModalWrapper>
+</Component>
 `;
