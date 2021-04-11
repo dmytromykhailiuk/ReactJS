@@ -3,22 +3,19 @@
 exports[`Routes should match snapshot 1`] = `
 <Switch>
   <Route
-    component={[Function]}
-    exact={true}
-    path="/"
-  />
-  <Route
-    component={[Function]}
-    path={
-      Array [
-        "/film/:id",
-        "/search",
-      ]
-    }
-  />
-  <Route
     path="/404"
     render={[Function]}
+  />
+  <Route
+    component={[Function]}
+    exact={true}
+    path={
+      Array [
+        "/",
+        "/search",
+        "/film/:id",
+      ]
+    }
   />
   <Redirect
     to="/404"

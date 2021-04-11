@@ -1,16 +1,28 @@
 import { shallow } from "enzyme";
 import React from "react";
 import toJson from 'enzyme-to-json';
-import MovieItemDetails from "./MovieItemDetails";
+import MovieItemDetailsView from "./MovieItemDetailsView";
 import { movies } from "mocks/movies.mock";
+import { Loader } from "shared/components";
 
 describe("MovieItemDetails", () => {
   it("should match snepshot", () => {
     const wrapper = shallow(
-      <MovieItemDetails
-        movie={movies[0]}
+      <MovieItemDetailsView 
+        movieInOverview={movies[0]}
+        isLoading={false}
       />
     )
     expect(toJson(wrapper)).toMatchSnapshot();
+  })
+
+  it("should show Lodaer when isLoading equal 'true'", () => {
+    const wrapper = shallow(
+      <MovieItemDetailsView 
+        movieInOverview={movies[0]}
+        isLoading={true}
+      />
+    )
+    expect(wrapper.exists(Loader)).toBeTruthy();
   })
 })

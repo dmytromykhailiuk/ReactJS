@@ -48,7 +48,7 @@ const moviesInitialState: MoviesState = {
   loaded: false,
   selectedMovie: null,
   movieInOverview: null,
-  movieInOverviewLoaded: true,
+  movieInOverviewLoaded: false,
   moviesAmount: 0,
   selectedCategory: Categories.ALL,
   sortingOption: SortingOptionsProperties.RELEASE_DATE,
@@ -197,11 +197,12 @@ const moviesReducer = createReducer<MoviesState>(
       )
       .addCase(loadMovieInOverviewFaildAction, (state) => ({
         ...state,
-        movieInOverviewLoaded: true,
+        movieInOverviewLoaded: false,
       }))
       .addCase(clearMovieInOverviewAction, (state) => ({
         ...state,
         movieInOverview: null,
+        movieInOverviewLoaded: false,
       }))
 );
 

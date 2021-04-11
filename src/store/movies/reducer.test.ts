@@ -409,7 +409,7 @@ describe("moviesReducer", () => {
         moviesReducer(moviesState, loadMovieInOverviewFaildAction())
       ).toEqual({
         ...moviesState,
-        movieInOverviewLoaded: true,
+        movieInOverviewLoaded: false,
       });
     });
   });
@@ -419,6 +419,7 @@ describe("moviesReducer", () => {
       expect(moviesReducer(moviesState, clearMovieInOverviewAction())).toEqual({
         ...moviesState,
         movieInOverview: null,
+        movieInOverviewLoaded: false,
       });
     });
   });

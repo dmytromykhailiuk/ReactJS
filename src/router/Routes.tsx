@@ -8,9 +8,8 @@ import { navigateToHome } from "../shared/helpers";
 const Routes = () => {
   return (
     <Switch>
-      <Route path={RouterPaths.HOME} exact component={MainPage} />
-      <Route path={[RouterPaths.FILM, RouterPaths.SEARCH]} component={MainPage} />
       <Route path={RouterPaths.ERROR} render={() => <ErrorPage navigateToHome={navigateToHome} /> } />
+      <Route path={[RouterPaths.HOME, RouterPaths.SEARCH, RouterPaths.FILM]} exact component={MainPage} />
       <Redirect to={RouterPaths.ERROR}/>
     </Switch>
   )

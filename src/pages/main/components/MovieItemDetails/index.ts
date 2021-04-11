@@ -1,1 +1,4 @@
-export { default as MovieItemDetails } from "./MovieItemDetails";
+import MovieItemDetailsView from "./MovieItemDetailsView";
+import MovieItemDetailsContainer from "./MovieItemDetailsContainer";
+
+export const MovieItemDetails = MovieItemDetailsContainer(MovieItemDetailsView);

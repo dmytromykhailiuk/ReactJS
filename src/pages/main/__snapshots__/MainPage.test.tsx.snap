@@ -11,16 +11,25 @@ exports[`MainPageView should match snepshot 1`] = `
       onLogoClicked={[Function]}
       onSearchIconClicked={[Function]}
     >
-      <div
-        style={
-          Object {
-            "marginBottom": "80px",
-            "marginTop": "80px",
+      <Switch>
+        <Route
+          component={[Function]}
+          path="/film/:id"
+        />
+        <Route
+          exact={true}
+          path={
+            Array [
+              "/",
+              "/search",
+            ]
           }
-        }
-      >
-        <Loader />
-      </div>
+        >
+          <SearchPanel
+            onChangeSearchingValue={[Function]}
+          />
+        </Route>
+      </Switch>
     </Memo()>
   </header>
   <main

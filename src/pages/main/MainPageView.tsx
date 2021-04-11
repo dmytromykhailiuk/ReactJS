@@ -2,25 +2,22 @@ import React, { useMemo } from "react";
 import { Banner, MovieBoard } from "./components";
 import { renderModal } from "shared/helpers"
 import { Movie } from "models/";
-import { ModalTypes } from "shared/enums";
+import { ModalTypes, RouterPaths } from "shared/enums";
 import { SearchPanel, MovieItemDetails } from "./components";
-import { Loader } from "shared/components";
+import { Switch, Route } from "react-router";
 
 const bluredStyles = {
   filter: 'blur(7px)',
 }
 
-const loaderWrapperStyles = { marginTop: "80px", marginBottom: "80px" };
-
 export interface MainPageViewProps {
   modalInView: ModalTypes;
-  movieInOverview: Movie;
+  hasMovieInOverview: boolean;
   selectedMovie: Movie;
   movieBoard: React.MutableRefObject<any>;
   movies: Movie[];
   isSuccessAlert: boolean;
   alertMessage: string;
-  movieInOverviewLoaded: boolean;
   navigateToMainPage: () => void;
   onCreateMovie: () => void;
   navigateToSearchPage: () => void;
@@ -33,9 +30,8 @@ export interface MainPageViewProps {
 
 const MainPageView: React.FC<MainPageViewProps> = ({ 
   modalInView, 
-  movieInOverview, 
-  movieBoard, 
-  movieInOverviewLoaded, 
+  hasMovieInOverview, 
+  movieBoard,
   movies, 
   isSuccessAlert, 
   selectedMovie, 
@@ -58,22 +54,20 @@ const MainPageView: React.FC<MainPageViewProps> = ({
     <>
       <header style={contentStyles}>
         <Banner
-          isMovieInOverviewMode={Boolean(movieInOverview)}
+          isMovieInOverviewMode={hasMovieInOverview}
           onCreateMovie={onCreateMovie}
           onLogoClicked={navigateToMainPage}
           onSearchIconClicked={navigateToSearchPage}
         >
-          { movieInOverview && movieInOverviewLoaded ? (
-            <MovieItemDetails movie={movieInOverview}/>
-          ):(
-            <>
-              { movieInOverviewLoaded ? (
-                <SearchPanel onChangeSearchingValue={setSearchingValue} />
-              ):(
-                <div style={loaderWrapperStyles}><Loader /></div>
-              ) } 
-            </>     
-          )} 
+          <Switch>
+            <Route 
+              path={RouterPaths.FILM} 
+              component={MovieItemDetails} 
+            />
+            <Route path={[RouterPaths.HOME, RouterPaths.SEARCH]} exact>
+              <SearchPanel onChangeSearchingValue={setSearchingValue} />
+            </Route>
+          </Switch>
         </Banner>
       </header>
 
