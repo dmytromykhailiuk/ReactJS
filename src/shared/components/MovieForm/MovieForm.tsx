@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./MovieForm.module.scss";
 import { Formik } from 'formik';
 import { FormData, Movie } from "models/";
@@ -6,6 +6,8 @@ import { Input, Dropdown, Button } from "../";
 import { categories } from "mocks";
 import { ButtonTypes, MovieFormValues } from "shared/enums";
 import { ValidationSchema } from "shared/helpers";
+import { useSelector } from "react-redux";
+import { errorMessagesSelector } from "store/modals/selectors";
 
 interface MovieFormProps {
   onSubmitForm: (movie: Movie) => void;
@@ -36,112 +38,126 @@ const MovieForm: React.FC<MovieFormProps> = ({ onSubmitForm, movie = {}, submitB
       validationSchema={ValidationSchema}
       validateOnBlur={true}
       onSubmit={(values: FormData) => {
-        onSubmitForm({ ...EXTRA_DATA, ...movie, tagline, ...values });
+        onSubmitForm({ ...EXTRA_DATA, ...movie, tagline, ...values }as any);
       }}
     >
-      {(formik) => (
-        <form onSubmit={formik.handleSubmit}>
+      {(formik) => {
+        const fieldsErrors: string[] = useSelector(errorMessagesSelector);
 
-          {movie.id && <Input 
-            disabled={true}
-            name={MovieFormValues.MOVIE_ID}
-            type="text"
-            label="MOVIE ID"
-            value={String(movie.id)}
-          />}
+        useEffect(() => {
+          if (fieldsErrors.length) {
+            formik.setErrors(fieldsErrors.reduce((acc, val) => {
+              const [_, key, value] = val.split('"');
+              acc[key] = value.trim();
+              return acc;
+            }, {} as any));
+          }
+        }, [fieldsErrors]);
 
-          <Input 
-            name={MovieFormValues.TITLE}
-            type="text"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder='Title here'
-            label="TITLE"
-            error={formik.errors.title && formik.touched.title ? formik.errors[MovieFormValues.TITLE] : ''}
-            value={formik.values[MovieFormValues.TITLE]}
-          />
+        return (
+          <form onSubmit={formik.handleSubmit}>
 
-          <Input 
-            name={MovieFormValues.RELEASE_DATE}
-            type="date"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder='Select Date'
-            label="RELEASE DATE"
-            error={formik.errors[MovieFormValues.RELEASE_DATE] && formik.touched[MovieFormValues.RELEASE_DATE] ? formik.errors[MovieFormValues.RELEASE_DATE] : ''}
-            value={formik.values[MovieFormValues.RELEASE_DATE]}
-          />
+            {movie.id && <Input 
+              disabled={true}
+              name={MovieFormValues.MOVIE_ID}
+              type="text"
+              label="MOVIE ID"
+              value={String(movie.id)}
+            />}
 
-          <Input 
-            name={MovieFormValues.MOVIE_URL}
-            type="text"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder='Movie URL here'
-            label="MOVIE URL"
-            error={formik.errors[MovieFormValues.MOVIE_URL] && formik.touched[MovieFormValues.MOVIE_URL] ? formik.errors[MovieFormValues.MOVIE_URL] : ''}
-            value={formik.values[MovieFormValues.MOVIE_URL]}
-          />
+            <Input 
+              name={MovieFormValues.TITLE}
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder='Title here'
+              label="TITLE"
+              error={formik.errors.title && formik.touched.title ? formik.errors[MovieFormValues.TITLE] : ''}
+              value={formik.values[MovieFormValues.TITLE]}
+            />
 
-          <Dropdown 
-            label="GENRE" 
-            placeholder="Select Genre" 
-            name={MovieFormValues.CATEGORY} 
-            options={categories}
-            error={formik.errors[MovieFormValues.CATEGORY] && formik.touched[MovieFormValues.CATEGORY] ? formik.errors[MovieFormValues.CATEGORY] : ''}
-          />
+            <Input 
+              name={MovieFormValues.RELEASE_DATE}
+              type="date"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder='Select Date'
+              label="RELEASE DATE"
+              error={formik.errors[MovieFormValues.RELEASE_DATE] && formik.touched[MovieFormValues.RELEASE_DATE] ? formik.errors[MovieFormValues.RELEASE_DATE] : ''}
+              value={formik.values[MovieFormValues.RELEASE_DATE]}
+            />
 
-          <Input 
-            name={MovieFormValues.OVERVIEW}
-            type="text"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder='Overview here'
-            label="OVERVIEW"
-            error={formik.errors[MovieFormValues.OVERVIEW] && formik.touched[MovieFormValues.OVERVIEW] ? formik.errors[MovieFormValues.OVERVIEW] : ''}
-            value={formik.values[MovieFormValues.OVERVIEW]}
-          />
+            <Input 
+              name={MovieFormValues.MOVIE_URL}
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder='Movie URL here'
+              label="MOVIE URL"
+              error={formik.errors[MovieFormValues.MOVIE_URL] && formik.touched[MovieFormValues.MOVIE_URL] ? formik.errors[MovieFormValues.MOVIE_URL] : ''}
+              value={formik.values[MovieFormValues.MOVIE_URL]}
+            />
 
-          <Input 
-            name={MovieFormValues.RATING}
-            type="number"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder='Rating here'
-            label="RATING"
-            error={ formik.errors[MovieFormValues.RATING] && formik.touched[MovieFormValues.RATING] ? formik.errors[MovieFormValues.RATING] : ''}
-            value={formik.values[MovieFormValues.RATING]}
-          />
+            <Dropdown 
+              label="GENRE" 
+              placeholder="Select Genre" 
+              name={MovieFormValues.CATEGORY} 
+              options={categories}
+              error={formik.errors[MovieFormValues.CATEGORY] && formik.touched[MovieFormValues.CATEGORY] ? formik.errors[MovieFormValues.CATEGORY] : ''}
+            />
 
-          <Input 
-            name={MovieFormValues.RUNTIME}
-            type="number"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            placeholder='Runtime here'
-            label="RUNTIME"
-            error={ formik.errors[MovieFormValues.RUNTIME] && formik.touched[MovieFormValues.RUNTIME] ? formik.errors[MovieFormValues.RUNTIME] : ''}
-            value={formik.values[MovieFormValues.RUNTIME]}
-          />
+            <Input 
+              name={MovieFormValues.OVERVIEW}
+              type="text"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder='Overview here'
+              label="OVERVIEW"
+              error={formik.errors[MovieFormValues.OVERVIEW] && formik.touched[MovieFormValues.OVERVIEW] ? formik.errors[MovieFormValues.OVERVIEW] : ''}
+              value={formik.values[MovieFormValues.OVERVIEW]}
+            />
 
-          <div className={classes.buttons}>
-            <Button 
-              type={ButtonTypes.SECONDARY} 
-              onButtonClicked={() => formik.resetForm()} 
-            >
-              RESET
-            </Button>
-            <Button
-              isSubmit={true}
-              type={ButtonTypes.PRIMARY}
-              disabled={!formik.isValid || !formik.dirty}
-            >
-              { submitButtonLabel }
-            </Button>
-          </div>
-          
-        </form>
-      )}
+            <Input 
+              name={MovieFormValues.RATING}
+              type="number"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder='Rating here'
+              label="RATING"
+              error={ formik.errors[MovieFormValues.RATING] && formik.touched[MovieFormValues.RATING] ? formik.errors[MovieFormValues.RATING] : ''}
+              value={formik.values[MovieFormValues.RATING]}
+            />
+
+            <Input 
+              name={MovieFormValues.RUNTIME}
+              type="number"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              placeholder='Runtime here'
+              label="RUNTIME"
+              error={ formik.errors[MovieFormValues.RUNTIME] && formik.touched[MovieFormValues.RUNTIME] ? formik.errors[MovieFormValues.RUNTIME] : ''}
+              value={formik.values[MovieFormValues.RUNTIME]}
+            />
+
+            <div className={classes.buttons}>
+              <Button 
+                type={ButtonTypes.SECONDARY} 
+                onButtonClicked={() => formik.resetForm()} 
+              >
+                RESET
+              </Button>
+              <Button
+                isSubmit={true}
+                type={ButtonTypes.PRIMARY}
+                disabled={!formik.isValid || !formik.dirty}
+              >
+                { submitButtonLabel }
+              </Button>
+            </div>
+            
+          </form>
+        )}
+      }
      </Formik>
   )
 }
