@@ -49,7 +49,7 @@ describe("MovieForm", () => {
     expect(onSubmitForm).toHaveBeenCalled();
   })
 
-  it("should reset form", () => {
+  it("should reset form", async() => {
     const input = wrapper.find("input[name='title']");
 
     input.simulate('change', {
@@ -61,6 +61,9 @@ describe("MovieForm", () => {
     });
 
     wrapper.find("button").first().simulate("click")
+
+    await delay();
+
     expect((input.getDOMNode() as any).value).toEqual('');
   })
 
