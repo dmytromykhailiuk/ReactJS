@@ -1,0 +1,58 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.movie-menu {
+  background-color: $dark-grey-color;
+  box-shadow: 0 2px 6px rgb(0, 0, 0);
+  width: 50vw;
+  border-radius: 1vw;
+  padding: 1vw 0;
+
+  @include small-screen {
+    width: 25vw;
+    border-radius: 0.5vw;
+    padding: 0.5vw 0;
+  }
+
+  @include large-screen {
+    width: 16.6vw;
+    border-radius: 0.33vw;
+    padding: 0.33vw 0;
+  }
+
+  @include extra-large-screen {
+    width: 12.6vw;
+    border-radius: 0.25vw;
+    padding: 0.25vw 0;
+  }
+
+  &__button {
+    color: $white-color;
+    font-size: 3.5vw;
+    padding: 2vw 6vw;
+    letter-spacing: 0.15vw;
+    transition: 0.4s;
+
+    @include small-screen {
+      font-size: 1.75vw;
+      padding: 1vw 3vw;
+      letter-spacing: 0.075vw;
+    }
+
+    @include large-screen {
+      font-size: 1.16vw;
+      padding: 0.66vw 2vw;
+      letter-spacing: 0.05vw;
+    }
+
+    @include extra-large-screen {
+      font-size: 0.88vw;
+      padding: 0.5vw 1.52vw;
+      letter-spacing: 0.038vw;
+    }
+
+    &:hover {
+      background-color: $pink-color;
+    }
+  }
+}

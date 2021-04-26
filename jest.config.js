@@ -44,5 +44,6 @@ module.exports = {
     "/assets/",
     "/icons/",
     "/enums/",
+    "/ssr/",
   ],
 };

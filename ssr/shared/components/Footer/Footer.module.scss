@@ -1,0 +1,9 @@
+@import '../../../styles/variables';
+
+.footer {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $medium-grey-color;
+}

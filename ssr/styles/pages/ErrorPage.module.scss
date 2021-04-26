@@ -1,0 +1,56 @@
+@import "../variables";
+@import "../mixins";
+
+$light-blue-color: rgba(0, 255, 255, 0.651);
+
+.error-page {
+  background-color: $dark-grey-color;
+  min-height: calc(100vh - 100px);
+  color: $white-color;
+  padding-bottom: 50px;
+  position: relative;
+
+  &__title {
+    text-align: center;
+    font-weight: normal;
+    font-size: 30px;
+    letter-spacing: 4px;
+    padding-top: 18vh;
+    padding-bottom: 4vh;
+
+    @include small-screen {
+      letter-spacing: 6px;
+      font-size: 42px;
+      padding-bottom: 20px;
+    }
+  }
+
+  &__error-number {
+    text-align: center;
+    font-size: 40vw;
+    font-weight: bold;
+    transform: scale(1, 0.7);
+    margin-bottom: 7vh;
+    text-shadow: -2vw 0 4vw $pink-color, 1.5vw 0 3vw $light-blue-color;
+
+    @include small-screen {
+      font-size: 375px;
+      text-shadow: -20px 0 40px $pink-color, 15px 0 30px $light-blue-color;
+      margin-bottom: 0;
+    }
+  }
+
+  &__button {
+    display: block;
+    width: 300px;
+    margin: auto;
+  }
+
+  &__logo {
+    position: absolute;
+    margin: 30px 6%;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+  }
+}

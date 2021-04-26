@@ -1,13 +1,12 @@
 import React from 'react';
 import { CategoryPanel, SortPanel, MovieList } from '..';
-import { Movie } from 'models';
-import { ButtonTypes, Categories, SortingOptionsProperties } from 'shared/enums';
+import { Movie } from '../../models';
+import { ButtonTypes, Categories, SortingOptionsProperties } from '../../shared/enums';
 import classes from "./MovieBoard.module.scss";
-import { Button, Loader } from 'shared/components';
+import { Button, Loader } from '../../shared/components';
 
 export interface MovieBoardViewProps {
   movies: Movie[];
-  movieBoardRef: React.MutableRefObject<any>;
   category: Categories;
   sortingOption: SortingOptionsProperties;
   isDownDirection: boolean;
@@ -25,7 +24,6 @@ export interface MovieBoardViewProps {
 
 const MovieBoardView: React.FC<MovieBoardViewProps> = ({ 
   movies,
-  movieBoardRef,
   category,
   sortingOption,
   isDownDirection,
@@ -42,7 +40,7 @@ const MovieBoardView: React.FC<MovieBoardViewProps> = ({
 }) => {
   return (
     <div className={classes['movie-board']}>
-      <div className={classes['movie-board__header']} ref={movieBoardRef}>
+      <div className={classes['movie-board__header']}>
         <CategoryPanel onChangeCategory={setCategory} selectedCategory={category}/>
         <SortPanel
           sortingOption={sortingOption}

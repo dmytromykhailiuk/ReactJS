@@ -1,0 +1,53 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.scroll-btn {
+  position: fixed;
+  z-index: 2000;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid $pink-color;
+  cursor: pointer;
+  background-color: rgba($dark-grey-color, 0.4);
+  box-shadow: 0 0 10px rgba($pink-color, 0.4);
+  transition: opacity 0.4s cubic-bezier(0.700, 0.150, 0.945, 0.505);
+
+  &>p {
+    user-select: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    position: fixed;
+    bottom: 32px;
+    right: 31px;
+    color: $pink-color;
+    text-shadow: 0 0 10px rgba($pink-color, 0.4);
+    font-weight: 600;
+    text-align: center;
+  }
+
+  @include small-screen {
+    border: 3px solid $pink-color;
+    bottom: 50px;
+    right: 50px;
+    width: 75px;
+    height: 75px;
+
+    &>p {
+      font-size: 30px;
+      bottom: 68px;
+      right: 66px;
+    }
+  }
+
+  &--hide {
+    cursor: default;
+    opacity: 0;
+  }
+
+  &:hover {
+    background-color: $dark-grey-color;
+  }
+}

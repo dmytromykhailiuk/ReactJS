@@ -1,0 +1,48 @@
+@import '../../styles/mixins';
+
+.search {
+  display: block;
+  width: 88%;
+  margin: auto;
+
+  &__button,
+  &__input {
+    margin: auto;
+  }
+
+  &__title {
+    margin: 40px 10%;
+    font-size: 40px;
+    color: $white-color;
+    font-weight: normal;
+    text-align: center;
+    letter-spacing: 5px;
+    text-shadow: 0 0 1px $dark-grey-color;
+
+    @include medium-screen {
+      margin: 80px 10%;
+      font-size: 55px;
+      text-align: left;
+    }
+  }
+
+  &__button {
+    display: flex;
+    margin-top: 7vh;
+    justify-content: center;
+  }
+
+  @include medium-screen {
+    display: flex;
+    width: 80%;
+
+    &__input {
+      margin-right: 20px;
+      flex-grow: 1;
+    }
+
+    &__button {
+      margin-top: 0;
+    }
+  }
+}

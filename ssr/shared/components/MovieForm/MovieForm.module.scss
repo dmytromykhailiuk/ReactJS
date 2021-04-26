@@ -1,0 +1,27 @@
+@import "../../../styles/mixins";
+
+.buttons {
+  display: block;
+  margin-top: 50px;
+
+  &>* {
+    display: block;
+
+    &:first-child {
+      margin-right: 0px;
+      margin-bottom: 20px;
+    }
+  }
+
+  @include medium-screen {
+    margin-top: 80px;
+    display: flex;
+    justify-content: flex-end;
+
+    &>* {
+      &:first-child {
+        margin-right: 20px;
+      }
+    }
+  }
+}
