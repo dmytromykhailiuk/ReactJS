@@ -21,10 +21,10 @@ const MovieItemDetailsView: React.FC<MovieItemDetailsView> = React.memo(({
   const [defaultImage, setError] = useDefaultImage(movieInOverview?.poster_path);
 
   useMemo(() => {
-    if (execution.isClient && shouldCheckImages) {
+    if (movieInOverview && execution.isClient && shouldCheckImages) {
       checkIsValidImagePath(movieInOverview.poster_path, setError);
     }
-  }, []);
+  }, [shouldCheckImages, movieInOverview]);
 
   return (
     <>
