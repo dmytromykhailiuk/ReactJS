@@ -1,8 +1,9 @@
-import React, { useMemo } from "react";
+import React, { Suspense } from "react";
 import { MovieBoard } from "../";
-import { renderModal } from "../../shared/helpers"
 import { Movie } from "../../models/";
 import { ModalTypes } from "../../shared/enums";
+
+const MovieModal = React.lazy(() => import("../MovieModal/MovieModal"));
 
 const bluredStyles = {
   filter: 'blur(7px)',
@@ -31,8 +32,6 @@ const MovieBoardWrapperView: React.FC<MovieBoardWrapperViewProps> = ({
   onCloseModal, 
   onCloseWithSaving,
 }) => {
-
-  const Modal = useMemo(() => renderModal(modalInView), [modalInView]);
   
   const contentStyles = modalInView ? bluredStyles: {};
 
@@ -47,13 +46,17 @@ const MovieBoardWrapperView: React.FC<MovieBoardWrapperViewProps> = ({
       </main>
 
       { modalInView && (
-        <Modal 
-          movie={selectedMovie}
-          isSuccessAlert={isSuccessAlert}
-          alertMessage={alertMessage}
-          onCloseModal={onCloseModal}
-          onCloseWithSaving={onCloseWithSaving}
-        />) }
+        <Suspense fallback="">
+          <MovieModal
+            modalInView={modalInView}
+            movie={selectedMovie}
+            isSuccessAlert={isSuccessAlert}
+            alertMessage={alertMessage}
+            onCloseModal={onCloseModal}
+            onCloseWithSaving={onCloseWithSaving}
+          />
+        </Suspense>
+        ) }
     </>
   )
 }

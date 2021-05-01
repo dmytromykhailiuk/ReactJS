@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useMemo } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { Movie } from "../../models";
 import { ThreeDotsIcon } from "../../shared/components";
 import classes from "./MovieItem.module.scss";
@@ -28,7 +28,7 @@ const MovieItem: React.FC<MovieItemProps> = React.memo(({
     setShoudShowMenuValue(false);
   }, []);
 
-  useMemo(() => {
+  useEffect(() => {
     if (execution.isClient && shouldCheckImages) {
       checkIsValidImagePath(movie.poster_path, setError);
     }

@@ -1,5 +1,5 @@
 import { Movie } from '../../models/movie.model';
-import React, { useMemo } from 'react';
+import React, { useEffect } from 'react';
 import classes from './MovieItemDetails.module.scss'
 import { useDefaultImage } from '../../shared/hooks';
 import { Loader } from '../../shared/components';
@@ -20,7 +20,7 @@ const MovieItemDetailsView: React.FC<MovieItemDetailsView> = React.memo(({
 }) => { 
   const [defaultImage, setError] = useDefaultImage(movieInOverview?.poster_path);
 
-  useMemo(() => {
+  useEffect(() => {
     if (movieInOverview && execution.isClient && shouldCheckImages) {
       checkIsValidImagePath(movieInOverview.poster_path, setError);
     }

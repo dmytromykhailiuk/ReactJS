@@ -6,14 +6,20 @@ import classnames from "classnames";
 import { useDispatch, useSelector } from 'react-redux';
 import { ModalsAction, Store, MoviesSelector, ModalsSelector, MoviesAction } from '../../store';
 import { Movie } from '../../models';
-import Router from "next/router";
+import { useRouter } from "next/router";
+import { useEffect } from 'react';
 
 const bluredStyles = {
   filter: 'blur(7px)',
 }
 
-const Banner = React.memo(({ children }) => {
+interface BannerProps {
+  isFirstRenderOnClient: boolean;
+}
+
+const Banner: React.FC<BannerProps> = React.memo(({ children, isFirstRenderOnClient }) => {
   const dispatch = useDispatch();
+  const router =  useRouter();
   const movieInOverview = useSelector<Store, Movie>(MoviesSelector.movieInOverviewSelector);
   const modalInView = useSelector<Store, ModalTypes>(ModalsSelector.modalInViewSelector);
 
@@ -22,17 +28,23 @@ const Banner = React.memo(({ children }) => {
   }, []);
 
   const onLogoClicked = useCallback(() => {
-    if (Router.pathname !== RouterPaths.HOME) {
-      Router.push(RouterPaths.HOME);
-      if (Router.query.SearchQuery) {
+    if (router.pathname !== RouterPaths.HOME) {
+      router.push(RouterPaths.HOME);
+      if (router.query.SearchQuery) {
         dispatch(MoviesAction.loadMoviesAction({ searchingValue: '', hasSearchingValue: true }));
       }
     }
   }, []);
 
   const onSearchIconClicked = useCallback(() => {
-    Router.push(RouterPaths.SEARCH + "?SearchQuery=");
+    router.push(RouterPaths.SEARCH + "?SearchQuery=");
   }, []);
+  
+  useEffect(() => {
+    if (!isFirstRenderOnClient && router.pathname !== RouterPaths.FILM && movieInOverview) {
+      dispatch(MoviesAction.loadMovieInOverviewSuccessAction(null));
+    }
+  }, [router.pathname, isFirstRenderOnClient, movieInOverview])
 
   const contentStyles = modalInView ? bluredStyles: {};
 
