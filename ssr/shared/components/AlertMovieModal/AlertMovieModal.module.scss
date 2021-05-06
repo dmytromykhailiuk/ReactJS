@@ -1,0 +1,49 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.alert-movie-modal {
+  &__title {
+    color: $white-color;
+    font-weight: normal;
+    text-shadow: 0 0 1px $dark-grey-color;
+    font-size: 19px;
+    letter-spacing: 2px;
+    text-align: center;
+    line-height: 1.4;
+
+    @include medium-screen {
+      font-size: 32px;
+      letter-spacing: 3px;
+    }
+  }
+
+  &__message {
+    margin-top: 25px;
+    text-align: center;
+    color: $white-color;
+    letter-spacing: 1px;
+    line-height: 1.4;
+
+    @include medium-screen {
+      width: 300px;
+      margin: 25px auto 0 auto;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 28px auto;
+    background-color: $pink-color;
+    border-radius: 50%;
+    color: $white-color;
+    font-size: 37px;
+
+    @include medium-screen {
+      margin: 0 auto 35px auto;
+    }
+  }
+}
