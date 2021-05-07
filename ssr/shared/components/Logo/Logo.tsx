@@ -7,7 +7,7 @@ const Logo: React.FC = () => {
       netflix
       <span className={classes.logo__roulette}>roulette</span>
     </div>
-  )
-}
+  );
+};
 
 export default Logo;

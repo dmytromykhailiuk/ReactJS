@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from "./ThreeDotsIcon.module.scss";
+import classes from './ThreeDotsIcon.module.scss';
 
 const ThreeDotsIcon: React.FC = () => (
   <div className={classes.icon}>

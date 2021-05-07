@@ -1,34 +1,34 @@
-import { getMovies } from "./";
-import { SortingOptionsProperties, Categories } from "../shared/enums";
-import { getMovie, addMovie, deleteMovie, editMovie } from "./movie-api";
+import { getMovies } from '.';
+import { SortingOptionsProperties, Categories } from '../shared/enums';
+import { getMovie, addMovie, deleteMovie, editMovie } from './movie-api';
 
 const mockJSONPromise = Promise.resolve(null);
-let mockFetchPromise = Promise.resolve({
+const mockFetchPromise = Promise.resolve({
   json: () => mockJSONPromise,
   ok: true,
 });
 
-const API_URL = "http://localhost:4000/movies";
+const API_URL = 'http://localhost:4000/movies';
 const limit = 12;
 const headers = {
-  "Content-Type": "application/json",
+  'Content-Type': 'application/json',
 };
 
-describe("movie-api", () => {
+describe('movie-api', () => {
   beforeEach(() => {
     global.fetch = jest.fn().mockImplementation(() => mockFetchPromise);
   });
 
-  describe("getMovies", () => {
+  describe('getMovies', () => {
     afterEach(() => {
       jest.clearAllMocks();
     });
 
-    it("should call with same url, headers and selectedCategory as DOCUMENTARY", () => {
+    it('should call with same url, headers and selectedCategory as DOCUMENTARY', () => {
       const sortingOption = SortingOptionsProperties.RATING;
       const isDownDirection = true;
       const selectedCategory = Categories.DOCUMENTARY;
-      const searchingValue = "";
+      const searchingValue = '';
       const offset = 0;
       getMovies({
         sortingOption,
@@ -38,18 +38,17 @@ describe("movie-api", () => {
         offset,
       }).then(() => {
         expect(global.fetch).toHaveBeenCalledWith(
-          API_URL +
-            `?limit=${limit}&offset=${offset}&searchBy=title&search=${searchingValue}&sortOrder=${
-              isDownDirection ? "desc" : "asc"
-            }&sortBy=${sortingOption}&filter=${selectedCategory}`,
+          `${API_URL}?limit=${limit}&offset=${offset}&searchBy=title&search=${searchingValue}&sortOrder=${
+            isDownDirection ? 'desc' : 'asc'
+          }&sortBy=${sortingOption}&filter=${selectedCategory}`,
           {
             headers,
-          }
+          },
         );
       });
     });
 
-    it("should call with same url, headers and selectedCategory as All", () => {
+    it('should call with same url, headers and selectedCategory as All', () => {
       const sortingOption = SortingOptionsProperties.RATING;
       const isDownDirection = false;
       const selectedCategory = Categories.ALL;
@@ -59,26 +58,25 @@ describe("movie-api", () => {
         selectedCategory,
       }).then(() => {
         expect(global.fetch).toHaveBeenCalledWith(
-          API_URL +
-            `?limit=${limit}&offset=0&searchBy=title&search=&sortOrder=${
-              isDownDirection ? "desc" : "asc"
-            }&sortBy=${sortingOption}&filter=`,
+          `${API_URL}?limit=${limit}&offset=0&searchBy=title&search=&sortOrder=${
+            isDownDirection ? 'desc' : 'asc'
+          }&sortBy=${sortingOption}&filter=`,
           {
             headers,
-          }
+          },
         );
       });
     });
   });
 
-  describe("getMovie", () => {
-    const id = "6";
+  describe('getMovie', () => {
+    const id = '6';
 
     afterEach(() => {
       jest.clearAllMocks();
     });
 
-    it("should called with same url", () => {
+    it('should called with same url', () => {
       getMovie(id).then(() => {
         expect(global.fetch).toHaveBeenCalledWith(`${API_URL}/${id}`, {
           headers,
@@ -87,24 +85,24 @@ describe("movie-api", () => {
     });
   });
 
-  describe("addMovie", () => {
+  describe('addMovie', () => {
     const movie = null as any;
 
     afterEach(() => {
       jest.clearAllMocks();
     });
 
-    it("should called with same url and data", () => {
+    it('should called with same url and data', () => {
       addMovie(movie).then(() => {
         expect(global.fetch).toHaveBeenCalledWith(`${API_URL}`, {
-          method: "POST",
+          method: 'POST',
           headers,
           body: JSON.stringify(movie),
         });
       });
     });
 
-    it("should throw error", () => {
+    it('should throw error', () => {
       const mockFetchPromise = Promise.resolve({
         json: () => mockJSONPromise,
         ok: false,
@@ -113,7 +111,7 @@ describe("movie-api", () => {
       global.fetch = jest.fn().mockImplementation(() => mockFetchPromise);
       addMovie(movie).catch(() => {
         expect(global.fetch).toHaveBeenCalledWith(`${API_URL}`, {
-          method: "POST",
+          method: 'POST',
           headers,
           body: JSON.stringify(movie),
         });
@@ -121,41 +119,41 @@ describe("movie-api", () => {
     });
   });
 
-  describe("deleteMovie", () => {
+  describe('deleteMovie', () => {
     const id = 5;
 
     afterEach(() => {
       jest.clearAllMocks();
     });
 
-    it("should called with same url and data", () => {
+    it('should called with same url and data', () => {
       deleteMovie(id).then(() => {
         expect(global.fetch).toHaveBeenCalledWith(`${API_URL}/${id}`, {
-          method: "DELETE",
+          method: 'DELETE',
           headers,
         });
       });
     });
   });
 
-  describe("editMovie", () => {
+  describe('editMovie', () => {
     const movie = null as any;
 
     afterEach(() => {
       jest.clearAllMocks();
     });
 
-    it("should called with same url and data", () => {
+    it('should called with same url and data', () => {
       editMovie(movie).then(() => {
         expect(global.fetch).toHaveBeenCalledWith(`${API_URL}`, {
-          method: "PUT",
+          method: 'PUT',
           headers,
           body: JSON.stringify(movie),
         });
       });
     });
 
-    it("should throw error", () => {
+    it('should throw error', () => {
       const mockFetchPromise = Promise.resolve({
         json: () => mockJSONPromise,
         ok: false,
@@ -164,7 +162,7 @@ describe("movie-api", () => {
       global.fetch = jest.fn().mockImplementation(() => mockFetchPromise);
       editMovie(movie).catch(() => {
         expect(global.fetch).toHaveBeenCalledWith(`${API_URL}`, {
-          method: "PUT",
+          method: 'PUT',
           headers,
           body: JSON.stringify(movie),
         });

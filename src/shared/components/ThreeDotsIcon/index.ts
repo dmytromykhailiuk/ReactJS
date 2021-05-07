@@ -1,1 +1,1 @@
-export { default as ThreeDotsIcon } from "./ThreeDotsIcon";
+export { default as ThreeDotsIcon } from './ThreeDotsIcon';

@@ -1,4 +1,4 @@
-import { Categories } from "../shared/enums";
+import { Categories } from '../shared/enums';
 
 export interface FormData {
   title: string;

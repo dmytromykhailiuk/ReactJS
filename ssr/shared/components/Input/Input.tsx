@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FocusEvent } from 'react';
-import classes from "./Input.module.scss";
-import classnames from "classnames";
+import classes from './Input.module.scss';
+import classnames from 'classnames';
 
 interface InputProps {
   value?: string | number;
@@ -10,12 +10,12 @@ interface InputProps {
   error?: string | string[];
   label?: string;
   disabled?: boolean;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
-  onBlur?: (event: FocusEvent<HTMLInputElement>) => void
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
 }
 
 const Input: React.FC<InputProps> = ({
-  value = '', 
+  value = '',
   placeholder = '',
   name = '',
   label = '',
@@ -23,23 +23,21 @@ const Input: React.FC<InputProps> = ({
   type = 'text',
   disabled = false,
   onChange = () => {},
-  onBlur = () => {}
+  onBlur = () => {},
 }) => {
   return (
     <>
-      {label && 
-        <label 
-          htmlFor={name} 
-          className={classes.label}
-        >{ label }</label>
-      }
+      {label && (
+        <label htmlFor={name} className={classes.label}>
+          {label}
+        </label>
+      )}
       <input
         disabled={disabled}
-        className={classnames(
-          classes.input,
-          { [classes["input--disabled"]]: disabled,
-            [classes["input--error"]]: error}
-        )}
+        className={classnames(classes.input, {
+          [classes['input--disabled']]: disabled,
+          [classes['input--error']]: error,
+        })}
         value={value}
         name={name}
         id={name}
@@ -48,11 +46,9 @@ const Input: React.FC<InputProps> = ({
         onChange={onChange}
         onBlur={onBlur}
       />
-      {error && (<div className={classes.input__error}>
-        { error }
-      </div>) }
+      {error && <div className={classes.input__error}>{error}</div>}
     </>
-  )
+  );
 };
 
 export default Input;

@@ -1,1 +1,1 @@
-export { default as AlertMovieModal } from "./AlertMovieModal";
+export { default as AlertMovieModal } from './AlertMovieModal';

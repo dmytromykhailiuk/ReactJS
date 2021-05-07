@@ -1,12 +1,12 @@
-import { shallow } from "enzyme";
-import React from "react";
+import { shallow } from 'enzyme';
+import React from 'react';
 import toJson from 'enzyme-to-json';
-import { Categories, SortingOptionsProperties } from "../../../../shared/enums";
-import MovieBoardView from "./MovieBoardView";
-import { Button, Loader } from "shared/components";
+import { Button, Loader } from 'shared/components';
+import { Categories, SortingOptionsProperties } from '../../../../shared/enums';
+import MovieBoardView from './MovieBoardView';
 
-describe("MovieBoardView", () => {
-  it("should match snepshot", () => {
+describe('MovieBoardView', () => {
+  it('should match snepshot', () => {
     const wrapper = shallow(
       <MovieBoardView
         movies={[{ id: 2 }] as any[]}
@@ -24,10 +24,10 @@ describe("MovieBoardView", () => {
         setSortingOption={() => {}}
         setIsDownDirectionValue={() => {}}
         showMoreMovies={() => {}}
-      />
-    )
+      />,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
-  })
+  });
 
   it("should show 'No Movies Dound' message", () => {
     const wrapper = shallow(
@@ -47,13 +47,13 @@ describe("MovieBoardView", () => {
         setSortingOption={() => {}}
         setIsDownDirectionValue={() => {}}
         showMoreMovies={() => {}}
-      />
-    )
+      />,
+    );
 
-    expect(wrapper.find('.movie-board__no-movie-found').text()).toEqual("No Movie Found")
-  })
+    expect(wrapper.find('.movie-board__no-movie-found').text()).toEqual('No Movie Found');
+  });
 
-  it("should show Loader", () => {
+  it('should show Loader', () => {
     const wrapper = shallow(
       <MovieBoardView
         movies={[] as any[]}
@@ -71,10 +71,10 @@ describe("MovieBoardView", () => {
         setSortingOption={() => {}}
         setIsDownDirectionValue={() => {}}
         showMoreMovies={() => {}}
-      />
-    )
-    expect(wrapper.exists(Loader)).toBeTruthy()
-  })
+      />,
+    );
+    expect(wrapper.exists(Loader)).toBeTruthy();
+  });
 
   it("should not show 'more movies' button", () => {
     const wrapper = shallow(
@@ -94,8 +94,8 @@ describe("MovieBoardView", () => {
         setSortingOption={() => {}}
         setIsDownDirectionValue={() => {}}
         showMoreMovies={() => {}}
-      />
-    )
-    expect(wrapper.exists(Button)).toBeFalsy()
-  })
+      />,
+    );
+    expect(wrapper.exists(Button)).toBeFalsy();
+  });
 });

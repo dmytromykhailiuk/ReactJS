@@ -1,6 +1,6 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect } from 'react';
 
-const DEFAULT_IMG_PATH = "/no-picture.png";
+const DEFAULT_IMG_PATH = '/no-picture.png';
 
 export function useDefaultImage(imageUrl: string) {
   const [defaultImage, setDefaultImage] = useState(null);

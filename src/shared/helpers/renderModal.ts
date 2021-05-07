@@ -1,11 +1,6 @@
-import {
-  AlertMovieModal,
-  CreateMovieModal,
-  DeleteMovieModal,
-  EditMovieModal,
-} from "shared/components";
-import { MovieModalProps } from "models/movie-modal-props";
-import { ModalTypes } from "shared/enums";
+import { AlertMovieModal, CreateMovieModal, DeleteMovieModal, EditMovieModal } from 'shared/components';
+import { MovieModalProps } from 'models/movie-modal-props';
+import { ModalTypes } from 'shared/enums';
 
 export function renderModal(type: ModalTypes): React.FC<MovieModalProps> {
   switch (type) {

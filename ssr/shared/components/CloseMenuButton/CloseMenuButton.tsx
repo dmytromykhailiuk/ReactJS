@@ -1,6 +1,6 @@
 import React from 'react';
-import classes from "./CloseMenuButton.module.scss";
-import classnames from "classnames";
+import classes from './CloseMenuButton.module.scss';
+import classnames from 'classnames';
 
 interface CloseMenuButtonProps {
   isSmall?: boolean;
@@ -11,14 +11,13 @@ const CloseMenuButton: React.FC<CloseMenuButtonProps> = ({ isSmall = false, onCl
   return (
     <div className={classes['close-menu-button__wrapper']}>
       <div
-        className={classnames(
-          classes['close-menu-button__button'], 
-          {[classes['close-menu-button__button--small']] : isSmall}
-        )}
+        className={classnames(classes['close-menu-button__button'], {
+          [classes['close-menu-button__button--small']]: isSmall,
+        })}
         onClick={onCloseButtonClicked}
       ></div>
     </div>
-  )
-}
+  );
+};
 
 export default CloseMenuButton;

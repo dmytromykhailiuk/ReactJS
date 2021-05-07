@@ -1,4 +1,4 @@
 export enum EventTypes {
-  CLICK = "click",
-  SCROLL = "scroll",
+  CLICK = 'click',
+  SCROLL = 'scroll',
 }

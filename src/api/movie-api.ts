@@ -1,10 +1,10 @@
-import { Categories, SortingOptionsProperties } from "shared/enums";
-import { Movie } from "models/movie.model";
+import { Categories, SortingOptionsProperties } from 'shared/enums';
+import { Movie } from 'models/movie.model';
 
-const API_URL = "http://localhost:4000/movies";
+const API_URL = 'http://localhost:4000/movies';
 const limit = 12;
 const headers = {
-  "Content-Type": "application/json",
+  'Content-Type': 'application/json',
 };
 
 interface GetMoviesOptions {
@@ -23,19 +23,16 @@ export function getMovies({
   sortingOption,
   isDownDirection,
   selectedCategory,
-  searchingValue = "",
+  searchingValue = '',
   offset = 0,
 }: GetMoviesOptions): Promise<LoadMoviesResponse> {
   return fetch(
-    API_URL +
-      `?limit=${limit}&offset=${offset}&searchBy=title&search=${searchingValue}&sortOrder=${
-        isDownDirection ? "desc" : "asc"
-      }&sortBy=${sortingOption}&filter=${
-        selectedCategory === Categories.ALL ? "" : selectedCategory
-      }`,
+    `${API_URL}?limit=${limit}&offset=${offset}&searchBy=title&search=${searchingValue}&sortOrder=${
+      isDownDirection ? 'desc' : 'asc'
+    }&sortBy=${sortingOption}&filter=${selectedCategory === Categories.ALL ? '' : selectedCategory}`,
     {
       headers,
-    }
+    },
   ).then((res) => res.json());
 }
 
@@ -47,7 +44,7 @@ export function getMovie(id: string): Promise<Movie> {
 
 export function addMovie(movie: Movie): Promise<Movie> {
   return fetch(API_URL, {
-    method: "POST",
+    method: 'POST',
     headers,
     body: JSON.stringify(movie),
   }).then((res) =>
@@ -60,13 +57,13 @@ export function addMovie(movie: Movie): Promise<Movie> {
       } else {
         return data;
       }
-    })
+    }),
   );
 }
 
 export function editMovie(movie: Movie): Promise<Movie> {
   return fetch(API_URL, {
-    method: "PUT",
+    method: 'PUT',
     headers,
     body: JSON.stringify(movie),
   }).then((res) =>
@@ -79,10 +76,10 @@ export function editMovie(movie: Movie): Promise<Movie> {
       } else {
         return data;
       }
-    })
+    }),
   );
 }
 
 export function deleteMovie(id: number): Promise<Response> {
-  return fetch(`${API_URL}/${id}`, { method: "DELETE", headers });
+  return fetch(`${API_URL}/${id}`, { method: 'DELETE', headers });
 }

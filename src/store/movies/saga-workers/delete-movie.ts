@@ -1,8 +1,8 @@
-import { deleteMovie } from "api";
-import { history } from "router";
-import { RouterPaths } from "shared/enums";
-import { deleteMovieSuccessAction, deleteMovieFaildAction } from "../actions";
-import { call, put } from "redux-saga/effects";
+import { deleteMovie } from 'api';
+import { history } from 'router';
+import { RouterPaths } from 'shared/enums';
+import { call, put } from 'redux-saga/effects';
+import { deleteMovieSuccessAction, deleteMovieFaildAction } from '../actions';
 
 export function* deleteMovieWorker({
   payload: { id, shouldNavigateToHome },

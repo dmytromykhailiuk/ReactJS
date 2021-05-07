@@ -1,15 +1,9 @@
-import {
-  moviesAmountInStoreSelector,
-  moviesOptionsSelector,
-} from "../selectors";
-import { MoviesOptions } from "../../../models";
-import { LoadMoviesResponse, getMovies } from "../../../api";
-import {
-  loadMoreMoviesSeccessAction,
-  loadMoreMoviesFaildAction,
-} from "../actions";
-import { select, put, call, delay } from "redux-saga/effects";
-import Router from "next/router";
+import { moviesAmountInStoreSelector, moviesOptionsSelector } from '../selectors';
+import { MoviesOptions } from '../../../models';
+import { LoadMoviesResponse, getMovies } from '../../../api';
+import { loadMoreMoviesSeccessAction, loadMoreMoviesFaildAction } from '../actions';
+import { select, put, call, delay } from 'redux-saga/effects';
+import Router from 'next/router';
 
 export function* showMoreMoviesWorker() {
   try {
@@ -20,7 +14,7 @@ export function* showMoreMoviesWorker() {
     const { data }: LoadMoviesResponse = yield call(getMovies, {
       ...moviesOptions,
       offset,
-      searchingValue: searchingValue ?? "",
+      searchingValue: searchingValue ?? '',
     });
     yield put(loadMoreMoviesSeccessAction(data));
   } catch {

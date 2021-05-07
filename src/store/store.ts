@@ -1,9 +1,9 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import { composeWithDevTools } from "redux-devtools-extension";
-import { modalsReducer, ModalsState } from "./modals";
-import { moviesReducer, moviesSaga, MoviesState } from "./movies";
-import createSagaMiddleware from "redux-saga";
-import { spawn } from "@redux-saga/core/effects";
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import createSagaMiddleware from 'redux-saga';
+import { spawn } from '@redux-saga/core/effects';
+import { modalsReducer, ModalsState } from './modals';
+import { moviesReducer, moviesSaga, MoviesState } from './movies';
 
 function* rootSaga() {
   yield spawn(moviesSaga);
@@ -18,7 +18,7 @@ export interface Store {
 
 const store = createStore(
   combineReducers({ movies: moviesReducer, modals: modalsReducer }),
-  composeWithDevTools(applyMiddleware(sagaMiddleware))
+  composeWithDevTools(applyMiddleware(sagaMiddleware)),
 );
 
 sagaMiddleware.run(rootSaga);

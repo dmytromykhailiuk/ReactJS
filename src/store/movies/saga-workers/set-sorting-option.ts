@@ -1,20 +1,10 @@
-import {
-  hideLoaderAction,
-  loadMoviesAction,
-  setSortingOptionSuccessAction,
-} from "../actions";
-import { SortingOptionsProperties } from "shared/enums";
-import { sortingOptionSelector } from "../selectors";
-import { select, put } from "redux-saga/effects";
+import { SortingOptionsProperties } from 'shared/enums';
+import { select, put } from 'redux-saga/effects';
+import { hideLoaderAction, loadMoviesAction, setSortingOptionSuccessAction } from '../actions';
+import { sortingOptionSelector } from '../selectors';
 
-export function* setSortingOptionWorker({
-  payload,
-}: {
-  payload: SortingOptionsProperties;
-}) {
-  const sortingOptionInStore: SortingOptionsProperties = yield select(
-    sortingOptionSelector
-  );
+export function* setSortingOptionWorker({ payload }: { payload: SortingOptionsProperties }) {
+  const sortingOptionInStore: SortingOptionsProperties = yield select(sortingOptionSelector);
   if (payload !== sortingOptionInStore) {
     yield put(setSortingOptionSuccessAction(payload));
     yield put(loadMoviesAction());

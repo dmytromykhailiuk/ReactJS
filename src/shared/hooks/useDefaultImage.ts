@@ -1,5 +1,5 @@
-import { useState, useCallback, useMemo } from "react";
-import DEFAULT_IMG_PATH from "../../assets/no-picture.png";
+import { useState, useCallback, useMemo } from 'react';
+import DEFAULT_IMG_PATH from '../../assets/no-picture.png';
 
 export function useDefaultImage(imageUrl: string) {
   const [defaultImage, setDefaultImage] = useState(null);

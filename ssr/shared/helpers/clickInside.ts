@@ -1,9 +1,6 @@
-import { SyntheticEvent } from "react";
+import { SyntheticEvent } from 'react';
 
-export function isClickInside(
-  event: SyntheticEvent,
-  ...classes: string[]
-): boolean {
+export function isClickInside(event: SyntheticEvent, ...classes: string[]): boolean {
   const { target, currentTarget } = event;
 
   function isInside(target: EventTarget & HTMLElement): boolean {

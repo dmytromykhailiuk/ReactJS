@@ -1,8 +1,8 @@
-import { put } from "redux-saga/effects";
-import { getSearchQuery } from "shared/helpers";
-import { RouterPaths } from "shared/enums";
-import { history } from "router";
-import { loadMoviesAction, hideLoaderAction } from "../actions";
+import { put } from 'redux-saga/effects';
+import { getSearchQuery } from 'shared/helpers';
+import { RouterPaths } from 'shared/enums';
+import { history } from 'router';
+import { loadMoviesAction, hideLoaderAction } from '../actions';
 
 export function* searchMoviesWorker({
   payload,
@@ -14,7 +14,7 @@ export function* searchMoviesWorker({
 }) {
   const searchingValue = getSearchQuery();
   if (payload.searchingValue !== searchingValue) {
-    history.push(RouterPaths.SEARCH + "?SearchQuery=" + payload.searchingValue);
+    history.push(`${RouterPaths.SEARCH}?SearchQuery=${payload.searchingValue}`);
     yield put(loadMoviesAction());
     payload.scrollToMovies();
   } else {

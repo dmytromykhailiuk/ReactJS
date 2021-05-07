@@ -1,55 +1,47 @@
-import { modalsReducer, ModalsState, AlertMessages } from "./reducer";
-import { ModalTypes } from "../../shared/enums";
-import { setErrorMessagesAction, setModalInViewAction } from "./actions";
-import { MoviesAction } from "../movies";
+import { modalsReducer, ModalsState, AlertMessages } from './reducer';
+import { ModalTypes } from '../../shared/enums';
+import { setErrorMessagesAction, setModalInViewAction } from './actions';
+import { MoviesAction } from '../movies';
 
 const modalsState: ModalsState = {
   modalInView: null,
-  alertMessage: "",
+  alertMessage: '',
   isSuccessAlert: true,
   errorMessages: [],
 };
 
-const UNEXPECTED_TYPE = "UNEXPECTED";
+const UNEXPECTED_TYPE = 'UNEXPECTED';
 
-describe("modalsReducer", () => {
-  describe("default case", () => {
-    it("should return same state", () => {
-      expect(modalsReducer(modalsState, { type: UNEXPECTED_TYPE })).toEqual(
-        modalsState
-      );
+describe('modalsReducer', () => {
+  describe('default case', () => {
+    it('should return same state', () => {
+      expect(modalsReducer(modalsState, { type: UNEXPECTED_TYPE })).toEqual(modalsState);
     });
   });
 
-  describe("setModalInViewAction", () => {
-    it("should return state with new modalInView data", () => {
+  describe('setModalInViewAction', () => {
+    it('should return state with new modalInView data', () => {
       const modalInView = ModalTypes.CREATE;
-      expect(
-        modalsReducer(
-          modalsState,
-          setModalInViewAction({ modalType: modalInView })
-        )
-      ).toEqual({ ...modalsState, modalInView });
+      expect(modalsReducer(modalsState, setModalInViewAction({ modalType: modalInView }))).toEqual({
+        ...modalsState,
+        modalInView,
+      });
     });
   });
 
-  describe("setErrorMessagesAction", () => {
-    it("should return state with new errorMessages data", () => {
-      const errorMessages = ["1"];
-      expect(
-        modalsReducer(modalsState, setErrorMessagesAction(errorMessages))
-      ).toEqual({ ...modalsState, errorMessages });
+  describe('setErrorMessagesAction', () => {
+    it('should return state with new errorMessages data', () => {
+      const errorMessages = ['1'];
+      expect(modalsReducer(modalsState, setErrorMessagesAction(errorMessages))).toEqual({
+        ...modalsState,
+        errorMessages,
+      });
     });
   });
 
-  describe("MoviesAction.addMovieSuccessAction", () => {
-    it("should return with new data", () => {
-      expect(
-        modalsReducer(
-          modalsState,
-          MoviesAction.addMovieSuccessAction({} as any)
-        )
-      ).toEqual({
+  describe('MoviesAction.addMovieSuccessAction', () => {
+    it('should return with new data', () => {
+      expect(modalsReducer(modalsState, MoviesAction.addMovieSuccessAction({} as any))).toEqual({
         ...modalsState,
         isSuccessAlert: true,
         modalInView: ModalTypes.ALERT,
@@ -58,14 +50,9 @@ describe("modalsReducer", () => {
     });
   });
 
-  describe("MoviesAction.editMovieSuccessAction", () => {
-    it("should return with new data", () => {
-      expect(
-        modalsReducer(
-          modalsState,
-          MoviesAction.editMovieSuccessAction({} as any)
-        )
-      ).toEqual({
+  describe('MoviesAction.editMovieSuccessAction', () => {
+    it('should return with new data', () => {
+      expect(modalsReducer(modalsState, MoviesAction.editMovieSuccessAction({} as any))).toEqual({
         ...modalsState,
         isSuccessAlert: true,
         modalInView: ModalTypes.ALERT,
@@ -74,14 +61,9 @@ describe("modalsReducer", () => {
     });
   });
 
-  describe("MoviesAction.deleteMovieSuccessAction", () => {
-    it("should return with new data", () => {
-      expect(
-        modalsReducer(
-          modalsState,
-          MoviesAction.deleteMovieSuccessAction({} as any)
-        )
-      ).toEqual({
+  describe('MoviesAction.deleteMovieSuccessAction', () => {
+    it('should return with new data', () => {
+      expect(modalsReducer(modalsState, MoviesAction.deleteMovieSuccessAction({} as any))).toEqual({
         ...modalsState,
         isSuccessAlert: true,
         modalInView: ModalTypes.ALERT,
@@ -90,11 +72,9 @@ describe("modalsReducer", () => {
     });
   });
 
-  describe("MoviesAction.addMovieFaildAction", () => {
-    it("should return with new data", () => {
-      expect(
-        modalsReducer(modalsState, MoviesAction.addMovieFaildAction())
-      ).toEqual({
+  describe('MoviesAction.addMovieFaildAction', () => {
+    it('should return with new data', () => {
+      expect(modalsReducer(modalsState, MoviesAction.addMovieFaildAction())).toEqual({
         ...modalsState,
         isSuccessAlert: false,
         modalInView: ModalTypes.ALERT,
@@ -103,11 +83,9 @@ describe("modalsReducer", () => {
     });
   });
 
-  describe("MoviesAction.editMovieFaildAction", () => {
-    it("should return with new data", () => {
-      expect(
-        modalsReducer(modalsState, MoviesAction.editMovieFaildAction())
-      ).toEqual({
+  describe('MoviesAction.editMovieFaildAction', () => {
+    it('should return with new data', () => {
+      expect(modalsReducer(modalsState, MoviesAction.editMovieFaildAction())).toEqual({
         ...modalsState,
         isSuccessAlert: false,
         modalInView: ModalTypes.ALERT,
@@ -116,11 +94,9 @@ describe("modalsReducer", () => {
     });
   });
 
-  describe("MoviesAction.deleteMovieFaildAction", () => {
-    it("should return with new data", () => {
-      expect(
-        modalsReducer(modalsState, MoviesAction.deleteMovieFaildAction())
-      ).toEqual({
+  describe('MoviesAction.deleteMovieFaildAction', () => {
+    it('should return with new data', () => {
+      expect(modalsReducer(modalsState, MoviesAction.deleteMovieFaildAction())).toEqual({
         ...modalsState,
         isSuccessAlert: false,
         modalInView: ModalTypes.ALERT,

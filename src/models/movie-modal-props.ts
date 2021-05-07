@@ -1,4 +1,4 @@
-import { Movie } from "./movie.model";
+import { Movie } from './movie.model';
 
 export interface MovieModalProps {
   movie?: Movie;

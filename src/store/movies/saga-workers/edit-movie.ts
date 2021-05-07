@@ -1,8 +1,8 @@
-import { Movie } from "models/";
-import { editMovie } from "api";
-import { editMovieSuccessAction, editMovieFaildAction } from "../actions";
-import { call, put } from "redux-saga/effects";
-import { ModalsAction } from "../../modals";
+import { Movie } from 'models/';
+import { editMovie } from 'api';
+import { call, put } from 'redux-saga/effects';
+import { editMovieSuccessAction, editMovieFaildAction } from '../actions';
+import { ModalsAction } from '../../modals';
 
 export function* editMovieWorker({ payload }: { payload: Movie }) {
   try {

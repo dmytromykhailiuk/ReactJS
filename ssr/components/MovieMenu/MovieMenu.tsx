@@ -19,12 +19,16 @@ const MovieMenu: React.FC<MovieMenuProps> = ({
   useClickOutside(String(uniqueClass), onCloseButtonClicked);
 
   return (
-    <div className={`${uniqueClass} ${classes["movie-menu"]}`}>
+    <div className={`${uniqueClass} ${classes['movie-menu']}`}>
       <CloseMenuButton isSmall={true} onCloseButtonClicked={onCloseButtonClicked} />
-      <div className={classes["movie-menu__button"]} onClick={onEditButtonClicked} >Edit</div>
-      <div className={classes["movie-menu__button"]} onClick={onDeleteButtonClicked}>Delete</div>
+      <div className={classes['movie-menu__button']} onClick={onEditButtonClicked}>
+        Edit
+      </div>
+      <div className={classes['movie-menu__button']} onClick={onDeleteButtonClicked}>
+        Delete
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default MovieMenu;

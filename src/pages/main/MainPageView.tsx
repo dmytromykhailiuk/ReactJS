@@ -1,14 +1,13 @@
-import React, { useMemo } from "react";
-import { Banner, MovieBoard } from "./components";
-import { renderModal } from "shared/helpers"
-import { Movie } from "models/";
-import { ModalTypes, RouterPaths } from "shared/enums";
-import { SearchPanel, MovieItemDetails } from "./components";
-import { Switch, Route } from "react-router";
+import React, { useMemo } from 'react';
+import { renderModal } from 'shared/helpers';
+import { Movie } from 'models/';
+import { ModalTypes, RouterPaths } from 'shared/enums';
+import { Switch, Route } from 'react-router';
+import { SearchPanel, MovieItemDetails, Banner, MovieBoard } from './components';
 
 const bluredStyles = {
   filter: 'blur(7px)',
-}
+};
 
 export interface MainPageViewProps {
   modalInView: ModalTypes;
@@ -28,27 +27,26 @@ export interface MainPageViewProps {
   onCloseWithSaving: (movie: Movie) => void;
 }
 
-const MainPageView: React.FC<MainPageViewProps> = ({ 
-  modalInView, 
-  hasMovieInOverview, 
+const MainPageView: React.FC<MainPageViewProps> = ({
+  modalInView,
+  hasMovieInOverview,
   movieBoard,
-  movies, 
-  isSuccessAlert, 
-  selectedMovie, 
-  alertMessage, 
-  navigateToMainPage, 
-  onCreateMovie, 
-  navigateToSearchPage, 
-  setSearchingValue, 
-  onEditMovie, 
-  onDeleteMovie, 
-  onCloseModal, 
-  onCloseWithSaving
+  movies,
+  isSuccessAlert,
+  selectedMovie,
+  alertMessage,
+  navigateToMainPage,
+  onCreateMovie,
+  navigateToSearchPage,
+  setSearchingValue,
+  onEditMovie,
+  onDeleteMovie,
+  onCloseModal,
+  onCloseWithSaving,
 }) => {
-
   const Modal = useMemo(() => renderModal(modalInView), [modalInView]);
-  
-  const contentStyles = modalInView ? bluredStyles: {};
+
+  const contentStyles = modalInView ? bluredStyles : {};
 
   return (
     <>
@@ -60,10 +58,7 @@ const MainPageView: React.FC<MainPageViewProps> = ({
           onSearchIconClicked={navigateToSearchPage}
         >
           <Switch>
-            <Route 
-              path={RouterPaths.FILM} 
-              component={MovieItemDetails} 
-            />
+            <Route path={RouterPaths.FILM} component={MovieItemDetails} />
             <Route path={[RouterPaths.HOME, RouterPaths.SEARCH]} exact>
               <SearchPanel onChangeSearchingValue={setSearchingValue} />
             </Route>
@@ -80,16 +75,17 @@ const MainPageView: React.FC<MainPageViewProps> = ({
         />
       </main>
 
-      { modalInView && (
-        <Modal 
+      {modalInView && (
+        <Modal
           movie={selectedMovie}
           isSuccessAlert={isSuccessAlert}
           alertMessage={alertMessage}
           onCloseModal={onCloseModal}
           onCloseWithSaving={onCloseWithSaving}
-        />) }
+        />
+      )}
     </>
-  )
-}
+  );
+};
 
 export default MainPageView;

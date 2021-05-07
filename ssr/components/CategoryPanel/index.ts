@@ -1,1 +1,1 @@
-export { default as CategoryPanel } from "./CategoryPanel";
+export { default as CategoryPanel } from './CategoryPanel';

@@ -1,4 +1,4 @@
-import { SortingOptionsProperties, Categories } from "shared/enums";
+import { SortingOptionsProperties, Categories } from 'shared/enums';
 
 export interface MoviesOptions {
   sortingOption: SortingOptionsProperties;

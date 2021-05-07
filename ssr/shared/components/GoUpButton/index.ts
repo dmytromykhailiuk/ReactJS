@@ -1,1 +1,1 @@
-export { default as GoUpButton } from "./GoUpButton";
+export { default as GoUpButton } from './GoUpButton';

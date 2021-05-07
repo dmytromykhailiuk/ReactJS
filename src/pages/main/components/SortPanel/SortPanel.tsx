@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
-import classes from './SortPanel.module.scss';
 import { SortingOptions, SortingOptionsProperties } from 'shared/enums';
 import { useClickOutside } from 'shared/hooks';
+import classes from './SortPanel.module.scss';
 
 interface SortPanelProps {
   isDownDirection: boolean;
@@ -11,13 +11,18 @@ interface SortPanelProps {
 }
 
 const sortingOptions: SortingOptionsProperties[] = [
-  SortingOptionsProperties.RELEASE_DATE, 
-  SortingOptionsProperties.TITLE, 
-  SortingOptionsProperties.RATING, 
-  SortingOptionsProperties.DURATION
+  SortingOptionsProperties.RELEASE_DATE,
+  SortingOptionsProperties.TITLE,
+  SortingOptionsProperties.RATING,
+  SortingOptionsProperties.DURATION,
 ];
 
-const SortPanel: React.FC<SortPanelProps> = ({ isDownDirection, sortingOption, setSortingOption, onChangeSortingDirection }) => {
+const SortPanel: React.FC<SortPanelProps> = ({
+  isDownDirection,
+  sortingOption,
+  setSortingOption,
+  onChangeSortingDirection,
+}) => {
   const [shouldShowOptions, setShouldShowOptionsValue] = useState(false);
 
   const triggerSetShouldShowOptionsValue = useCallback(() => {
@@ -42,32 +47,31 @@ const SortPanel: React.FC<SortPanelProps> = ({ isDownDirection, sortingOption, s
   return (
     <div className={classes['sort-panel']}>
       <div className={classes['sort-panel__options-wrapper']}>
-        <div className={classes['sort-panel__title']} onClick={triggerSetShouldShowOptionsValue}>SORT BY</div>
-        { shouldShowOptions && <div className={classes['sort-panel__options']}>
-          { sortingOptions.map(sortingOption => (
-            <div 
-              className={classes['sort-panel__option']}
-              key={sortingOption}
-              onClick={() => onSetSortingOption(sortingOption, shouldShowOptions)}
-            >
-              { SortingOptions[sortingOption] }
-            </div>
-          )) }
-        </div>}
+        <div className={classes['sort-panel__title']} onClick={triggerSetShouldShowOptionsValue}>
+          SORT BY
+        </div>
+        {shouldShowOptions && (
+          <div className={classes['sort-panel__options']}>
+            {sortingOptions.map((sortingOption) => (
+              <div
+                className={classes['sort-panel__option']}
+                key={sortingOption}
+                onClick={() => onSetSortingOption(sortingOption, shouldShowOptions)}
+              >
+                {SortingOptions[sortingOption]}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
-      <ul 
-        className={classes['sort-panel__selected-option-wrapper']}
-        onClick={onChangeDirection}
-      >
+      <ul className={classes['sort-panel__selected-option-wrapper']} onClick={onChangeDirection}>
         <li className={classes['sort-panel__selected-option']}>
-          { SortingOptions[sortingOption] }
-          <div className={
-            classes[isDownDirection ? "sort-panel__arrow-down" : "sort-panel__arrow-up"]
-          }></div>
+          {SortingOptions[sortingOption]}
+          <div className={classes[isDownDirection ? 'sort-panel__arrow-down' : 'sort-panel__arrow-up']} />
         </li>
       </ul>
     </div>
   );
-}
+};
 
 export default SortPanel;
