@@ -1,0 +1,66 @@
+@import "../../scss/variables";
+
+.button {
+  letter-spacing: 1.5px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 0 1px $dark-grey-color;
+  text-shadow: 0 0 1px $dark-grey-color;
+  border-radius: 5px;
+  transition: 0.3s;
+
+  &--primary {
+    background-color: $pink-color;
+    border: solid 2px $pink-color;
+    color: $white-color;
+
+    &:hover {
+      background-color: transparent;
+      color: $pink-color;
+    }
+  }
+
+  &--secondary {
+    color: $pink-color;
+    background-color: transparent;
+    border: solid 2px $pink-color;
+
+    &:hover {
+      color: $white-color;
+      border-color: $white-color;
+    }
+  }
+
+  &--big {
+    height: 54px;
+    width: 210px;
+    font-size: 20px;
+  }
+
+  &--small {
+    height: 42px;
+    width: 171px;
+    font-size: 18px;
+    background-color: rgba($light-grey-color, 0.8);
+    text-shadow: none;
+    border: none;
+    box-shadow: none;
+
+    &:hover {
+      background-color: rgba($light-grey-color, 0.4);
+    }
+  }
+
+  &--disabled {
+    color: transparent;
+    background-color: rgba($pink-color, 0.5);
+    border: solid 2px transparent;
+    cursor: default;
+
+    &:hover {
+      color: transparent;
+      background-color: rgba($pink-color, 0.5);
+      border: solid 2px transparent;
+    }
+  }
+}
