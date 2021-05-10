@@ -47,9 +47,6 @@ function rootReducer(state: Store, action: AnyAction) {
 }
 
 const makeStore = () => {
-  if (execution.isServer) {
-    shouldHydrate = true;
-  }
   const sagaMiddleware = createSagaMiddleware();
   const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
   sagaMiddleware.run(rootSaga);
