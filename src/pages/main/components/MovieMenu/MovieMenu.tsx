@@ -1,7 +1,7 @@
 import React from 'react';
-import classes from './MovieMenu.module.scss';
 import CloseMenuButton from 'shared/components/CloseMenuButton/CloseMenuButton';
 import { useClickOutside } from 'shared/hooks';
+import classes from './MovieMenu.module.scss';
 
 interface MovieMenuProps {
   uniqueClass: number;
@@ -19,12 +19,16 @@ const MovieMenu: React.FC<MovieMenuProps> = ({
   useClickOutside(String(uniqueClass), onCloseButtonClicked);
 
   return (
-    <div className={`${uniqueClass} ${classes["movie-menu"]}`}>
-      <CloseMenuButton isSmall={true} onCloseButtonClicked={onCloseButtonClicked} />
-      <div className={classes["movie-menu__button"]} onClick={onEditButtonClicked} >Edit</div>
-      <div className={classes["movie-menu__button"]} onClick={onDeleteButtonClicked}>Delete</div>
+    <div className={`${uniqueClass} ${classes['movie-menu']}`}>
+      <CloseMenuButton isSmall onCloseButtonClicked={onCloseButtonClicked} />
+      <div className={classes['movie-menu__button']} onClick={onEditButtonClicked}>
+        Edit
+      </div>
+      <div className={classes['movie-menu__button']} onClick={onDeleteButtonClicked}>
+        Delete
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default MovieMenu;

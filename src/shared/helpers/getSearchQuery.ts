@@ -1,4 +1,3 @@
-import { history } from "router";
+import { history } from 'router';
 
-export const getSearchQuery = (): string =>
-  new URLSearchParams(history.location.search).get("SearchQuery");
+export const getSearchQuery = (): string => new URLSearchParams(history.location.search).get('SearchQuery');

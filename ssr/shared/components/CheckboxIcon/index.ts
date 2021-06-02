@@ -1,1 +1,1 @@
-export { default as CheckboxIcon } from "./CheckboxIcon";
+export { default as CheckboxIcon } from './CheckboxIcon';

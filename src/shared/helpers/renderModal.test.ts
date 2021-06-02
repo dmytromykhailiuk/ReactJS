@@ -1,13 +1,8 @@
-import {
-  AlertMovieModal,
-  CreateMovieModal,
-  DeleteMovieModal,
-  EditMovieModal,
-} from "../components";
-import { renderModal } from "./renderModal";
-import { ModalTypes } from "../enums";
+import { AlertMovieModal, CreateMovieModal, DeleteMovieModal, EditMovieModal } from '../components';
+import { renderModal } from './renderModal';
+import { ModalTypes } from '../enums';
 
-describe("renderModal", () => {
+describe('renderModal', () => {
   it("should return DeleteMovieModal if call with 'ModalTypes.DELETE'", () => {
     expect(renderModal(ModalTypes.DELETE)).toEqual(DeleteMovieModal);
   });

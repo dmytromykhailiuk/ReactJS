@@ -1,7 +1,7 @@
-import { getSearchQuery } from "./getSearchQuery";
+import { getSearchQuery } from './getSearchQuery';
 
-describe("getSearchQuery", () => {
-  it("should return null", () => {
+describe('getSearchQuery', () => {
+  it('should return null', () => {
     expect(getSearchQuery()).toEqual(null);
   });
 });

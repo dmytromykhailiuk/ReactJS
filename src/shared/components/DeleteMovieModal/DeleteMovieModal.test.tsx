@@ -1,32 +1,22 @@
-import { shallow } from "enzyme";
-import React from "react";
-import { DeleteMovieModal } from "./";
+import { shallow } from 'enzyme';
+import React from 'react';
 import toJson from 'enzyme-to-json';
+import { DeleteMovieModal } from '.';
 import { Button } from '../Button';
 
-describe("DeleteMovieModal", () => {
-  it("should match first snepshot", () => {
+describe('DeleteMovieModal', () => {
+  it('should match first snepshot', () => {
     const wrapper = shallow(
-      <DeleteMovieModal
-        movie={{} as any}
-        onCloseModal={() => {}}
-        onCloseWithSaving={() => {}}
-      />
-    )
-    expect(toJson(wrapper)).toMatchSnapshot("first");
-  })
+      <DeleteMovieModal movie={{} as any} onCloseModal={() => {}} onCloseWithSaving={() => {}} />,
+    );
+    expect(toJson(wrapper)).toMatchSnapshot('first');
+  });
 
-  it("should call onCloseWithSaving with movie when click on button occurred", () => {
+  it('should call onCloseWithSaving with movie when click on button occurred', () => {
     const onClick = jest.fn();
     const movie = {} as any;
-    const wrapper = shallow(
-      <DeleteMovieModal
-        movie={movie}
-        onCloseModal={() => {}}
-        onCloseWithSaving={onClick}
-      />
-    )
-    wrapper.find(Button).dive().find("button").simulate("click");
+    const wrapper = shallow(<DeleteMovieModal movie={movie} onCloseModal={() => {}} onCloseWithSaving={onClick} />);
+    wrapper.find(Button).dive().find('button').simulate('click');
     expect(onClick).toHaveBeenCalledWith(movie);
-  })
-})
+  });
+});

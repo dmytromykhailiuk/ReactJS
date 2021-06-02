@@ -2,7 +2,7 @@ import { Movie } from '../../../models/movie.model';
 import React from 'react';
 import { ModalWrapper } from '../';
 import { Button } from '../Button';
-import classes from "./DeleteMovieModal.module.scss";
+import classes from './DeleteMovieModal.module.scss';
 
 interface DeleteMovieModalProps {
   movie: Movie;
@@ -18,7 +18,7 @@ const DeleteMovieModal: React.FC<DeleteMovieModalProps> = ({ onCloseModal, onClo
         <Button onButtonClicked={() => onCloseWithSaving(movie)}>Confirm</Button>
       </div>
     </ModalWrapper>
-  )
-}
+  );
+};
 
 export default DeleteMovieModal;

@@ -1,7 +1,7 @@
 import React, { SyntheticEvent } from 'react';
-import { ButtonTypes, ButtonSize } from "../../enums";
-import classes from "./Button.module.scss";
-import classnames from "classnames";
+import classnames from 'classnames';
+import { ButtonTypes, ButtonSize } from '../../enums';
+import classes from './Button.module.scss';
 
 interface ButtonProps {
   type?: ButtonTypes;
@@ -12,25 +12,29 @@ interface ButtonProps {
   onButtonClicked?: (event: SyntheticEvent) => void;
 }
 
-const Button:React.FC<ButtonProps> = ({
-  children, type = ButtonTypes.PRIMARY, size = ButtonSize.BIG, onButtonClicked = () => {}, isSubmit = false, disabled = false, style = {} 
-}) => {
-  return (
-    <button 
-      disabled={disabled}
-      type={isSubmit ? "submit" : "button"}
-      className={`
+const Button: React.FC<ButtonProps> = ({
+  children,
+  type = ButtonTypes.PRIMARY,
+  size = ButtonSize.BIG,
+  onButtonClicked = () => {},
+  isSubmit = false,
+  disabled = false,
+  style = {},
+}) => (
+  <button
+    disabled={disabled}
+    type={isSubmit ? 'submit' : 'button'}
+    className={`
         ${classes.button} 
-        ${classnames({[classes["button--disabled"]]: disabled})} 
-        ${classes[type === ButtonTypes.PRIMARY ? "button--primary": "button--secondary"]} 
-        ${classes[size === ButtonSize.BIG ? "button--big": "button--small"]} 
+        ${classnames({ [classes['button--disabled']]: disabled })} 
+        ${classes[type === ButtonTypes.PRIMARY ? 'button--primary' : 'button--secondary']} 
+        ${classes[size === ButtonSize.BIG ? 'button--big' : 'button--small']} 
       `}
-      style={style}
-      onClick={onButtonClicked}
-    >
-      {children}
-    </button>
-  )
-}
+    style={style}
+    onClick={onButtonClicked}
+  >
+    {children}
+  </button>
+);
 
 export default Button;

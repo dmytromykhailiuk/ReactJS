@@ -1,9 +1,9 @@
-import { ModalTypes } from "../../shared/enums";
-import { Movie } from "../../models/movie.model";
-import React, { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ModalsAction, ModalsSelector, MoviesAction, MoviesSelector, Store } from "../../store";
-import { MovieBoardWrapperViewProps } from "./MovieBoardWrapperView";
+import { ModalTypes } from '../../shared/enums';
+import { Movie } from '../../models/movie.model';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ModalsAction, ModalsSelector, MoviesAction, MoviesSelector, Store } from '../../store';
+import { MovieBoardWrapperViewProps } from './MovieBoardWrapperView';
 
 const MovieBoardWrapperContainer = (MovieBoardWrapperView: React.FC<MovieBoardWrapperViewProps>) => () => {
   const movies = useSelector<Store, Movie[]>(MoviesSelector.moviesDataSelector);
@@ -15,22 +15,27 @@ const MovieBoardWrapperContainer = (MovieBoardWrapperView: React.FC<MovieBoardWr
 
   const dispatch = useDispatch();
 
-  const onCloseWithSaving = useCallback((movie: Movie) => {
-    switch(modalInView) {
-      case ModalTypes.CREATE : {
-        return dispatch(MoviesAction.addMovieAction(movie))
+  const onCloseWithSaving = useCallback(
+    (movie: Movie) => {
+      switch (modalInView) {
+        case ModalTypes.CREATE: {
+          return dispatch(MoviesAction.addMovieAction(movie));
+        }
+        case ModalTypes.EDIT: {
+          return dispatch(MoviesAction.editMovieAction(movie));
+        }
+        case ModalTypes.DELETE: {
+          return dispatch(
+            MoviesAction.deleteMovieAction({
+              id: movie.id,
+              shouldNavigateToHome: movie.id === movieInOverview?.id,
+            }),
+          );
+        }
       }
-      case ModalTypes.EDIT : {
-        return dispatch(MoviesAction.editMovieAction(movie))
-      }
-      case ModalTypes.DELETE : {
-        return dispatch(MoviesAction.deleteMovieAction({ 
-          id: movie.id, 
-          shouldNavigateToHome: movie.id === movieInOverview?.id 
-        }));
-      }
-    }
-  }, [modalInView, movieInOverview])
+    },
+    [modalInView, movieInOverview],
+  );
 
   const onEditMovie = useCallback((movie: Movie) => {
     dispatch(ModalsAction.setModalInViewAction({ modalType: ModalTypes.EDIT, selectedMovie: movie }));
@@ -45,7 +50,7 @@ const MovieBoardWrapperContainer = (MovieBoardWrapperView: React.FC<MovieBoardWr
   }, []);
 
   return (
-    <MovieBoardWrapperView 
+    <MovieBoardWrapperView
       modalInView={modalInView}
       movies={movies}
       isSuccessAlert={isSuccessAlert}
@@ -56,7 +61,7 @@ const MovieBoardWrapperContainer = (MovieBoardWrapperView: React.FC<MovieBoardWr
       onCloseModal={onCloseModal}
       onCloseWithSaving={onCloseWithSaving}
     />
-  )
-}
+  );
+};
 
 export default MovieBoardWrapperContainer;

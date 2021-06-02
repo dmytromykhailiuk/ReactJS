@@ -1,24 +1,18 @@
-import { movies } from "mocks";
-import { addMovie, getMovies } from "api";
-import { expectSaga } from "redux-saga-test-plan";
-import * as matchers from "redux-saga-test-plan/matchers";
-import {
-  loadMoreMoviesFaildAction,
-  loadMoreMoviesSeccessAction,
-} from "../actions";
-import { throwError } from "redux-saga-test-plan/providers";
-import {
-  moviesAmountInStoreSelector,
-  moviesOptionsSelector,
-} from "../selectors";
-import { getSearchQuery } from "shared/helpers";
-import { showMoreMoviesWorker } from "./show-more-movies";
+import { movies } from 'mocks';
+import { addMovie, getMovies } from 'api';
+import { expectSaga } from 'redux-saga-test-plan';
+import * as matchers from 'redux-saga-test-plan/matchers';
+import { throwError } from 'redux-saga-test-plan/providers';
+import { getSearchQuery } from 'shared/helpers';
+import { loadMoreMoviesFaildAction, loadMoreMoviesSeccessAction } from '../actions';
+import { moviesAmountInStoreSelector, moviesOptionsSelector } from '../selectors';
+import { showMoreMoviesWorker } from './show-more-movies';
 
-jest.mock("shared/helpers");
+jest.mock('shared/helpers');
 
-(getSearchQuery as jest.Mock).mockImplementation(() => "");
+(getSearchQuery as jest.Mock).mockImplementation(() => '');
 
-describe("showMoreMoviesWorker", () => {
+describe('showMoreMoviesWorker', () => {
   it("should dispatch 'loadMoreMoviesSeccessAction(data)' when response was success", () => {
     const totalAmount = 5;
     return expectSaga(showMoreMoviesWorker)

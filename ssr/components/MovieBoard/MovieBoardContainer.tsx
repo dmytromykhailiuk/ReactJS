@@ -1,9 +1,9 @@
-import { Categories, SortingOptionsProperties } from "../../shared/enums";
-import { Movie } from "../../models/movie.model";
-import React, { useCallback } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { MoviesAction, MoviesSelector, Store } from "../../store";
-import { MovieBoardViewProps } from "./MovieBoardView";
+import { Categories, SortingOptionsProperties } from '../../shared/enums';
+import { Movie } from '../../models/movie.model';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { MoviesAction, MoviesSelector, Store } from '../../store';
+import { MovieBoardViewProps } from './MovieBoardView';
 
 interface MovieBoardContainerProps {
   movies: Movie[];
@@ -11,10 +11,11 @@ interface MovieBoardContainerProps {
   onDeleteMovie: (movie: Movie) => void;
 }
 
-const MovieBoardContainer = (MovieBoardView: React.FC<MovieBoardViewProps>): React.FC<MovieBoardContainerProps> => ({ 
-  movies, onEditMovie, onDeleteMovie
+const MovieBoardContainer = (MovieBoardView: React.FC<MovieBoardViewProps>): React.FC<MovieBoardContainerProps> => ({
+  movies,
+  onEditMovie,
+  onDeleteMovie,
 }) => {
-
   const dispatch = useDispatch();
 
   const category = useSelector<Store, Categories>(MoviesSelector.selectedCategorySelector);
@@ -42,7 +43,7 @@ const MovieBoardContainer = (MovieBoardView: React.FC<MovieBoardViewProps>): Rea
   }, []);
 
   return (
-    <MovieBoardView 
+    <MovieBoardView
       movies={movies}
       category={category}
       sortingOption={sortingOption}
@@ -58,7 +59,7 @@ const MovieBoardContainer = (MovieBoardView: React.FC<MovieBoardViewProps>): Rea
       setIsDownDirectionValue={setIsDownDirectionValue}
       showMoreMovies={showMoreMovies}
     />
-  )
-}
+  );
+};
 
 export default MovieBoardContainer;

@@ -1,7 +1,7 @@
-import { useCallback, useState } from "react";
-import { useEventListener } from "./useEventListener";
-import { EventTypes } from "../enums";
-import { getPageYOffsetValue } from "../helpers";
+import { useCallback, useState } from 'react';
+import { useEventListener } from './useEventListener';
+import { EventTypes } from '../enums';
+import { getPageYOffsetValue } from '../helpers';
 
 export function useShowGoUpButton(): boolean {
   const [showGoUpButton, setShowGoUpButtonValue] = useState<boolean>(false);

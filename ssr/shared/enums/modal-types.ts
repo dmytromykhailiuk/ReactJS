@@ -1,6 +1,6 @@
 export enum ModalTypes {
-  ALERT = "alert",
-  EDIT = "edit",
-  CREATE = "create",
-  DELETE = "delete",
+  ALERT = 'alert',
+  EDIT = 'edit',
+  CREATE = 'create',
+  DELETE = 'delete',
 }

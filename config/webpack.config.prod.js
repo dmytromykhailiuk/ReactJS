@@ -1,21 +1,21 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  mode: "production",
+  mode: 'production',
   devServer: {
     port: 4040,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(__dirname, "../public/index.html"),
-      filename: "index.html",
+      template: path.join(__dirname, '../public/index.html'),
+      filename: 'index.html',
       minify: { collapseWhitespace: true },
     }),
     new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[name].css",
+      filename: '[name].css',
+      chunkFilename: '[name].css',
     }),
   ],
   module: {
@@ -24,16 +24,16 @@ module.exports = {
         test: /\.(js|jsx|ts|tsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
         },
       },
       {
         test: /\.css$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
-          "css-modules-typescript-loader",
+          'css-modules-typescript-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: true,
               sourceMap: false,
@@ -45,29 +45,29 @@ module.exports = {
         test: /\.scss$/,
         use: [
           { loader: MiniCssExtractPlugin.loader },
-          "css-modules-typescript-loader",
+          'css-modules-typescript-loader',
           {
-            loader: "css-loader",
+            loader: 'css-loader',
             options: {
               modules: true,
               sourceMap: false,
             },
           },
-          "sass-loader",
+          'sass-loader',
         ],
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
-              name: "img/[name]-[sha1:hash:7].[ext]",
-              outputPath: "assets",
+              name: 'img/[name]-[sha1:hash:7].[ext]',
+              outputPath: 'assets',
             },
           },
           {
-            loader: "image-webpack-loader",
+            loader: 'image-webpack-loader',
             options: {
               mozjpeg: {
                 progressive: true,
@@ -77,7 +77,7 @@ module.exports = {
                 enabled: false,
               },
               pngquant: {
-                quality: "65-90",
+                quality: '65-90',
                 speed: 4,
               },
               gifsicle: {

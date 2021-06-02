@@ -1,16 +1,16 @@
-import { DropdownOption } from "./";
-import { shallow } from "enzyme";
-import React from "react";
-import toJson from "enzyme-to-json";
+import { shallow } from 'enzyme';
+import React from 'react';
+import toJson from 'enzyme-to-json';
+import { DropdownOption } from '.';
 
-describe("DropdownOption", () => {
-  it("should match snapshot", () => {
+describe('DropdownOption', () => {
+  it('should match snapshot', () => {
     const wrapper = shallow(<DropdownOption />);
-    expect(toJson(wrapper)).toMatchSnapshot()
-  })
+    expect(toJson(wrapper)).toMatchSnapshot();
+  });
 
-  it("should has dropdown-option__checkbox--checked class when isSelected", () => {
+  it('should has dropdown-option__checkbox--checked class when isSelected', () => {
     const wrapper = shallow(<DropdownOption isSelected />);
-    expect(wrapper.exists('.dropdown-option__checkbox--checked')).toBeTruthy()
-  })
-})
+    expect(wrapper.exists('.dropdown-option__checkbox--checked')).toBeTruthy();
+  });
+});

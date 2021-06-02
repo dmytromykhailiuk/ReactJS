@@ -1,18 +1,18 @@
-import { movies } from "mocks";
-import { addMovie, getMovies } from "api";
-import { expectSaga } from "redux-saga-test-plan";
-import * as matchers from "redux-saga-test-plan/matchers";
-import { loadMoviesFaildAction, loadMoviesSuccessAction } from "../actions";
-import { throwError } from "redux-saga-test-plan/providers";
-import { loadMoviesWorker } from "./load-movies";
-import { moviesOptionsSelector } from "../selectors";
-import { getSearchQuery } from "shared/helpers";
+import { movies } from 'mocks';
+import { addMovie, getMovies } from 'api';
+import { expectSaga } from 'redux-saga-test-plan';
+import * as matchers from 'redux-saga-test-plan/matchers';
+import { throwError } from 'redux-saga-test-plan/providers';
+import { getSearchQuery } from 'shared/helpers';
+import { loadMoviesFaildAction, loadMoviesSuccessAction } from '../actions';
+import { loadMoviesWorker } from './load-movies';
+import { moviesOptionsSelector } from '../selectors';
 
-jest.mock("shared/helpers");
+jest.mock('shared/helpers');
 
-(getSearchQuery as jest.Mock).mockImplementation(() => "");
+(getSearchQuery as jest.Mock).mockImplementation(() => '');
 
-describe("loadMoviesWorker", () => {
+describe('loadMoviesWorker', () => {
   it("should dispatch 'loadMoviesSuccessAction(data)' when response was success", () => {
     const totalAmount = 5;
     return expectSaga(loadMoviesWorker)

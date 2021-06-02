@@ -1,7 +1,7 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { CloseMenuButton } from "../";
-import classes from "./ModalWrapper.module.scss";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { CloseMenuButton } from '..';
+import classes from './ModalWrapper.module.scss';
 
 export interface ModalWrapperViewProps {
   modalWrapperRef: React.MutableRefObject<any>;
@@ -12,38 +12,33 @@ export interface ModalWrapperViewProps {
 
 const portal = document.getElementById('portal');
 
-const ModalWrapperView: React.FC<ModalWrapperViewProps> = ({ 
-  children, 
-  modalWrapperRef, 
+const ModalWrapperView: React.FC<ModalWrapperViewProps> = ({
+  children,
+  modalWrapperRef,
   errorMessages,
-  header = null, 
-  onCloseModal 
-}) => {
-  return ReactDOM.createPortal((
+  header = null,
+  onCloseModal,
+}) =>
+  ReactDOM.createPortal(
     <div className={classes['modal-wrapper']}>
-      <div 
-        ref={modalWrapperRef} 
-        className={classes['modal-wrapper__content-wrapper']}
-      >
+      <div ref={modalWrapperRef} className={classes['modal-wrapper__content-wrapper']}>
         <div className={classes['modal-wrapper__content']}>
           <CloseMenuButton onCloseButtonClicked={onCloseModal} />
-          {header && <h2 className={classes['modal-wrapper__header']} >{ header }</h2>}
-          { errorMessages.length > 0 && (
+          {header && <h2 className={classes['modal-wrapper__header']}>{header}</h2>}
+          {errorMessages.length > 0 && (
             <div className={classes['modal-wrapper__errors']}>
-              { errorMessages.map(error => (
-                <div 
-                  key={error}
-                  className={classes['modal-wrapper__error']}
-                >{ error }</div>
-              )) }
+              {errorMessages.map((error) => (
+                <div key={error} className={classes['modal-wrapper__error']}>
+                  {error}
+                </div>
+              ))}
             </div>
-          ) }
-          <div className={classes['modal-wrapper__body']} >{ children }</div>
+          )}
+          <div className={classes['modal-wrapper__body']}>{children}</div>
         </div>
       </div>
-    </div>
-    ), portal
-  )
-}
+    </div>,
+    portal,
+  );
 
 export default ModalWrapperView;

@@ -9,8 +9,8 @@ export default class ErrorBoundary extends React.Component<{}, ErrorBoundaryStat
 
   componentDidCatch() {
     this.setState({
-      hasError: true
-    })
+      hasError: true,
+    });
   }
 
   render() {

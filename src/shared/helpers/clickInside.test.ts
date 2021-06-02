@@ -1,6 +1,6 @@
-import { isClickInside } from "./clickInside";
+import { isClickInside } from './clickInside';
 
-describe("isClickInside", () => {
+describe('isClickInside', () => {
   it("it should return 'true' when target equal currentTarget", () => {
     const obj = {};
     const event = {
@@ -12,8 +12,8 @@ describe("isClickInside", () => {
 
   it("it should return 'false' when target not equal currentTarget and has a class", () => {
     const obj = {};
-    const target = document.createElement("div");
-    const className = "className";
+    const target = document.createElement('div');
+    const className = 'className';
     target.classList.add(className);
     const event = {
       target,
@@ -23,8 +23,8 @@ describe("isClickInside", () => {
   });
 
   it("it should return 'true' when target parent equal 'currentTarget'", () => {
-    const currentTarget = document.createElement("span");
-    const target = document.createElement("div");
+    const currentTarget = document.createElement('span');
+    const target = document.createElement('div');
     currentTarget.append(target);
     const event = {
       target,

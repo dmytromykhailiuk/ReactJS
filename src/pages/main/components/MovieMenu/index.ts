@@ -1,1 +1,1 @@
-export { default as MovieMenu } from "./MovieMenu";
+export { default as MovieMenu } from './MovieMenu';

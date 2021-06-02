@@ -1,6 +1,6 @@
 export function clickOutside(className: string, fn: () => void) {
   function compare(target: HTMLElement) {
-    if (!target || target.tagName === "BODY") {
+    if (!target || target.tagName === 'BODY') {
       fn();
       return;
     }

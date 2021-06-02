@@ -1,13 +1,13 @@
-import React, { Suspense } from "react";
-import { MovieBoard } from "../";
-import { Movie } from "../../models/";
-import { ModalTypes } from "../../shared/enums";
+import React, { Suspense } from 'react';
+import { MovieBoard } from '../';
+import { Movie } from '../../models/';
+import { ModalTypes } from '../../shared/enums';
 
-const MovieModal = React.lazy(() => import("../MovieModal/MovieModal"));
+const MovieModal = React.lazy(() => import('../MovieModal/MovieModal'));
 
 const bluredStyles = {
   filter: 'blur(7px)',
-}
+};
 
 export interface MovieBoardWrapperViewProps {
   modalInView: ModalTypes;
@@ -21,31 +21,26 @@ export interface MovieBoardWrapperViewProps {
   onCloseWithSaving: (movie: Movie) => void;
 }
 
-const MovieBoardWrapperView: React.FC<MovieBoardWrapperViewProps> = ({ 
-  modalInView, 
-  movies, 
-  isSuccessAlert, 
-  selectedMovie, 
-  alertMessage, 
-  onEditMovie, 
-  onDeleteMovie, 
-  onCloseModal, 
+const MovieBoardWrapperView: React.FC<MovieBoardWrapperViewProps> = ({
+  modalInView,
+  movies,
+  isSuccessAlert,
+  selectedMovie,
+  alertMessage,
+  onEditMovie,
+  onDeleteMovie,
+  onCloseModal,
   onCloseWithSaving,
 }) => {
-  
-  const contentStyles = modalInView ? bluredStyles: {};
+  const contentStyles = modalInView ? bluredStyles : {};
 
   return (
     <>
       <main style={contentStyles}>
-        <MovieBoard
-          movies={movies}
-          onEditMovie={onEditMovie}
-          onDeleteMovie={onDeleteMovie}
-        />
+        <MovieBoard movies={movies} onEditMovie={onEditMovie} onDeleteMovie={onDeleteMovie} />
       </main>
 
-      { modalInView && (
+      {modalInView && (
         <Suspense fallback="">
           <MovieModal
             modalInView={modalInView}
@@ -56,9 +51,9 @@ const MovieBoardWrapperView: React.FC<MovieBoardWrapperViewProps> = ({
             onCloseWithSaving={onCloseWithSaving}
           />
         </Suspense>
-        ) }
+      )}
     </>
-  )
-}
+  );
+};
 
 export default MovieBoardWrapperView;

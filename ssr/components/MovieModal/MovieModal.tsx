@@ -1,7 +1,7 @@
-import React, { useMemo } from "react";
-import { ModalTypes } from "../../shared/enums";
-import { renderModal } from "../../shared/helpers";
-import { Movie } from "../../models";
+import React, { useMemo } from 'react';
+import { ModalTypes } from '../../shared/enums';
+import { renderModal } from '../../shared/helpers';
+import { Movie } from '../../models';
 
 interface MovieModalProps {
   modalInView: ModalTypes;
@@ -12,7 +12,7 @@ interface MovieModalProps {
   onCloseWithSaving: (movie: Movie) => void;
 }
 
-const MovieModal: React.FC<MovieModalProps> = ({ 
+const MovieModal: React.FC<MovieModalProps> = ({
   modalInView,
   movie,
   isSuccessAlert,
@@ -20,11 +20,10 @@ const MovieModal: React.FC<MovieModalProps> = ({
   onCloseModal,
   onCloseWithSaving,
 }) => {
-
   const Modal = useMemo(() => renderModal(modalInView), [modalInView]);
 
   return (
-    <Modal 
+    <Modal
       movie={movie}
       isSuccessAlert={isSuccessAlert}
       alertMessage={alertMessage}
@@ -32,6 +31,6 @@ const MovieModal: React.FC<MovieModalProps> = ({
       onCloseWithSaving={onCloseWithSaving}
     />
   );
-}
+};
 
 export default MovieModal;

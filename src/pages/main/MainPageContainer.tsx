@@ -1,11 +1,11 @@
-import { ModalTypes, RouterPaths } from "shared/enums";
-import { Movie } from "models/movie.model";
-import React, { useCallback, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ModalsAction, ModalsSelector, MoviesAction, MoviesSelector, Store } from "store";
-import { MainPageViewProps } from "./MainPageView";
-import { useHistory } from "react-router";
-import { scrollToElement } from "shared/helpers";
+import { ModalTypes, RouterPaths } from 'shared/enums';
+import { Movie } from 'models/movie.model';
+import React, { useCallback, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { ModalsAction, ModalsSelector, MoviesAction, MoviesSelector, Store } from 'store';
+import { useHistory } from 'react-router';
+import { scrollToElement } from 'shared/helpers';
+import { MainPageViewProps } from './MainPageView';
 
 const MainPageContainer = (MainPageView: React.FC<MainPageViewProps>) => () => {
   const movies = useSelector<Store, Movie[]>(MoviesSelector.moviesDataSelector);
@@ -19,22 +19,27 @@ const MainPageContainer = (MainPageView: React.FC<MainPageViewProps>) => () => {
 
   const dispatch = useDispatch();
 
-  const onCloseWithSaving = useCallback((movie: Movie) => {
-    switch(modalInView) {
-      case ModalTypes.CREATE : {
-        return dispatch(MoviesAction.addMovieAction(movie))
+  const onCloseWithSaving = useCallback(
+    (movie: Movie) => {
+      switch (modalInView) {
+        case ModalTypes.CREATE: {
+          return dispatch(MoviesAction.addMovieAction(movie));
+        }
+        case ModalTypes.EDIT: {
+          return dispatch(MoviesAction.editMovieAction(movie));
+        }
+        case ModalTypes.DELETE: {
+          return dispatch(
+            MoviesAction.deleteMovieAction({
+              id: movie.id,
+              shouldNavigateToHome: movie.id === movieInOverview?.id,
+            }),
+          );
+        }
       }
-      case ModalTypes.EDIT : {
-        return dispatch(MoviesAction.editMovieAction(movie))
-      }
-      case ModalTypes.DELETE : {
-        return dispatch(MoviesAction.deleteMovieAction({ 
-          id: movie.id, 
-          shouldNavigateToHome: movie.id === movieInOverview?.id 
-        }));
-      }
-    }
-  }, [modalInView, movieInOverview])
+    },
+    [modalInView, movieInOverview],
+  );
 
   const onEditMovie = useCallback((movie: Movie) => {
     dispatch(ModalsAction.setModalInViewAction({ modalType: ModalTypes.EDIT, selectedMovie: movie }));
@@ -43,7 +48,7 @@ const MainPageContainer = (MainPageView: React.FC<MainPageViewProps>) => () => {
   const onDeleteMovie = useCallback((movie: Movie) => {
     dispatch(ModalsAction.setModalInViewAction({ modalType: ModalTypes.DELETE, selectedMovie: movie }));
   }, []);
-  
+
   const onCreateMovie = useCallback(() => {
     dispatch(ModalsAction.setModalInViewAction({ modalType: ModalTypes.CREATE }));
   }, []);
@@ -57,7 +62,7 @@ const MainPageContainer = (MainPageView: React.FC<MainPageViewProps>) => () => {
   }, []);
 
   const navigateToSearchPage = useCallback(() => {
-    history.push(RouterPaths.SEARCH + "?SearchQuery=");
+    history.push(`${RouterPaths.SEARCH}?SearchQuery=`);
   }, []);
 
   const scrollToMovies = useCallback(() => {
@@ -69,7 +74,7 @@ const MainPageContainer = (MainPageView: React.FC<MainPageViewProps>) => () => {
   }, []);
 
   return (
-    <MainPageView 
+    <MainPageView
       modalInView={modalInView}
       hasMovieInOverview={Boolean(movieInOverview)}
       movieBoard={movieBoard}
@@ -86,7 +91,7 @@ const MainPageContainer = (MainPageView: React.FC<MainPageViewProps>) => () => {
       onCloseModal={onCloseModal}
       onCloseWithSaving={onCloseWithSaving}
     />
-  )
-}
+  );
+};
 
 export default MainPageContainer;

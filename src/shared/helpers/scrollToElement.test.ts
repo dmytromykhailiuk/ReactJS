@@ -1,6 +1,6 @@
-import { scrollToElement } from "./";
+import { scrollToElement } from '.';
 
-describe("scrollToElement", () => {
+describe('scrollToElement', () => {
   it("should call 'element.scrollIntoView'", () => {
     const element = {
       scrollIntoView: jest.fn(),

@@ -1,5 +1,5 @@
-import { Store } from "../";
-import { Categories, SortingOptionsProperties } from "../../shared/enums";
+import { Store } from '..';
+import { Categories, SortingOptionsProperties } from '../../shared/enums';
 import {
   moviesDataSelector,
   loadedSelector,
@@ -14,9 +14,9 @@ import {
   movieInOverviewSelector,
   movieInOverviewLoadedSelector,
   moviesOptionsSelector,
-} from "./selectors";
+} from './selectors';
 
-describe("Movie State Selectors", () => {
+describe('Movie State Selectors', () => {
   let moviesStateMock: Store;
 
   beforeEach(() => {
@@ -38,103 +38,79 @@ describe("Movie State Selectors", () => {
     } as any;
   });
 
-  describe("moviesDataSelector", () => {
+  describe('moviesDataSelector', () => {
     it("should return 'movies' data", () => {
-      expect(moviesDataSelector(moviesStateMock)).toEqual(
-        moviesStateMock.movies.movies
-      );
+      expect(moviesDataSelector(moviesStateMock)).toEqual(moviesStateMock.movies.movies);
     });
   });
 
-  describe("loadedSelector", () => {
+  describe('loadedSelector', () => {
     it("should return 'loaded' value", () => {
-      expect(loadedSelector(moviesStateMock)).toEqual(
-        moviesStateMock.movies.loaded
-      );
+      expect(loadedSelector(moviesStateMock)).toEqual(moviesStateMock.movies.loaded);
     });
   });
 
-  describe("selectedMovieSelector", () => {
+  describe('selectedMovieSelector', () => {
     it("should return 'selectedMovie' data", () => {
-      expect(selectedMovieSelector(moviesStateMock)).toEqual(
-        moviesStateMock.movies.selectedMovie
-      );
+      expect(selectedMovieSelector(moviesStateMock)).toEqual(moviesStateMock.movies.selectedMovie);
     });
   });
 
-  describe("moviesAmountSelector", () => {
+  describe('moviesAmountSelector', () => {
     it("should return 'moviesAmount' value", () => {
-      expect(moviesAmountSelector(moviesStateMock)).toEqual(
-        moviesStateMock.movies.moviesAmount
-      );
+      expect(moviesAmountSelector(moviesStateMock)).toEqual(moviesStateMock.movies.moviesAmount);
     });
   });
 
-  describe("selectedCategorySelector", () => {
+  describe('selectedCategorySelector', () => {
     it("should return 'selectedCategory' value", () => {
-      expect(selectedCategorySelector(moviesStateMock)).toEqual(
-        moviesStateMock.movies.selectedCategory
-      );
+      expect(selectedCategorySelector(moviesStateMock)).toEqual(moviesStateMock.movies.selectedCategory);
     });
   });
 
-  describe("sortingOptionSelector", () => {
+  describe('sortingOptionSelector', () => {
     it("should return 'sortingOption' value", () => {
-      expect(sortingOptionSelector(moviesStateMock)).toEqual(
-        moviesStateMock.movies.sortingOption
-      );
+      expect(sortingOptionSelector(moviesStateMock)).toEqual(moviesStateMock.movies.sortingOption);
     });
   });
 
-  describe("isDownDirectionSelector", () => {
+  describe('isDownDirectionSelector', () => {
     it("should return 'isDownDirection' value", () => {
-      expect(isDownDirectionSelector(moviesStateMock)).toEqual(
-        moviesStateMock.movies.isDownDirection
-      );
+      expect(isDownDirectionSelector(moviesStateMock)).toEqual(moviesStateMock.movies.isDownDirection);
     });
   });
 
-  describe("moviesAmountInStoreSelector", () => {
+  describe('moviesAmountInStoreSelector', () => {
     it("should return 'movies length' value", () => {
-      expect(moviesAmountInStoreSelector(moviesStateMock)).toEqual(
-        moviesStateMock.movies.movies.length
-      );
+      expect(moviesAmountInStoreSelector(moviesStateMock)).toEqual(moviesStateMock.movies.movies.length);
     });
   });
 
-  describe("moviesLoadingSelector", () => {
+  describe('moviesLoadingSelector', () => {
     it("should return 'moviesLoading' value", () => {
-      expect(moviesLoadingSelector(moviesStateMock)).toEqual(
-        moviesStateMock.movies.moviesLoading
-      );
+      expect(moviesLoadingSelector(moviesStateMock)).toEqual(moviesStateMock.movies.moviesLoading);
     });
   });
 
-  describe("moreMoviesLoadedSelector", () => {
+  describe('moreMoviesLoadedSelector', () => {
     it("should return 'moreMoviesLoaded' value", () => {
-      expect(moreMoviesLoadedSelector(moviesStateMock)).toEqual(
-        moviesStateMock.movies.moreMoviesLoaded
-      );
+      expect(moreMoviesLoadedSelector(moviesStateMock)).toEqual(moviesStateMock.movies.moreMoviesLoaded);
     });
   });
 
-  describe("movieInOverviewSelector", () => {
+  describe('movieInOverviewSelector', () => {
     it("should return 'movieInOverview' data", () => {
-      expect(movieInOverviewSelector(moviesStateMock)).toEqual(
-        moviesStateMock.movies.movieInOverview
-      );
+      expect(movieInOverviewSelector(moviesStateMock)).toEqual(moviesStateMock.movies.movieInOverview);
     });
   });
 
-  describe("movieInOverviewLoadedSelector", () => {
+  describe('movieInOverviewLoadedSelector', () => {
     it("should return 'movieInOverviewLoaded' data", () => {
-      expect(movieInOverviewLoadedSelector(moviesStateMock)).toEqual(
-        moviesStateMock.movies.movieInOverviewLoaded
-      );
+      expect(movieInOverviewLoadedSelector(moviesStateMock)).toEqual(moviesStateMock.movies.movieInOverviewLoaded);
     });
   });
 
-  describe("moviesOptionsSelector", () => {
+  describe('moviesOptionsSelector', () => {
     it("should return 'movieInOverviewLoaded' data", () => {
       expect(moviesOptionsSelector(moviesStateMock)).toEqual({
         sortingOption: moviesStateMock.movies.sortingOption,

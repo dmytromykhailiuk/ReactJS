@@ -1,23 +1,18 @@
-import { shallow } from "enzyme";
-import React from "react";
-import { Banner } from "./";
+import { shallow } from 'enzyme';
+import React from 'react';
 import toJson from 'enzyme-to-json';
-import { Button } from "../../../../shared/components";
+import { Banner } from '.';
+import { Button } from '../../../../shared/components';
 
-describe("Banner", () => {
-  it("should match snepshot", () => {
+describe('Banner', () => {
+  it('should match snepshot', () => {
     const wrapper = shallow(
-      <Banner
-        isMovieInOverviewMode
-        onCreateMovie={() => {}}
-        onLogoClicked={() => {}}
-        onSearchIconClicked={() => {}}
-      >
+      <Banner isMovieInOverviewMode onCreateMovie={() => {}} onLogoClicked={() => {}} onSearchIconClicked={() => {}}>
         Children
-      </Banner>
-    )
+      </Banner>,
+    );
     expect(toJson(wrapper)).toMatchSnapshot();
-  })
+  });
 
   it("should show Button if 'isMovieInOverviewMode' equal false ", () => {
     const wrapper = shallow(
@@ -28,8 +23,8 @@ describe("Banner", () => {
         onSearchIconClicked={() => {}}
       >
         Children
-      </Banner>
-    )
+      </Banner>,
+    );
     expect(toJson(wrapper.find(Button))).toBeTruthy();
-  })
-})
+  });
+});

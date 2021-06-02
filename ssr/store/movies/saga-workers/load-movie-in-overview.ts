@@ -1,12 +1,9 @@
-import { Movie } from "../../../models";
-import { getMovie } from "../../../api";
-import { RouterPaths } from "../../../shared/enums";
-import {
-  loadMovieInOverviewFaildAction,
-  loadMovieInOverviewSuccessAction,
-} from "../actions";
-import { call, put } from "redux-saga/effects";
-import Router from "next/router";
+import { Movie } from '../../../models';
+import { getMovie } from '../../../api';
+import { RouterPaths } from '../../../shared/enums';
+import { loadMovieInOverviewFaildAction, loadMovieInOverviewSuccessAction } from '../actions';
+import { call, put } from 'redux-saga/effects';
+import Router from 'next/router';
 
 export function* loadMovieInOverviewWorker({ payload }: { payload: string }) {
   try {

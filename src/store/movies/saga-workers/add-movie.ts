@@ -1,8 +1,8 @@
-import { Movie } from "models/";
-import { addMovie } from "api";
-import { addMovieSuccessAction, addMovieFaildAction } from "../actions";
-import { call, put } from "redux-saga/effects";
-import { ModalsAction } from "../../modals";
+import { Movie } from 'models/';
+import { addMovie } from 'api';
+import { call, put } from 'redux-saga/effects';
+import { addMovieSuccessAction, addMovieFaildAction } from '../actions';
+import { ModalsAction } from '../../modals';
 
 export function* addMovieWorker({ payload }: { payload: Movie }) {
   try {

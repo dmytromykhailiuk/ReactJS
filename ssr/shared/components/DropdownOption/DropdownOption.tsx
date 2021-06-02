@@ -1,7 +1,7 @@
 import React from 'react';
 import { CheckboxIcon } from '../';
-import classes from "./DropdownOption.module.scss";
-import classnames from "classnames";
+import classes from './DropdownOption.module.scss';
+import classnames from 'classnames';
 
 interface DropdownOptionProps {
   isSelected?: boolean;
@@ -9,20 +9,19 @@ interface DropdownOptionProps {
 
 const DropdownOption: React.FC<DropdownOptionProps> = ({ isSelected = false, children }) => {
   return (
-    <div className={classes["dropdown-option"]}>
-      <div 
-        className={classnames(
-          classes["dropdown-option__checkbox"],
-          {[classes["dropdown-option__checkbox--checked"]] : isSelected}
-        )}
+    <div className={classes['dropdown-option']}>
+      <div
+        className={classnames(classes['dropdown-option__checkbox'], {
+          [classes['dropdown-option__checkbox--checked']]: isSelected,
+        })}
       >
-        <div className={classes["dropdown-option__checkbox-icon"]}>
+        <div className={classes['dropdown-option__checkbox-icon']}>
           <CheckboxIcon />
         </div>
       </div>
-      <div className={classes["dropdown-option__content"]}>{ children }</div>
+      <div className={classes['dropdown-option__content']}>{children}</div>
     </div>
-  )
-}
+  );
+};
 
 export default DropdownOption;

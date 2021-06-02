@@ -1,10 +1,5 @@
-import { Categories } from "../shared/enums";
+import { Categories } from '../shared/enums';
 
-const categories: Categories[] = [
-  Categories.DOCUMENTARY,
-  Categories.COMEDY,
-  Categories.HORROR,
-  Categories.CRIME,
-];
+const categories: Categories[] = [Categories.DOCUMENTARY, Categories.COMEDY, Categories.HORROR, Categories.CRIME];
 
 export { categories };

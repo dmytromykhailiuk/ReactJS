@@ -1,2 +1,2 @@
-export * from "./movies.mock";
-export * from "./categories.mock";
+export * from './movies.mock';
+export * from './categories.mock';

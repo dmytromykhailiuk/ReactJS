@@ -1,12 +1,9 @@
 export function goUp(): void {
   let timeOut: NodeJS.Timeout;
   let position: number;
-  let animation: boolean = false;
+  let animation = false;
   const recursiveFn = () => {
-    var top = Math.max(
-      document.body.scrollTop,
-      document.documentElement.scrollTop
-    );
+    const top = Math.max(document.body.scrollTop, document.documentElement.scrollTop);
     if (top > 0) {
       if (animation === false) {
         animation = true;

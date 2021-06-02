@@ -1,8 +1,8 @@
 export const execution = {
   get isClient(): boolean {
-    return typeof window === "object";
+    return typeof window === 'object';
   },
   get isServer(): boolean {
-    return typeof window === "undefined";
+    return typeof window === 'undefined';
   },
 };

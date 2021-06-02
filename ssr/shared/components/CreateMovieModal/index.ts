@@ -1,1 +1,1 @@
-export { default as CreateMovieModal } from "./CreateMovieModal";
+export { default as CreateMovieModal } from './CreateMovieModal';
